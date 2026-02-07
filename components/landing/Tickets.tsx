@@ -2,7 +2,8 @@
 
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
-import { Sparkles, Crown, Ticket, Clock } from "lucide-react";
+import { Sparkles, Crown, Ticket, Clock, ExternalLink, Users } from "lucide-react";
+import { useTheme } from "@/components/ThemeProvider";
 
 const tickets = [
     {
@@ -10,19 +11,22 @@ const tickets = [
         name: "Golden Ticket",
         subtitle: "Elite Access",
         price: "₹499 – ₹4,999",
+        priceNote: "Pay what you wish",
         status: "available",
-        deadline: "14th March 2026, 06:00 PM",
-        cta: "Donate / Support",
+        deadline: "14th March 2026, 6:00 PM",
+        cta: "Support the Event",
+        ctaLink: "https://konfhub.com/aws-student-community-day-sanjivani-2026",
         icon: Crown,
         featured: true,
+        seats: 100,
         features: [
             { icon: "✨", text: "Exclusive Golden Badge" },
             { icon: "💺", text: "Front Row Elite Seating" },
-            { icon: "🤝", text: "Inner Circle Networking" },
-            { icon: "📣", text: "Social Media Spotlight" },
-            { icon: "🚪", text: "Priority Entry" },
-            { icon: "🎁", text: "Premium Swag Upgrade" },
-            { icon: "📸", text: "Photo Opportunities" },
+            { icon: "🤝", text: "Inner Circle Networking with AWS Heroes" },
+            { icon: "📣", text: "Social Media Spotlight & Shoutout" },
+            { icon: "🚪", text: "Priority Fast-Track Entry" },
+            { icon: "🎁", text: "Premium Swag & Workshop Access" },
+            { icon: "📸", text: "Photo Ops with Speakers" },
         ],
     },
     {
@@ -30,17 +34,20 @@ const tickets = [
         name: "Early Bird Ticket",
         subtitle: "Conference Pass",
         price: "₹149",
-        status: "coming-soon",
-        deadline: "7th February 2026, 06:00 PM",
-        cta: "Coming Soon",
+        priceNote: "Limited time offer",
+        status: "available",
+        deadline: "21st February 2026, 11:00 PM",
+        cta: "Get Early Bird",
+        ctaLink: "https://konfhub.com/aws-student-community-day-sanjivani-2026",
         icon: Ticket,
         featured: false,
+        seats: 200,
         features: [
-            { icon: "💰", text: "Maximum Savings" },
+            { icon: "💰", text: "Maximum Savings - Lowest Price" },
             { icon: "📑", text: "Full Conference Access" },
-            { icon: "💡", text: "Focused Breakout Sessions" },
+            { icon: "💡", text: "Expert-Led Breakout Sessions" },
             { icon: "☕", text: "Breakfast & High-Tea" },
-            { icon: "🍽", text: "Lunch & Conversations" },
+            { icon: "🍽️", text: "Networking Lunch" },
             { icon: "🎒", text: "Exclusive Goodie Bag" },
         ],
     },
@@ -49,18 +56,22 @@ const tickets = [
         name: "Regular Ticket",
         subtitle: "Standard Access",
         price: "₹249",
-        status: "coming-soon",
-        deadline: "7th February 2026, 06:00 PM",
-        cta: "Coming Soon",
+        priceNote: "Standard pricing",
+        status: "available",
+        deadline: "14th March 2026, 6:00 PM",
+        cta: "Get Ticket",
+        ctaLink: "https://konfhub.com/aws-student-community-day-sanjivani-2026",
         icon: Ticket,
         featured: false,
+        seats: 300,
         features: [
             { icon: "🌐", text: "Full Event Access" },
-            { icon: "🛠", text: "Hands-On Learning" },
-            { icon: "🚀", text: "Industry Insights" },
-            { icon: "🥯", text: "Morning Refreshments" },
+            { icon: "🛠️", text: "Hands-On Workshop Experience" },
+            { icon: "🚀", text: "Industry Insights & Deep Dives" },
+            { icon: "🥯", text: "Morning Refreshments & High-Tea" },
             { icon: "🍲", text: "Networking Lunch" },
             { icon: "📦", text: "Official Swag Bag" },
+            { icon: "📈", text: "Career Growth Opportunities" },
         ],
     },
 ];
@@ -68,10 +79,15 @@ const tickets = [
 const Tickets = () => {
     const ref = useRef(null);
     const isInView = useInView(ref, { once: true, margin: "-100px" });
+    const { theme } = useTheme();
 
     return (
-        <section ref={ref} className="section-padding bg-background">
-            <div className="section-container">
+        <section ref={ref} id="tickets" className="section-padding bg-background relative overflow-hidden">
+            {/* Background decorations */}
+            <div className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full blur-[200px] ${theme === "dark" ? "bg-primary/5" : "bg-primary/3"
+                }`} />
+
+            <div className="section-container relative z-10">
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={isInView ? { opacity: 1, y: 0 } : {}}
@@ -85,8 +101,26 @@ const Tickets = () => {
                         Secure Your Spot
                     </h2>
                     <p className="text-muted-foreground">
-                        Choose the experience that fits your journey. Limited seats available.
+                        Choose the experience that fits your journey. Tickets vanish faster than a serverless function!
                     </p>
+                </motion.div>
+
+                {/* Group Discount Banner */}
+                <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={isInView ? { opacity: 1, y: 0 } : {}}
+                    transition={{ duration: 0.5, delay: 0.1 }}
+                    className={`mb-8 rounded-2xl border p-4 text-center ${theme === "dark"
+                        ? "border-primary/30 bg-primary/10"
+                        : "border-primary/20 bg-primary/5"
+                        }`}
+                >
+                    <div className="flex items-center justify-center gap-2 text-sm font-medium">
+                        <Users className="h-4 w-4 text-primary" />
+                        <span className="text-foreground">Group Discount:</span>
+                        <span className="text-primary font-bold">10% OFF</span>
+                        <span className="text-muted-foreground">for bookings of 10-20 tickets!</span>
+                    </div>
                 </motion.div>
 
                 <div className="grid gap-6 lg:grid-cols-3">
@@ -97,8 +131,10 @@ const Tickets = () => {
                             animate={isInView ? { opacity: 1, y: 0 } : {}}
                             transition={{ duration: 0.5, delay: 0.1 * index }}
                             className={`relative overflow-hidden rounded-2xl border ${ticket.featured
-                                    ? "border-primary/50 bg-gradient-to-b from-primary/10 via-card to-card shadow-golden"
-                                    : "border-border bg-card shadow-card"
+                                ? "border-primary/50 bg-gradient-to-b from-primary/10 via-card to-card shadow-golden"
+                                : theme === "dark"
+                                    ? "border-white/10 bg-white/5"
+                                    : "border-gray-200 bg-white shadow-card"
                                 } transition-all duration-300 hover:shadow-card-hover hover:-translate-y-1`}
                         >
                             {ticket.featured && (
@@ -109,9 +145,11 @@ const Tickets = () => {
                                 {/* Header */}
                                 <div className="mb-6">
                                     <div className="mb-4 flex items-center justify-between">
-                                        <div className={`inline-flex rounded-xl p-3 ${ticket.featured ? "bg-primary/20" : "bg-secondary"
+                                        <div className={`inline-flex rounded-xl p-3 ${ticket.featured
+                                            ? "bg-gradient-to-br from-amber-500 to-primary"
+                                            : theme === "dark" ? "bg-white/10" : "bg-gray-100"
                                             }`}>
-                                            <ticket.icon className={`h-6 w-6 ${ticket.featured ? "text-primary" : "text-muted-foreground"
+                                            <ticket.icon className={`h-6 w-6 ${ticket.featured ? "text-white" : "text-muted-foreground"
                                                 }`} />
                                         </div>
                                         {ticket.featured && (
@@ -128,9 +166,14 @@ const Tickets = () => {
                                 {/* Price */}
                                 <div className="mb-6">
                                     <div className="text-3xl font-bold text-foreground">{ticket.price}</div>
-                                    <div className="mt-2 flex items-center gap-2 text-xs text-muted-foreground">
+                                    <div className="text-xs text-primary font-medium mt-1">{ticket.priceNote}</div>
+                                    <div className="mt-3 flex items-center gap-2 text-xs text-muted-foreground">
                                         <Clock className="h-3.5 w-3.5" />
-                                        {ticket.status === "available" ? "Available Till" : "Starts On"}: {ticket.deadline}
+                                        <span>Available till: {ticket.deadline}</span>
+                                    </div>
+                                    <div className="mt-1 flex items-center gap-2 text-xs text-muted-foreground">
+                                        <Users className="h-3.5 w-3.5" />
+                                        <span>{ticket.seats} seats available</span>
                                     </div>
                                 </div>
 
@@ -138,26 +181,39 @@ const Tickets = () => {
                                 <ul className="mb-8 space-y-3">
                                     {ticket.features.map((feature, i) => (
                                         <li key={i} className="flex items-start gap-3">
-                                            <span className="text-base">{feature.icon}</span>
+                                            <span className="text-base flex-shrink-0">{feature.icon}</span>
                                             <span className="text-sm text-muted-foreground">{feature.text}</span>
                                         </li>
                                     ))}
                                 </ul>
 
                                 {/* CTA */}
-                                <button
-                                    disabled={ticket.status === "coming-soon"}
-                                    className={`w-full rounded-xl px-6 py-3 text-sm font-semibold transition-all duration-200 ${ticket.status === "available"
-                                            ? "bg-primary text-primary-foreground hover:bg-primary/90 hover:scale-[1.02]"
-                                            : "bg-muted text-muted-foreground cursor-not-allowed"
+                                <a
+                                    href={ticket.ctaLink}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className={`w-full flex items-center justify-center gap-2 rounded-xl px-6 py-3 text-sm font-semibold transition-all duration-200 ${ticket.featured
+                                        ? "bg-gradient-to-r from-amber-500 to-primary text-white hover:opacity-90 hover:scale-[1.02]"
+                                        : "bg-primary text-primary-foreground hover:bg-primary/90 hover:scale-[1.02]"
                                         }`}
                                 >
                                     {ticket.cta}
-                                </button>
+                                    <ExternalLink className="h-4 w-4" />
+                                </a>
                             </div>
                         </motion.div>
                     ))}
                 </div>
+
+                {/* Bottom Note */}
+                <motion.p
+                    initial={{ opacity: 0 }}
+                    animate={isInView ? { opacity: 1 } : {}}
+                    transition={{ duration: 0.6, delay: 0.5 }}
+                    className="mt-8 text-center text-sm text-muted-foreground"
+                >
+                    All tickets include breakfast, high-tea, lunch, and official swag. Prices are inclusive of taxes.
+                </motion.p>
             </div>
         </section>
     );
