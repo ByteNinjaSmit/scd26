@@ -42,7 +42,8 @@ const Navbar = () => {
                     <nav className="flex h-16 items-center justify-between sm:h-20">
                         {/* Logo */}
                         <a href="/" className="flex items-center gap-2">
-                            <span className="text-lg font-bold text-white sm:text-xl">
+                            <span className={`text-lg font-bold sm:text-xl ${isScrolled || theme === "dark" ? "text-white" : "text-aws-navy"
+                                }`}>
                                 AWS <span className="text-primary">Cloud Club</span>
                             </span>
                         </a>
@@ -52,7 +53,10 @@ const Navbar = () => {
                             {/* Theme Toggle Button */}
                             <button
                                 onClick={toggleTheme}
-                                className="flex h-9 w-9 items-center justify-center rounded-lg border border-white/20 bg-white/10 text-white transition-all hover:bg-white/20 hover:border-white/30"
+                                className={`flex h-9 w-9 items-center justify-center rounded-lg border transition-all ${isScrolled || theme === "dark"
+                                        ? "border-white/20 bg-white/10 text-white hover:bg-white/20 hover:border-white/30"
+                                        : "border-aws-navy/20 bg-aws-navy/10 text-aws-navy hover:bg-aws-navy/20 hover:border-aws-navy/30"
+                                    }`}
                                 aria-label="Toggle theme"
                             >
                                 {mounted ? (
@@ -70,7 +74,8 @@ const Navbar = () => {
                                 <a
                                     key={link.name}
                                     href={link.href}
-                                    className="text-sm font-medium text-white/70 transition-colors hover:text-primary"
+                                    className={`text-sm font-medium transition-colors hover:text-primary ${isScrolled || theme === "dark" ? "text-white/70" : "text-aws-navy/70"
+                                        }`}
                                 >
                                     {link.name}
                                 </a>
@@ -86,7 +91,8 @@ const Navbar = () => {
                         {/* Mobile Menu Button */}
                         <button
                             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                            className="flex h-10 w-10 items-center justify-center rounded-lg text-white md:hidden"
+                            className={`flex h-10 w-10 items-center justify-center rounded-lg md:hidden ${isScrolled || theme === "dark" ? "text-white" : "text-aws-navy"
+                                }`}
                             aria-label="Toggle menu"
                         >
                             {isMobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}

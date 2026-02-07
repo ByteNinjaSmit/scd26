@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { ArrowRight, Calendar, MapPin, Cloud, Code2, Users, Ticket } from "lucide-react";
+import { useTheme } from "@/components/ThemeProvider";
 
 const floatingBadges = [
     { icon: Cloud, label: "Cloud Computing", delay: 0 },
@@ -17,15 +18,25 @@ const stats = [
 ];
 
 const Hero = () => {
+    const { theme, mounted } = useTheme();
+
     return (
-        <section className="relative min-h-screen overflow-hidden bg-gradient-to-br from-aws-navy-deep via-aws-navy to-[hsl(210,50%,20%)]">
+        <section className={`relative min-h-screen overflow-hidden transition-colors duration-300 ${theme === "dark"
+            ? "bg-gradient-to-br from-aws-navy-deep via-aws-navy to-[hsl(210,50%,20%)]"
+            : "bg-gradient-to-br from-white via-slate-50 to-blue-50"
+            }`}>
             {/* Animated Grid Background */}
-            <div className="hero-grid absolute inset-0 opacity-30" />
+            <div className={`hero-grid absolute inset-0 ${theme === "dark" ? "opacity-30" : "opacity-10"}`} />
 
             {/* Gradient Overlays */}
-            <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-aws-navy-deep/80" />
-            <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[1000px] h-[600px] bg-aws-blue-light/10 blur-[150px] rounded-full" />
-            <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-primary/10 blur-[120px] rounded-full" />
+            <div className={`absolute inset-0 ${theme === "dark"
+                ? "bg-gradient-to-b from-transparent via-transparent to-aws-navy-deep/80"
+                : "bg-gradient-to-b from-transparent via-transparent to-white/80"
+                }`} />
+            <div className={`absolute top-1/4 left-1/2 -translate-x-1/2 w-[1000px] h-[600px] blur-[150px] rounded-full ${theme === "dark" ? "bg-aws-blue-light/10" : "bg-aws-blue/5"
+                }`} />
+            <div className={`absolute bottom-0 right-0 w-[500px] h-[500px] blur-[120px] rounded-full ${theme === "dark" ? "bg-primary/10" : "bg-primary/5"
+                }`} />
 
             {/* Floating Cloud Icon */}
             <motion.div
@@ -48,7 +59,10 @@ const Hero = () => {
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.5 }}
-                            className="mb-6 inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/5 backdrop-blur-sm px-4 py-2 text-sm font-medium text-white/90"
+                            className={`mb-6 inline-flex items-center gap-2 rounded-full border backdrop-blur-sm px-4 py-2 text-sm font-medium ${theme === "dark"
+                                ? "border-white/20 bg-white/5 text-white/90"
+                                : "border-aws-navy/20 bg-aws-navy/5 text-aws-navy"
+                                }`}
                         >
                             <Calendar className="h-4 w-4 text-primary" />
                             March 2026 • Sanjivani College of Engineering
@@ -59,7 +73,8 @@ const Hero = () => {
                             initial={{ opacity: 0, y: 30 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.6, delay: 0.1 }}
-                            className="mb-4 text-4xl font-bold tracking-tight text-white sm:text-5xl lg:text-6xl xl:text-7xl"
+                            className={`mb-4 text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl xl:text-7xl ${theme === "dark" ? "text-white" : "text-aws-navy"
+                                }`}
                         >
                             AWS Student
                             <span className="block text-gradient-orange">Community Day</span>
@@ -70,7 +85,8 @@ const Hero = () => {
                             initial={{ opacity: 0, y: 30 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.6, delay: 0.2 }}
-                            className="mx-auto lg:mx-0 mb-8 max-w-xl text-base text-white/60 sm:text-lg leading-relaxed"
+                            className={`mx-auto lg:mx-0 mb-8 max-w-xl text-base sm:text-lg leading-relaxed ${theme === "dark" ? "text-white/60" : "text-aws-navy/70"
+                                }`}
                         >
                             Join us for a full day of learning, networking, and innovation!
                             Discover the latest AWS technologies through hands-on workshops,
@@ -86,10 +102,10 @@ const Hero = () => {
                         >
                             {stats.map((stat) => (
                                 <div key={stat.label} className="text-center lg:text-left">
-                                    <div className={`text-2xl font-bold sm:text-3xl ${stat.highlight ? 'text-primary' : 'text-white'}`}>
+                                    <div className={`text-2xl font-bold sm:text-3xl ${stat.highlight ? 'text-primary' : theme === "dark" ? 'text-white' : 'text-aws-navy'}`}>
                                         {stat.value}
                                     </div>
-                                    <div className="text-xs text-white/50 sm:text-sm">{stat.label}</div>
+                                    <div className={`text-xs sm:text-sm ${theme === "dark" ? "text-white/50" : "text-aws-navy/60"}`}>{stat.label}</div>
                                 </div>
                             ))}
                         </motion.div>
@@ -106,7 +122,10 @@ const Hero = () => {
                                 Register Now
                                 <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
                             </a>
-                            <a href="#about" className="btn-secondary text-white/80 border-white/20 hover:border-white/40 text-base">
+                            <a href="#about" className={`btn-secondary text-base ${theme === "dark"
+                                ? "text-white/80 border-white/20 hover:border-white/40"
+                                : "text-aws-navy border-aws-navy/30 hover:border-aws-navy/50"
+                                }`}>
                                 Learn More
                             </a>
                         </motion.div>
@@ -116,7 +135,8 @@ const Hero = () => {
                             initial={{ opacity: 0, y: 30 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.6, delay: 0.5 }}
-                            className="mt-8 flex flex-wrap items-center justify-center lg:justify-start gap-6 text-sm text-white/60"
+                            className={`mt-8 flex flex-wrap items-center justify-center lg:justify-start gap-6 text-sm ${theme === "dark" ? "text-white/60" : "text-aws-navy/70"
+                                }`}
                         >
                             <div className="flex items-center gap-2">
                                 <Calendar className="h-4 w-4 text-primary" />
@@ -158,12 +178,15 @@ const Hero = () => {
                                         <motion.div
                                             animate={{ y: [0, -8, 0] }}
                                             transition={{ duration: 3 + index, repeat: Infinity, ease: "easeInOut" }}
-                                            className="flex items-center gap-3 rounded-2xl border border-white/10 bg-white/5 backdrop-blur-md px-5 py-3 shadow-lg"
+                                            className={`flex items-center gap-3 rounded-2xl border backdrop-blur-md px-5 py-3 shadow-lg ${theme === "dark"
+                                                    ? "border-white/10 bg-white/5"
+                                                    : "border-aws-navy/10 bg-white/80"
+                                                }`}
                                         >
                                             <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-primary/20">
                                                 <badge.icon className="h-5 w-5 text-primary" />
                                             </div>
-                                            <span className="font-medium text-white">{badge.label}</span>
+                                            <span className={`font-medium ${theme === "dark" ? "text-white" : "text-aws-navy"}`}>{badge.label}</span>
                                         </motion.div>
                                     </motion.div>
                                 );
@@ -176,7 +199,8 @@ const Hero = () => {
                                 transition={{ duration: 0.6, delay: 0.8 }}
                                 className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
                             >
-                                <div className="flex h-24 w-24 items-center justify-center rounded-2xl border border-white/10 bg-white/5 backdrop-blur-md">
+                                <div className={`flex h-24 w-24 items-center justify-center rounded-2xl border backdrop-blur-md ${theme === "dark" ? "border-white/10 bg-white/5" : "border-aws-navy/10 bg-white/80"
+                                    }`}>
                                     <span className="text-3xl font-bold text-primary">AWS</span>
                                 </div>
                             </motion.div>
@@ -194,10 +218,10 @@ const Hero = () => {
                     <motion.div
                         animate={{ y: [0, 8, 0] }}
                         transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
-                        className="flex flex-col items-center gap-2 text-white/40"
+                        className={`flex flex-col items-center gap-2 ${theme === "dark" ? "text-white/40" : "text-aws-navy/40"}`}
                     >
                         <span className="text-xs font-medium uppercase tracking-widest">Scroll</span>
-                        <div className="h-10 w-6 rounded-full border-2 border-white/20 p-1">
+                        <div className={`h-10 w-6 rounded-full border-2 p-1 ${theme === "dark" ? "border-white/20" : "border-aws-navy/20"}`}>
                             <motion.div
                                 animate={{ y: [0, 12, 0] }}
                                 transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
