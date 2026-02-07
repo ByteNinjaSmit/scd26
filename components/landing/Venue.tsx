@@ -99,7 +99,7 @@ const Venue = () => {
                             {/* Map iframe */}
                             <div className="aspect-[4/3] lg:aspect-auto lg:h-[calc(100%-64px)] w-full bg-secondary">
                                 <iframe
-                                    src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d1879.9699099478588!2d74.49589!3d19.902379!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e1!3m2!1sen!2sin!4v1770477922825!5m2!1sen!2sin"
+                                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4518.304054880741!2d74.4936901778391!3d19.902378923438757!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bdc450021382c51%3A0x18ffae92278cc362!2sSANJIVANI%20BANQUET%20HALL!5e1!3m2!1sen!2sin!4v1770478900252!5m2!1sen!2sin"
                                     width="100%"
                                     height="100%"
                                     style={{ border: 0 }}
@@ -196,7 +196,7 @@ const Venue = () => {
                                 {/* CTA Button */}
                                 <div className="mt-6">
                                     <a
-                                        href="https://maps.app.goo.gl/5vRcE1XzZXm1sRqz9"
+                                        href="https://maps.app.goo.gl/JJjwq5aC8osWZ89u8"
                                         target="_blank"
                                         rel="noopener noreferrer"
                                         className="w-full btn-primary group/btn justify-center text-base"
