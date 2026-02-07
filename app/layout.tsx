@@ -41,14 +41,7 @@ export const metadata: Metadata = {
     description: "Join us on March 15, 2026 for a day of cloud learning, networking, and innovation. Workshops, expert talks, and hands-on labs for all skill levels.",
     url: "https://awscommunityday.sanjivani.edu",
     siteName: "AWS Student Community Day 2026",
-    images: [
-      {
-        url: "/og-image.png",
-        width: 1200,
-        height: 630,
-        alt: "AWS Student Community Day 2026 at Sanjivani College of Engineering",
-      },
-    ],
+
     locale: "en_IN",
     type: "website",
   },
@@ -58,7 +51,7 @@ export const metadata: Metadata = {
     description: "Join us on March 15, 2026 for a day of cloud learning, networking, and innovation.",
     site: "@awscloudclub",
     creator: "@awscloudclub",
-    images: ["/og-image.png"],
+
   },
   robots: {
     index: true,
@@ -71,12 +64,8 @@ export const metadata: Metadata = {
       "max-snippet": -1,
     },
   },
-  icons: {
-    icon: "/favicon.ico",
-    shortcut: "/favicon-16x16.png",
-    apple: "/apple-touch-icon.png",
-  },
-  manifest: "/site.webmanifest",
+
+
   category: "technology",
 };
 
