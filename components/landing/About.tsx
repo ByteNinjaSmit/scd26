@@ -2,13 +2,11 @@
 
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
-import { Users, Mic, Wrench, Globe } from "lucide-react";
+import { Users, Mic } from "lucide-react";
 
 const stats = [
     { icon: Users, value: "500+", label: "Attendees" },
     { icon: Mic, value: "15+", label: "Industry Speakers" },
-    { icon: Wrench, value: "10+", label: "Hands-on Workshops" },
-    { icon: Globe, value: "1", label: "Global Community" },
 ];
 
 const About = () => {
@@ -57,7 +55,7 @@ const About = () => {
                         initial={{ opacity: 0, x: 30 }}
                         animate={isInView ? { opacity: 1, x: 0 } : {}}
                         transition={{ duration: 0.6, delay: 0.2 }}
-                        className="grid grid-cols-2 gap-4"
+                        className="flex flex-col gap-6 justify-center"
                     >
                         {stats.map((stat, index) => (
                             <motion.div
