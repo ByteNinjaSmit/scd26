@@ -2,7 +2,7 @@
 
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
-import { Users, Mic } from "lucide-react";
+import { Users, Mic, ArrowRight } from "lucide-react";
 
 const stats = [
     { icon: Users, value: "500+", label: "Attendees" },
@@ -14,7 +14,7 @@ const About = () => {
     const isInView = useInView(ref, { once: true, margin: "-100px" });
 
     return (
-        <section ref={ref} className="section-padding bg-background">
+        <section ref={ref} id="about" className="section-padding bg-background">
             <div className="section-container">
                 <div className="grid gap-12 lg:grid-cols-2 lg:gap-16">
                     {/* Left - Story */}
@@ -48,6 +48,18 @@ const About = () => {
                                 and live demonstrations.
                             </p>
                         </div>
+                        {/* Learn More Button */}
+                        <motion.div
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={isInView ? { opacity: 1, y: 0 } : {}}
+                            transition={{ duration: 0.6, delay: 0.3 }}
+                            className="mt-8"
+                        >
+                            <a href="#tracks" className="btn-primary group text-base inline-flex">
+                                Learn More
+                                <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+                            </a>
+                        </motion.div>
                     </motion.div>
 
                     {/* Right - Stats */}

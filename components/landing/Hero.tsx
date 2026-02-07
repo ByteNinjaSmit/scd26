@@ -1,24 +1,25 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ArrowRight, Calendar, MapPin, Cloud, Code2, Users, Ticket } from "lucide-react";
+import { ArrowRight, Calendar, MapPin, Cloud, Code2, Users, Ticket, Zap, Server, Database } from "lucide-react";
 import { useTheme } from "@/components/ThemeProvider";
+import Image from "next/image";
 
 const floatingBadges = [
-    { icon: Cloud, label: "Cloud Computing", delay: 0 },
-    { icon: Code2, label: "Hands-on Labs", delay: 0.2 },
-    { icon: Users, label: "Networking", delay: 0.4 },
+    { icon: Cloud, label: "Cloud Computing", color: "from-orange-500 to-amber-500" },
+    { icon: Code2, label: "Hands-on Labs", color: "from-blue-500 to-cyan-500" },
+    { icon: Users, label: "Networking", color: "from-violet-500 to-purple-500" },
 ];
 
-const stats = [
-    { value: "3", label: "Learning Tracks" },
-    { value: "15+", label: "Expert Speakers" },
-    { value: "500+", label: "Attendees" },
-    { value: "Free", label: "Registration", highlight: true },
+const orbitIcons = [
+    { icon: Server, delay: 0 },
+    { icon: Database, delay: 0.5 },
+    { icon: Zap, delay: 1 },
+    { icon: Cloud, delay: 1.5 },
 ];
 
 const Hero = () => {
-    const { theme, mounted } = useTheme();
+    const { theme } = useTheme();
 
     return (
         <section className={`relative min-h-screen overflow-hidden transition-colors duration-300 ${theme === "dark"
@@ -37,18 +38,6 @@ const Hero = () => {
                 }`} />
             <div className={`absolute bottom-0 right-0 w-[500px] h-[500px] blur-[120px] rounded-full ${theme === "dark" ? "bg-primary/10" : "bg-primary/5"
                 }`} />
-
-            {/* Floating Cloud Icon */}
-            <motion.div
-                className="absolute top-1/3 right-[15%] hidden lg:block"
-                animate={{ y: [-10, 10, -10] }}
-                transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
-            >
-                <div className="relative">
-                    <Cloud className="h-24 w-24 text-primary/40" strokeWidth={1} />
-                    <div className="absolute inset-0 blur-xl bg-primary/20 rounded-full" />
-                </div>
-            </motion.div>
 
             <div className="section-container relative z-10 flex min-h-screen flex-col justify-center px-4 sm:px-6 pt-16 pb-12 sm:pt-20 sm:pb-16 lg:pt-24 lg:pb-20">
                 <div className="grid gap-12 lg:grid-cols-2 lg:gap-8 items-center">
@@ -85,7 +74,7 @@ const Hero = () => {
                             initial={{ opacity: 0, y: 30 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.6, delay: 0.2 }}
-                            className={`mx-auto lg:mx-0 mb-4 max-w-xl text-base sm:text-lg leading-relaxed ${theme === "dark" ? "text-white/60" : "text-aws-navy/70"
+                            className={`mx-auto lg:mx-0 mb-6 max-w-xl text-base sm:text-lg leading-relaxed ${theme === "dark" ? "text-white/60" : "text-aws-navy/70"
                                 }`}
                         >
                             Join us for a full day of learning, networking, and innovation!
@@ -93,28 +82,11 @@ const Hero = () => {
                             inspiring talks, and connect with fellow cloud enthusiasts.
                         </motion.p>
 
-                        {/* Stats Row */}
-                        <motion.div
-                            initial={{ opacity: 0, y: 30 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 0.6, delay: 0.3 }}
-                            className="mb-5 grid grid-cols-2 gap-4 sm:grid-cols-4"
-                        >
-                            {stats.map((stat) => (
-                                <div key={stat.label} className="text-center lg:text-left">
-                                    <div className={`text-2xl font-bold sm:text-3xl ${stat.highlight ? 'text-primary' : theme === "dark" ? 'text-white' : 'text-aws-navy'}`}>
-                                        {stat.value}
-                                    </div>
-                                    <div className={`text-xs sm:text-sm ${theme === "dark" ? "text-white/50" : "text-aws-navy/60"}`}>{stat.label}</div>
-                                </div>
-                            ))}
-                        </motion.div>
-
                         {/* CTAs */}
                         <motion.div
                             initial={{ opacity: 0, y: 30 }}
                             animate={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 0.6, delay: 0.4 }}
+                            transition={{ duration: 0.6, delay: 0.3 }}
                             className="flex flex-wrap items-center justify-center lg:justify-start gap-4"
                         >
                             <a href="#tickets" className="btn-primary group text-base">
@@ -134,8 +106,8 @@ const Hero = () => {
                         <motion.div
                             initial={{ opacity: 0, y: 30 }}
                             animate={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 0.6, delay: 0.5 }}
-                            className={`mt-4 flex flex-wrap items-center justify-center lg:justify-start gap-6 text-sm ${theme === "dark" ? "text-white/60" : "text-aws-navy/70"
+                            transition={{ duration: 0.6, delay: 0.4 }}
+                            className={`mt-6 flex flex-wrap items-center justify-center lg:justify-start gap-6 text-sm ${theme === "dark" ? "text-white/60" : "text-aws-navy/70"
                                 }`}
                         >
                             <div className="flex items-center gap-2">
@@ -153,62 +125,143 @@ const Hero = () => {
                         </motion.div>
                     </div>
 
-                    {/* Right - Floating Badges */}
-                    <div className="relative hidden lg:flex items-center justify-center">
-                        <div className="relative w-full max-w-md aspect-square">
-                            {/* Central Glow */}
-                            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-32 h-32 rounded-full bg-primary/30 blur-3xl" />
+                    {/* Right - Premium Hero Visual */}
+                    <div className="relative hidden lg:flex items-center justify-center min-h-[500px]">
+                        {/* Background Glow Effects */}
+                        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-80 h-80 rounded-full bg-primary/30 blur-[100px]" />
+                        <div className="absolute top-1/3 right-1/4 w-40 h-40 rounded-full bg-blue-500/20 blur-[80px]" />
+                        <div className="absolute bottom-1/3 left-1/4 w-40 h-40 rounded-full bg-violet-500/20 blur-[80px]" />
 
-                            {/* Floating Badges */}
-                            {floatingBadges.map((badge, index) => {
-                                const positions = [
-                                    { top: "10%", right: "10%" },
-                                    { bottom: "30%", right: "0%" },
-                                    { bottom: "10%", left: "20%" },
-                                ];
-                                return (
-                                    <motion.div
-                                        key={badge.label}
-                                        initial={{ opacity: 0, scale: 0.8 }}
-                                        animate={{ opacity: 1, scale: 1 }}
-                                        transition={{ duration: 0.5, delay: 0.6 + badge.delay }}
-                                        style={positions[index] as React.CSSProperties}
-                                        className="absolute"
-                                    >
-                                        <motion.div
-                                            animate={{ y: [0, -8, 0] }}
-                                            transition={{ duration: 3 + index, repeat: Infinity, ease: "easeInOut" }}
-                                            className={`flex items-center gap-3 rounded-2xl border backdrop-blur-md px-5 py-3 shadow-lg ${theme === "dark"
-                                                ? "border-white/10 bg-white/5"
-                                                : "border-aws-navy/10 bg-white/80"
-                                                }`}
-                                        >
-                                            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-primary/20">
-                                                <badge.icon className="h-5 w-5 text-primary" />
-                                            </div>
-                                            <span className={`font-medium ${theme === "dark" ? "text-white" : "text-aws-navy"}`}>{badge.label}</span>
-                                        </motion.div>
-                                    </motion.div>
-                                );
-                            })}
+                        {/* Animated Orbit Rings */}
+                        <motion.div
+                            animate={{ rotate: 360 }}
+                            transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
+                            className="absolute w-[420px] h-[420px] rounded-full border border-primary/20"
+                            style={{ borderStyle: 'dashed' }}
+                        />
+                        <motion.div
+                            animate={{ rotate: -360 }}
+                            transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
+                            className="absolute w-[320px] h-[320px] rounded-full border border-primary/30"
+                        />
+                        <motion.div
+                            animate={{ rotate: 360 }}
+                            transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+                            className="absolute w-[220px] h-[220px] rounded-full border border-primary/40"
+                            style={{ borderStyle: 'dashed' }}
+                        />
 
-                            {/* AWS Logo Placeholder */}
+                        {/* Orbiting Small Icons */}
+                        {orbitIcons.map((item, index) => (
                             <motion.div
-                                initial={{ opacity: 0, scale: 0.8 }}
-                                animate={{ opacity: 1, scale: 1 }}
-                                transition={{ duration: 0.6, delay: 0.8 }}
-                                className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+                                key={index}
+                                animate={{ rotate: 360 }}
+                                transition={{ duration: 15 + index * 5, repeat: Infinity, ease: "linear", delay: item.delay }}
+                                className="absolute w-[380px] h-[380px]"
+                                style={{ transformOrigin: 'center center' }}
                             >
-                                <div className={`flex h-24 w-24 items-center justify-center rounded-2xl border backdrop-blur-md ${theme === "dark" ? "border-white/10 bg-white/5" : "border-aws-navy/10 bg-white/80"
-                                    }`}>
-                                    <span className="text-3xl font-bold text-primary">AWS</span>
-                                </div>
+                                <motion.div
+                                    animate={{ rotate: -360 }}
+                                    transition={{ duration: 15 + index * 5, repeat: Infinity, ease: "linear", delay: item.delay }}
+                                    className={`absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 flex h-10 w-10 items-center justify-center rounded-xl backdrop-blur-sm shadow-lg ${theme === "dark" ? "bg-white/10 border border-white/20" : "bg-white border border-gray-200"
+                                        }`}
+                                >
+                                    <item.icon className="h-5 w-5 text-primary" />
+                                </motion.div>
                             </motion.div>
-                        </div>
+                        ))}
+
+                        {/* Center AWS Logo */}
+                        <motion.div
+                            initial={{ opacity: 0, scale: 0.5 }}
+                            animate={{ opacity: 1, scale: 1 }}
+                            transition={{ duration: 0.8, delay: 0.2 }}
+                            className="relative z-20"
+                        >
+                            <motion.div
+                                animate={{ scale: [1, 1.05, 1] }}
+                                transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+                                className={`relative flex h-32 w-32 items-center justify-center rounded-3xl border-2 shadow-2xl ${theme === "dark"
+                                    ? "border-primary/50 bg-gradient-to-br from-aws-navy to-aws-navy-deep"
+                                    : "border-primary/30 bg-gradient-to-br from-white to-slate-100"
+                                    }`}
+                            >
+                                {/* Inner glow */}
+                                <div className="absolute inset-2 rounded-2xl bg-gradient-to-br from-primary/20 to-transparent" />
+                                <Image
+                                    src="/aws-logo.svg"
+                                    alt="AWS"
+                                    width={80}
+                                    height={80}
+                                    className="relative z-10"
+                                    onError={(e) => {
+                                        // Fallback to text if image fails
+                                        e.currentTarget.style.display = 'none';
+                                    }}
+                                />
+                                <span className="text-4xl font-bold text-primary relative z-10">AWS</span>
+                            </motion.div>
+                        </motion.div>
+
+                        {/* Floating Feature Cards */}
+                        {floatingBadges.map((badge, index) => {
+                            const positions = [
+                                { top: '5%', right: '0%' },
+                                { bottom: '15%', right: '-5%' },
+                                { bottom: '5%', left: '0%' },
+                            ];
+                            const delays = [0.4, 0.6, 0.8];
+
+                            return (
+                                <motion.div
+                                    key={badge.label}
+                                    initial={{ opacity: 0, y: 20 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    transition={{ duration: 0.6, delay: delays[index] }}
+                                    className="absolute"
+                                    style={positions[index]}
+                                >
+                                    <motion.div
+                                        animate={{ y: [0, -8, 0] }}
+                                        transition={{ duration: 3 + index * 0.5, repeat: Infinity, ease: "easeInOut", delay: index * 0.3 }}
+                                        className={`flex items-center gap-3 rounded-2xl border backdrop-blur-md px-4 py-3 shadow-xl ${theme === "dark"
+                                            ? "border-white/10 bg-white/5"
+                                            : "border-gray-200 bg-white/90"
+                                            }`}
+                                    >
+                                        <div className={`flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br ${badge.color}`}>
+                                            <badge.icon className="h-5 w-5 text-white" />
+                                        </div>
+                                        <span className={`font-medium text-sm ${theme === "dark" ? "text-white" : "text-aws-navy"}`}>
+                                            {badge.label}
+                                        </span>
+                                    </motion.div>
+                                </motion.div>
+                            );
+                        })}
+
+                        {/* Decorative floating particles */}
+                        {[...Array(6)].map((_, i) => (
+                            <motion.div
+                                key={i}
+                                className="absolute w-2 h-2 rounded-full bg-primary/40"
+                                style={{
+                                    top: `${20 + Math.random() * 60}%`,
+                                    left: `${20 + Math.random() * 60}%`,
+                                }}
+                                animate={{
+                                    y: [0, -20, 0],
+                                    opacity: [0.4, 1, 0.4],
+                                }}
+                                transition={{
+                                    duration: 3 + Math.random() * 2,
+                                    repeat: Infinity,
+                                    delay: Math.random() * 2,
+                                }}
+                            />
+                        ))}
                     </div>
                 </div>
-
-
             </div>
         </section>
     );

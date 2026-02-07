@@ -42,7 +42,7 @@ const Navbar = () => {
                 <div className="section-container">
                     <nav className="flex h-16 items-center justify-between sm:h-20">
                         {/* Logo */}
-                        <a href="/" className="flex items-center gap-3 -ml-9">
+                        <a href="/" className="flex items-center gap-2 sm:gap-3 sm:-ml-4 md:-ml-6 lg:-ml-9">
                             {mounted && (
                                 <Image
                                     src={theme === "dark" || isScrolled
@@ -52,10 +52,10 @@ const Navbar = () => {
                                     alt="AWS Cloud Club Logo"
                                     width={80}
                                     height={80}
-                                    className="h-20 w-20 object-contain"
+                                    className="h-14 w-14 sm:h-16 sm:w-16 md:h-20 md:w-20 object-contain"
                                 />
                             )}
-                            <span className={`text-lg font-bold sm:text-xl ${isScrolled || theme === "dark" ? "text-white" : "text-aws-navy"
+                            <span className={`text-base font-bold sm:text-lg md:text-xl ${isScrolled || theme === "dark" ? "text-white" : "text-aws-navy"
                                 }`}>
                                 AWS <span className="text-primary">Cloud Club</span>
                             </span>
