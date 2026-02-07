@@ -59,7 +59,7 @@ const Hero = () => {
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.5 }}
-                            className={`mb-6 inline-flex items-center gap-2 rounded-full border backdrop-blur-sm px-4 py-2 text-sm font-medium ${theme === "dark"
+                            className={`mb-1 inline-flex items-center gap-2 rounded-full border backdrop-blur-sm px-4 py-2 text-sm font-medium ${theme === "dark"
                                 ? "border-white/20 bg-white/5 text-white/90"
                                 : "border-aws-navy/20 bg-aws-navy/5 text-aws-navy"
                                 }`}
