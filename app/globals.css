@@ -161,20 +161,26 @@
     border-color: var(--color-border);
   }
 
+  html,
   body {
     background-color: var(--color-background);
     color: var(--color-foreground);
     font-family: var(--font-ember);
-    /* Hide scrollbar for Chrome, Safari and Opera */
+    /* Hide scrollbar */
     -ms-overflow-style: none;
     /* IE and Edge */
     scrollbar-width: none;
     /* Firefox */
+    overflow-x: hidden;
+    /* Prevent horizontal scroll */
   }
 
+  html::-webkit-scrollbar,
   body::-webkit-scrollbar {
     display: none;
     /* Chrome, Safari, Opera */
+    width: 0;
+    height: 0;
   }
 
   h1,
