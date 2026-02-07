@@ -241,22 +241,29 @@ const Hero = () => {
                         })}
 
                         {/* Decorative floating particles */}
-                        {[...Array(6)].map((_, i) => (
+                        {[
+                            { top: '25%', left: '30%', duration: 3, delay: 0 },
+                            { top: '35%', left: '70%', duration: 3.5, delay: 0.5 },
+                            { top: '55%', left: '25%', duration: 4, delay: 1 },
+                            { top: '65%', left: '65%', duration: 3.2, delay: 1.5 },
+                            { top: '45%', left: '50%', duration: 4.5, delay: 0.8 },
+                            { top: '75%', left: '40%', duration: 3.8, delay: 1.2 },
+                        ].map((particle, i) => (
                             <motion.div
                                 key={i}
                                 className="absolute w-2 h-2 rounded-full bg-primary/40"
                                 style={{
-                                    top: `${20 + Math.random() * 60}%`,
-                                    left: `${20 + Math.random() * 60}%`,
+                                    top: particle.top,
+                                    left: particle.left,
                                 }}
                                 animate={{
                                     y: [0, -20, 0],
                                     opacity: [0.4, 1, 0.4],
                                 }}
                                 transition={{
-                                    duration: 3 + Math.random() * 2,
+                                    duration: particle.duration,
                                     repeat: Infinity,
-                                    delay: Math.random() * 2,
+                                    delay: particle.delay,
                                 }}
                             />
                         ))}
