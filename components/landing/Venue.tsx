@@ -35,14 +35,14 @@ const Venue = () => {
                     >
                         <div className="aspect-video w-full bg-secondary">
                             <iframe
-                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3752.7097567977!2d74.31661!3d19.4233!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bdc6f5f5f5f5f5f%3A0x5f5f5f5f5f5f5f5f!2sSanjivani%20College%20of%20Engineering%2C%20Kopargaon!5e0!3m2!1sen!2sin!4v1234567890"
+                                src="https://maps.google.com/maps?q=Sanjivani+Banquet+Hall+Kopargaon&t=&z=17&ie=UTF8&iwloc=B&output=embed"
                                 width="100%"
                                 height="100%"
                                 style={{ border: 0 }}
                                 allowFullScreen
                                 loading="lazy"
                                 referrerPolicy="no-referrer-when-downgrade"
-                                title="Venue Location"
+                                title="Sanjivani College of Engineering - Event Venue"
                                 className="grayscale hover:grayscale-0 transition-all duration-500"
                             />
                         </div>
@@ -72,7 +72,7 @@ const Venue = () => {
 
                             <div className="flex flex-wrap gap-3">
                                 <a
-                                    href="https://maps.google.com/?q=Sanjivani+College+of+Engineering+Kopargaon"
+                                    href="https://maps.app.goo.gl/5vRcE1XzZXm1sRqz9"
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     className="btn-primary"

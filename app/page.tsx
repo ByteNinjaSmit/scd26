@@ -20,11 +20,11 @@ export default function Home() {
       <main>
         <Hero />
         <About />
+        <Tickets />
         <WhyAttend />
         <Tracks />
         <Speakers />
         <Agenda />
-        <Tickets />
         <Supporters />
         <Organizers />
         <Venue />
