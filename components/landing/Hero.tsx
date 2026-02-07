@@ -50,7 +50,7 @@ const Hero = () => {
                 </div>
             </motion.div>
 
-            <div className="section-container relative z-10 flex min-h-screen flex-col justify-center px-4 sm:px-6 py-20 sm:py-24 lg:py-32">
+            <div className="section-container relative z-10 flex min-h-screen flex-col justify-center px-4 sm:px-6 pt-16 pb-20 sm:pt-20 sm:pb-24 lg:pt-24 lg:pb-32">
                 <div className="grid gap-12 lg:grid-cols-2 lg:gap-8 items-center">
                     {/* Left Content */}
                     <div className="text-center lg:text-left">
@@ -85,7 +85,7 @@ const Hero = () => {
                             initial={{ opacity: 0, y: 30 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.6, delay: 0.2 }}
-                            className={`mx-auto lg:mx-0 mb-8 max-w-xl text-base sm:text-lg leading-relaxed ${theme === "dark" ? "text-white/60" : "text-aws-navy/70"
+                            className={`mx-auto lg:mx-0 mb-4 max-w-xl text-base sm:text-lg leading-relaxed ${theme === "dark" ? "text-white/60" : "text-aws-navy/70"
                                 }`}
                         >
                             Join us for a full day of learning, networking, and innovation!
@@ -98,7 +98,7 @@ const Hero = () => {
                             initial={{ opacity: 0, y: 30 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.6, delay: 0.3 }}
-                            className="mb-8 grid grid-cols-2 gap-4 sm:grid-cols-4"
+                            className="mb-5 grid grid-cols-2 gap-4 sm:grid-cols-4"
                         >
                             {stats.map((stat) => (
                                 <div key={stat.label} className="text-center lg:text-left">
@@ -135,7 +135,7 @@ const Hero = () => {
                             initial={{ opacity: 0, y: 30 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.6, delay: 0.5 }}
-                            className={`mt-8 flex flex-wrap items-center justify-center lg:justify-start gap-6 text-sm ${theme === "dark" ? "text-white/60" : "text-aws-navy/70"
+                            className={`mt-4 flex flex-wrap items-center justify-center lg:justify-start gap-6 text-sm ${theme === "dark" ? "text-white/60" : "text-aws-navy/70"
                                 }`}
                         >
                             <div className="flex items-center gap-2">
