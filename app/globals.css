@@ -165,6 +165,16 @@
     background-color: var(--color-background);
     color: var(--color-foreground);
     font-family: var(--font-ember);
+    /* Hide scrollbar for Chrome, Safari and Opera */
+    -ms-overflow-style: none;
+    /* IE and Edge */
+    scrollbar-width: none;
+    /* Firefox */
+  }
+
+  body::-webkit-scrollbar {
+    display: none;
+    /* Chrome, Safari, Opera */
   }
 
   h1,
