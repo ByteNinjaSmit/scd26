@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as SonnerToaster } from "@/components/ui/sonner";
+import { ThemeProvider } from "@/components/ThemeProvider";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -131,9 +132,11 @@ export default function RootLayout({
       </head>
       <body className="font-ember antialiased">
         <TooltipProvider>
-          {children}
-          <Toaster />
-          <SonnerToaster />
+          <ThemeProvider>
+            {children}
+            <Toaster />
+            <SonnerToaster />
+          </ThemeProvider>
         </TooltipProvider>
       </body>
     </html>

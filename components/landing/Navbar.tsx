@@ -2,7 +2,8 @@
 
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Sun, Moon } from "lucide-react";
+import { useTheme } from "@/components/ThemeProvider";
 
 const navLinks = [
     { name: "About", href: "#about" },
@@ -16,6 +17,7 @@ const navLinks = [
 const Navbar = () => {
     const [isScrolled, setIsScrolled] = useState(false);
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+    const { theme, toggleTheme, mounted } = useTheme();
 
     useEffect(() => {
         const handleScroll = () => {
@@ -32,8 +34,8 @@ const Navbar = () => {
                 animate={{ y: 0 }}
                 transition={{ duration: 0.5 }}
                 className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled
-                        ? "bg-aws-navy/95 backdrop-blur-md border-b border-white/10 shadow-lg"
-                        : "bg-transparent"
+                    ? "bg-aws-navy/95 backdrop-blur-md border-b border-white/10 shadow-lg"
+                    : "bg-transparent"
                     }`}
             >
                 <div className="section-container">
@@ -46,7 +48,24 @@ const Navbar = () => {
                         </a>
 
                         {/* Desktop Nav */}
-                        <div className="hidden items-center gap-8 md:flex">
+                        <div className="hidden items-center gap-6 md:flex">
+                            {/* Theme Toggle Button */}
+                            <button
+                                onClick={toggleTheme}
+                                className="flex h-9 w-9 items-center justify-center rounded-lg border border-white/20 bg-white/10 text-white transition-all hover:bg-white/20 hover:border-white/30"
+                                aria-label="Toggle theme"
+                            >
+                                {mounted ? (
+                                    theme === "dark" ? (
+                                        <Sun className="h-4 w-4" />
+                                    ) : (
+                                        <Moon className="h-4 w-4" />
+                                    )
+                                ) : (
+                                    <Sun className="h-4 w-4 opacity-0" />
+                                )}
+                            </button>
+
                             {navLinks.map((link) => (
                                 <a
                                     key={link.name}
@@ -88,6 +107,29 @@ const Navbar = () => {
                     >
                         <div className="section-container">
                             <div className="flex flex-col gap-4 py-8">
+                                {/* Mobile Theme Toggle */}
+                                <button
+                                    onClick={toggleTheme}
+                                    className="flex items-center gap-3 text-lg font-medium text-white/80 transition-colors hover:text-primary"
+                                    aria-label="Toggle theme"
+                                >
+                                    {mounted && (
+                                        theme === "dark" ? (
+                                            <>
+                                                <Sun className="h-5 w-5" />
+                                                <span>Light Mode</span>
+                                            </>
+                                        ) : (
+                                            <>
+                                                <Moon className="h-5 w-5" />
+                                                <span>Dark Mode</span>
+                                            </>
+                                        )
+                                    )}
+                                </button>
+
+                                <div className="h-px bg-white/20" />
+
                                 {navLinks.map((link) => (
                                     <a
                                         key={link.name}

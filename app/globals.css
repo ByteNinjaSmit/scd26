@@ -112,8 +112,8 @@
   }
 }
 
-/* Dark mode overrides */
-@theme dark {
+/* Dark mode overrides - using class-based selector */
+.dark {
   --color-background: #161e2d;
   --color-foreground: #f3f4f6;
   --color-card: #1e2738;
@@ -131,6 +131,29 @@
   --color-sidebar-accent: #232f3e;
   --color-sidebar-accent-foreground: #f3f4f6;
   --color-sidebar-border: #374151;
+}
+
+/* Light mode - white and dark blue theme */
+.light {
+  --color-background: #ffffff;
+  --color-foreground: #232f3e;
+  --color-card: #ffffff;
+  --color-card-foreground: #232f3e;
+  --color-popover: #ffffff;
+  --color-popover-foreground: #232f3e;
+  --color-secondary: #f1f5f9;
+  --color-secondary-foreground: #232f3e;
+  --color-muted: #f1f5f9;
+  --color-muted-foreground: #64748b;
+  --color-accent: #0073bb;
+  --color-accent-foreground: #ffffff;
+  --color-border: #e2e8f0;
+  --color-input: #e2e8f0;
+  --color-sidebar-background: #f8fafc;
+  --color-sidebar-foreground: #232f3e;
+  --color-sidebar-accent: #f1f5f9;
+  --color-sidebar-accent-foreground: #232f3e;
+  --color-sidebar-border: #e2e8f0;
 }
 
 @layer base {
