@@ -290,6 +290,18 @@ const Tickets = () => {
                 >
                     All tickets include breakfast, high-tea, lunch, and official swag. Prices are inclusive of taxes.
                 </motion.p>
+                <motion.p
+                    initial={{ opacity: 0 }}
+                    animate={isInView ? { opacity: 1 } : {}}
+                    transition={{ duration: 0.6, delay: 0.6 }}
+                    className="mt-3 text-center text-xs text-muted-foreground"
+                >
+                    <span className="font-medium text-foreground">Important:</span> Tickets are{" "}
+                    <span className="font-semibold">non-refundable</span>. Accommodation will be
+                    provided <span className="font-semibold">only on prior request</span> and
+                    subject to availability.
+                </motion.p>
+
             </div>
         </section>
     );
