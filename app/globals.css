@@ -1,26 +1,265 @@
+@import url('https://d1.awsstatic.com/fonts/amazon-ember/amazon-ember.css');
+
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+/* Tailwind v4 Theme Configuration */
+@theme {
+  /* Font Families */
+  --font-ember: "Amazon Ember", system-ui, sans-serif;
+  --font-sans: "Amazon Ember", system-ui, sans-serif;
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+  /* AWS Brand Colors - Base values */
+  --color-aws-orange: #ff9900;
+  --color-aws-orange-hover: #e68800;
+  --color-aws-navy: #232f3e;
+  --color-aws-navy-deep: #161e2d;
+  --color-aws-blue: #0073bb;
+  --color-aws-blue-light: #2e8dd6;
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+  /* Semantic Color Tokens */
+  --color-background: #ffffff;
+  --color-foreground: #161e2d;
+  --color-card: #ffffff;
+  --color-card-foreground: #161e2d;
+  --color-popover: #ffffff;
+  --color-popover-foreground: #161e2d;
+  --color-primary: #ff9900;
+  --color-primary-foreground: #ffffff;
+  --color-secondary: #f3f4f6;
+  --color-secondary-foreground: #161e2d;
+  --color-muted: #f3f4f6;
+  --color-muted-foreground: #6b7280;
+  --color-accent: #2e8dd6;
+  --color-accent-foreground: #ffffff;
+  --color-destructive: #ef4444;
+  --color-destructive-foreground: #ffffff;
+  --color-border: #e5e7eb;
+  --color-input: #e5e7eb;
+  --color-ring: #ff9900;
+  --color-chart-1: #ff9900;
+  --color-chart-2: #2e8dd6;
+  --color-chart-3: #10b981;
+  --color-chart-4: #f59e0b;
+  --color-chart-5: #8b5cf6;
+
+  /* Sidebar Colors */
+  --color-sidebar-background: #f9fafb;
+  --color-sidebar-foreground: #374151;
+  --color-sidebar-primary: #ff9900;
+  --color-sidebar-primary-foreground: #ffffff;
+  --color-sidebar-accent: #f3f4f6;
+  --color-sidebar-accent-foreground: #161e2d;
+  --color-sidebar-border: #e5e7eb;
+  --color-sidebar-ring: #ff9900;
+
+  /* Custom Shadows */
+  --shadow-card: 0 4px 24px -4px rgba(22, 30, 45, 0.08);
+  --shadow-card-hover: 0 12px 40px -8px rgba(22, 30, 45, 0.15);
+  --shadow-golden: 0 8px 32px -4px rgba(255, 153, 0, 0.3);
+
+  /* Border Radius */
+  --radius-lg: 0.75rem;
+  --radius-xl: 1rem;
+  --radius-2xl: 1.5rem;
+  --radius-3xl: 2rem;
+
+  /* Animations */
+  --animate-accordion-down: accordion-down 0.2s ease-out;
+  --animate-accordion-up: accordion-up 0.2s ease-out;
+  --animate-float: float 6s ease-in-out infinite;
+  --animate-shimmer: shimmer 2s linear infinite;
+
+  @keyframes accordion-down {
+    from {
+      height: 0;
+    }
+
+    to {
+      height: var(--radix-accordion-content-height);
+    }
+  }
+
+  @keyframes accordion-up {
+    from {
+      height: var(--radix-accordion-content-height);
+    }
+
+    to {
+      height: 0;
+    }
+  }
+
+  @keyframes float {
+
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+
+  @keyframes shimmer {
+    0% {
+      background-position: -1000px 0;
+    }
+
+    100% {
+      background-position: 1000px 0;
+    }
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* Dark mode overrides */
+@theme dark {
+  --color-background: #161e2d;
+  --color-foreground: #f3f4f6;
+  --color-card: #1e2738;
+  --color-card-foreground: #f3f4f6;
+  --color-popover: #1e2738;
+  --color-popover-foreground: #f3f4f6;
+  --color-secondary: #232f3e;
+  --color-secondary-foreground: #f3f4f6;
+  --color-muted: #232f3e;
+  --color-muted-foreground: #9ca3af;
+  --color-border: #374151;
+  --color-input: #374151;
+  --color-sidebar-background: #0f1419;
+  --color-sidebar-foreground: #f3f4f6;
+  --color-sidebar-accent: #232f3e;
+  --color-sidebar-accent-foreground: #f3f4f6;
+  --color-sidebar-border: #374151;
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-ember);
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-weight: 600;
+    letter-spacing: -0.025em;
+  }
+}
+
+@layer components {
+  .section-container {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 80rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  @media (min-width: 640px) {
+    .section-container {
+      padding-left: 1.5rem;
+      padding-right: 1.5rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .section-container {
+      padding-left: 2rem;
+      padding-right: 2rem;
+    }
+  }
+
+  .section-padding {
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+  }
+
+  @media (min-width: 640px) {
+    .section-padding {
+      padding-top: 5rem;
+      padding-bottom: 5rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .section-padding {
+      padding-top: 6rem;
+      padding-bottom: 6rem;
+    }
+  }
+
+  .text-gradient-orange {
+    background-image: linear-gradient(to right, var(--color-primary), #f59e0b, var(--color-primary));
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+  }
+
+  .card-hover {
+    transition: all 0.3s ease;
+  }
+
+  .card-hover:hover {
+    box-shadow: var(--shadow-card-hover);
+    transform: translateY(-4px);
+  }
+
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    border-radius: 0.75rem;
+    background-color: var(--color-primary);
+    padding: 0.75rem 1.5rem;
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--color-primary-foreground);
+    transition: all 0.2s ease;
+  }
+
+  .btn-primary:hover {
+    background-color: var(--color-aws-orange-hover);
+    transform: scale(1.02);
+  }
+
+  .btn-primary:focus {
+    outline: none;
+    ring: 2px;
+    ring-color: var(--color-primary);
+    ring-offset: 2px;
+  }
+
+  .btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    border-radius: 0.75rem;
+    border: 2px solid currentColor;
+    padding: 0.75rem 1.5rem;
+    font-size: 0.875rem;
+    font-weight: 600;
+    transition: all 0.2s ease;
+  }
+
+  .btn-secondary:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+  }
+
+  .hero-grid {
+    background-image:
+      linear-gradient(to right, rgba(46, 141, 214, 0.1) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(46, 141, 214, 0.1) 1px, transparent 1px);
+    background-size: 60px 60px;
+  }
 }
