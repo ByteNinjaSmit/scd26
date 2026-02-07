@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, Sun, Moon } from "lucide-react";
 import { useTheme } from "@/components/ThemeProvider";
+import Image from "next/image";
 
 const navLinks = [
     { name: "About", href: "#about" },
@@ -41,7 +42,19 @@ const Navbar = () => {
                 <div className="section-container">
                     <nav className="flex h-16 items-center justify-between sm:h-20">
                         {/* Logo */}
-                        <a href="/" className="flex items-center gap-2">
+                        <a href="/" className="flex items-center gap-3 -ml-2">
+                            {mounted && (
+                                <Image
+                                    src={theme === "dark" || isScrolled
+                                        ? "/Gemini_Generated_Image_drzn1hdrzn1hdrzn (1).png"
+                                        : "/AWSCC_logo_Sanjivani (2).png"
+                                    }
+                                    alt="AWS Cloud Club Logo"
+                                    width={56}
+                                    height={56}
+                                    className="h-12 w-12 sm:h-14 sm:w-14 object-contain"
+                                />
+                            )}
                             <span className={`text-lg font-bold sm:text-xl ${isScrolled || theme === "dark" ? "text-white" : "text-aws-navy"
                                 }`}>
                                 AWS <span className="text-primary">Cloud Club</span>
@@ -54,8 +67,8 @@ const Navbar = () => {
                             <button
                                 onClick={toggleTheme}
                                 className={`flex h-9 w-9 items-center justify-center rounded-lg border transition-all ${isScrolled || theme === "dark"
-                                        ? "border-white/20 bg-white/10 text-white hover:bg-white/20 hover:border-white/30"
-                                        : "border-aws-navy/20 bg-aws-navy/10 text-aws-navy hover:bg-aws-navy/20 hover:border-aws-navy/30"
+                                    ? "border-white/20 bg-white/10 text-white hover:bg-white/20 hover:border-white/30"
+                                    : "border-aws-navy/20 bg-aws-navy/10 text-aws-navy hover:bg-aws-navy/20 hover:border-aws-navy/30"
                                     }`}
                                 aria-label="Toggle theme"
                             >
