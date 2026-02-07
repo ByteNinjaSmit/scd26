@@ -2,21 +2,27 @@
 
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
+import Image from "next/image";
 
-// AWS and Partner logos as SVG placeholders
+// AWS and Partner logos as images
 const AWSLogo = () => (
-    <div className="flex items-center gap-2">
-        <div className="text-3xl font-bold text-foreground">
-            <span className="text-primary">AWS</span>
-        </div>
-        <span className="text-xs text-muted-foreground">Amazon Web Services</span>
-    </div>
+    <Image
+        src="/aws-logo.png"
+        alt="Amazon Web Services"
+        width={180}
+        height={60}
+        className="object-contain"
+    />
 );
 
 const KonfHubLogo = () => (
-    <div className="text-2xl font-bold text-foreground">
-        KonfHub
-    </div>
+    <Image
+        src="/konfhub-logo.png"
+        alt="KonfHub"
+        width={160}
+        height={50}
+        className="object-contain"
+    />
 );
 
 const partnerCategories = [

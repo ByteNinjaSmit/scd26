@@ -35,14 +35,14 @@ const Venue = () => {
                     >
                         <div className="aspect-video w-full bg-secondary">
                             <iframe
-                                src="https://maps.google.com/maps?q=Sanjivani+Banquet+Hall+Kopargaon&t=&z=17&ie=UTF8&iwloc=B&output=embed"
+                                src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d1879.9699099478588!2d74.49589!3d19.902379!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e1!3m2!1sen!2sin!4v1770477922825!5m2!1sen!2sin"
                                 width="100%"
                                 height="100%"
                                 style={{ border: 0 }}
                                 allowFullScreen
                                 loading="lazy"
                                 referrerPolicy="no-referrer-when-downgrade"
-                                title="Sanjivani College of Engineering - Event Venue"
+                                title="Sanjivani Banquet Hall - Event Venue"
                                 className="grayscale hover:grayscale-0 transition-all duration-500"
                             />
                         </div>
@@ -61,14 +61,39 @@ const Venue = () => {
                             </div>
 
                             <h3 className="mb-2 text-2xl font-bold text-foreground">
-                                Sanjivani College of Engineering
+                                Sanjivani Banquet Hall
                             </h3>
+                            <p className="text-sm text-primary font-medium mb-3">
+                                Sanjivani College of Engineering Campus
+                            </p>
 
                             <address className="mb-6 not-italic text-muted-foreground leading-relaxed">
                                 Station Road, Opposite Sanjivani Factory,<br />
                                 Singnapur, Kopargaon,<br />
                                 Maharashtra, India
                             </address>
+
+                            {/* Nearby Locations */}
+                            <div className="mb-6 p-4 rounded-xl bg-secondary/50 border border-border">
+                                <h4 className="text-sm font-semibold text-foreground mb-3 flex items-center gap-2">
+                                    <Navigation className="h-4 w-4 text-primary" />
+                                    Nearby Locations
+                                </h4>
+                                <ul className="space-y-2 text-sm text-muted-foreground">
+                                    <li className="flex items-center justify-between">
+                                        <span>🙏 Shirdi Sai Baba Temple</span>
+                                        <span className="text-xs font-medium text-primary">~15 km</span>
+                                    </li>
+                                    <li className="flex items-center justify-between">
+                                        <span>🚉 Kopargaon Railway Station</span>
+                                        <span className="text-xs font-medium text-primary">~1 km</span>
+                                    </li>
+                                    <li className="flex items-center justify-between">
+                                        <span>✈️ Shirdi Airport</span>
+                                        <span className="text-xs font-medium text-primary">~20 km</span>
+                                    </li>
+                                </ul>
+                            </div>
 
                             <div className="flex flex-wrap gap-3">
                                 <a

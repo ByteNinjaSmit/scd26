@@ -8,15 +8,19 @@ import { useTheme } from "@/components/ThemeProvider";
 const stats = [
     { icon: Users, value: "500+", label: "Attendees Expected", color: "from-blue-500 to-cyan-500" },
     { icon: Mic, value: "10+", label: "Industry Speakers", color: "from-violet-500 to-purple-500" },
-    { icon: Calendar, value: "1", label: "Day of Learning", color: "from-orange-500 to-amber-500" },
-    { icon: Lightbulb, value: "8+", label: "Workshop Sessions", color: "from-emerald-500 to-teal-500" },
+    // { icon: Calendar, value: "1", label: "Day of Learning", color: "from-orange-500 to-amber-500" },
+    // { icon: Lightbulb, value: "8+", label: "Workshop Sessions", color: "from-emerald-500 to-teal-500" },
 ];
 
 const socialLinks = [
-    { name: "LinkedIn", url: "https://www.linkedin.com/company/sanjivani-aws-cloud-club/", icon: "linkedin" },
-    { name: "Instagram", url: "https://www.instagram.com/awscloudclubscoe/", icon: "instagram" },
-    { name: "X (Twitter)", url: "https://x.com/awscloudclub_", icon: "twitter" },
-    { name: "Meetup", url: "https://www.meetup.com/aws-cloud-club-sanjivani-college-of-engineering/", icon: "meetup" },
+    { name: "LinkedIn", url: "https://www.linkedin.com/company/sanjivani-aws-cloud-club/" },
+    { name: "Instagram", url: "https://www.instagram.com/awscloudclubscoe/" },
+    { name: "YouTube", url: "https://youtube.com/@awscloudclubscoe?si=2l-njsZ-1yQ0ARGz" },
+    { name: "X (Twitter)", url: "https://x.com/awscloudclub_" },
+    { name: "Facebook", url: "https://www.facebook.com/profile.php?id=61558989331553" },
+    { name: "WhatsApp", url: "https://www.whatsapp.com/channel/0029VaWLCzx1dAw6VIcsib0v" },
+    { name: "Meetup", url: "https://www.meetup.com/aws-cloud-club-sanjivani-college-of-engineering" },
+    { name: "GitHub", url: "https://github.com/aws-cloud-club-scoe" },
 ];
 
 const About = () => {

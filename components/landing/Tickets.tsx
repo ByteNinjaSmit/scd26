@@ -1,18 +1,21 @@
 "use client";
 
 import { motion, useInView } from "framer-motion";
-import { useRef } from "react";
-import { Sparkles, Crown, Ticket, Clock, ExternalLink, Users } from "lucide-react";
+import { useRef, useState, useEffect } from "react";
+import { Sparkles, Crown, Ticket, Clock, ExternalLink, Users, Lock } from "lucide-react";
 import { useTheme } from "@/components/ThemeProvider";
 
-const tickets = [
+// Unlock time for Early Bird and Regular tickets: Feb 7, 2026 at 9:00 PM IST
+const TICKET_UNLOCK_TIME = new Date("2026-02-07T21:00:00+05:30").getTime();
+
+const ticketsData = [
     {
         id: "golden",
         name: "Golden Ticket",
         subtitle: "Elite Access",
         price: "₹499 – ₹4,999",
         priceNote: "Pay what you wish",
-        status: "available",
+        unlockTime: null, // Always available
         deadline: "14th March 2026, 6:00 PM",
         cta: "Support the Event",
         ctaLink: "https://konfhub.com/aws-student-community-day-sanjivani-2026",
@@ -35,7 +38,7 @@ const tickets = [
         subtitle: "Conference Pass",
         price: "₹149",
         priceNote: "Limited time offer",
-        status: "available",
+        unlockTime: TICKET_UNLOCK_TIME,
         deadline: "21st February 2026, 11:00 PM",
         cta: "Get Early Bird",
         ctaLink: "https://konfhub.com/aws-student-community-day-sanjivani-2026",
@@ -57,7 +60,7 @@ const tickets = [
         subtitle: "Standard Access",
         price: "₹249",
         priceNote: "Standard pricing",
-        status: "available",
+        unlockTime: TICKET_UNLOCK_TIME,
         deadline: "14th March 2026, 6:00 PM",
         cta: "Get Ticket",
         ctaLink: "https://konfhub.com/aws-student-community-day-sanjivani-2026",
@@ -76,10 +79,56 @@ const tickets = [
     },
 ];
 
+// Countdown component for locked tickets
+const UnlockCountdown = ({ unlockTime }: { unlockTime: number }) => {
+    const [timeLeft, setTimeLeft] = useState({ hours: 0, minutes: 0, seconds: 0 });
+
+    useEffect(() => {
+        const calculateTimeLeft = () => {
+            const now = new Date().getTime();
+            const difference = unlockTime - now;
+
+            if (difference > 0) {
+                setTimeLeft({
+                    hours: Math.floor(difference / (1000 * 60 * 60)),
+                    minutes: Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60)),
+                    seconds: Math.floor((difference % (1000 * 60)) / 1000),
+                });
+            }
+        };
+
+        calculateTimeLeft();
+        const timer = setInterval(calculateTimeLeft, 1000);
+        return () => clearInterval(timer);
+    }, [unlockTime]);
+
+    return (
+        <div className="flex items-center gap-1 text-xs font-mono">
+            <span>{String(timeLeft.hours).padStart(2, "0")}</span>:
+            <span>{String(timeLeft.minutes).padStart(2, "0")}</span>:
+            <span>{String(timeLeft.seconds).padStart(2, "0")}</span>
+        </div>
+    );
+};
+
 const Tickets = () => {
     const ref = useRef(null);
     const isInView = useInView(ref, { once: true, margin: "-100px" });
     const { theme } = useTheme();
+    const [currentTime, setCurrentTime] = useState(Date.now());
+
+    // Update current time every second to check unlock status
+    useEffect(() => {
+        const timer = setInterval(() => {
+            setCurrentTime(Date.now());
+        }, 1000);
+        return () => clearInterval(timer);
+    }, []);
+
+    const isTicketUnlocked = (unlockTime: number | null) => {
+        if (unlockTime === null) return true;
+        return currentTime >= unlockTime;
+    };
 
     return (
         <section ref={ref} id="tickets" className="section-padding bg-background relative overflow-hidden">
@@ -124,85 +173,112 @@ const Tickets = () => {
                 </motion.div>
 
                 <div className="grid gap-6 lg:grid-cols-3">
-                    {tickets.map((ticket, index) => (
-                        <motion.div
-                            key={ticket.id}
-                            initial={{ opacity: 0, y: 30 }}
-                            animate={isInView ? { opacity: 1, y: 0 } : {}}
-                            transition={{ duration: 0.5, delay: 0.1 * index }}
-                            className={`relative overflow-hidden rounded-2xl border ${ticket.featured
-                                ? "border-primary/50 bg-gradient-to-b from-primary/10 via-card to-card shadow-golden"
-                                : theme === "dark"
-                                    ? "border-white/10 bg-white/5"
-                                    : "border-gray-200 bg-white shadow-card"
-                                } transition-all duration-300 hover:shadow-card-hover hover:-translate-y-1`}
-                        >
-                            {ticket.featured && (
-                                <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-amber-400 via-primary to-amber-500" />
-                            )}
+                    {ticketsData.map((ticket, index) => {
+                        const isUnlocked = isTicketUnlocked(ticket.unlockTime);
 
-                            <div className="p-6 sm:p-8">
-                                {/* Header */}
-                                <div className="mb-6">
-                                    <div className="mb-4 flex items-center justify-between">
-                                        <div className={`inline-flex rounded-xl p-3 ${ticket.featured
-                                            ? "bg-gradient-to-br from-amber-500 to-primary"
-                                            : theme === "dark" ? "bg-white/10" : "bg-gray-100"
-                                            }`}>
-                                            <ticket.icon className={`h-6 w-6 ${ticket.featured ? "text-white" : "text-muted-foreground"
-                                                }`} />
+                        return (
+                            <motion.div
+                                key={ticket.id}
+                                initial={{ opacity: 0, y: 30 }}
+                                animate={isInView ? { opacity: 1, y: 0 } : {}}
+                                transition={{ duration: 0.5, delay: 0.1 * index }}
+                                className={`relative overflow-hidden rounded-2xl border ${ticket.featured
+                                    ? "border-primary/50 bg-gradient-to-b from-primary/10 via-card to-card shadow-golden"
+                                    : theme === "dark"
+                                        ? "border-white/10 bg-white/5"
+                                        : "border-gray-200 bg-white shadow-card"
+                                    } transition-all duration-300 hover:shadow-card-hover hover:-translate-y-1`}
+                            >
+                                {ticket.featured && (
+                                    <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-amber-400 via-primary to-amber-500" />
+                                )}
+
+                                <div className="p-6 sm:p-8">
+                                    {/* Header */}
+                                    <div className="mb-6">
+                                        <div className="mb-4 flex items-center justify-between">
+                                            <div className={`inline-flex rounded-xl p-3 ${ticket.featured
+                                                ? "bg-gradient-to-br from-amber-500 to-primary"
+                                                : theme === "dark" ? "bg-white/10" : "bg-gray-100"
+                                                }`}>
+                                                <ticket.icon className={`h-6 w-6 ${ticket.featured ? "text-white" : "text-muted-foreground"
+                                                    }`} />
+                                            </div>
+                                            {ticket.featured && (
+                                                <span className="inline-flex items-center gap-1.5 rounded-full bg-primary/20 px-3 py-1 text-xs font-semibold text-primary">
+                                                    <Sparkles className="h-3 w-3" />
+                                                    Premium
+                                                </span>
+                                            )}
+                                            {!isUnlocked && (
+                                                <span className="inline-flex items-center gap-1.5 rounded-full bg-amber-500/20 px-3 py-1 text-xs font-semibold text-amber-600 dark:text-amber-400">
+                                                    <Lock className="h-3 w-3" />
+                                                    Coming Soon
+                                                </span>
+                                            )}
                                         </div>
-                                        {ticket.featured && (
-                                            <span className="inline-flex items-center gap-1.5 rounded-full bg-primary/20 px-3 py-1 text-xs font-semibold text-primary">
-                                                <Sparkles className="h-3 w-3" />
-                                                Premium
-                                            </span>
-                                        )}
+                                        <h3 className="text-xl font-bold text-foreground">{ticket.name}</h3>
+                                        <p className="text-sm text-muted-foreground">{ticket.subtitle}</p>
                                     </div>
-                                    <h3 className="text-xl font-bold text-foreground">{ticket.name}</h3>
-                                    <p className="text-sm text-muted-foreground">{ticket.subtitle}</p>
+
+                                    {/* Price */}
+                                    <div className="mb-6">
+                                        <div className="text-3xl font-bold text-foreground">{ticket.price}</div>
+                                        <div className="text-xs text-primary font-medium mt-1">{ticket.priceNote}</div>
+                                        <div className="mt-3 flex items-center gap-2 text-xs text-muted-foreground">
+                                            <Clock className="h-3.5 w-3.5" />
+                                            {isUnlocked ? (
+                                                <span>Available till: {ticket.deadline}</span>
+                                            ) : (
+                                                <span>Starts On: 7th Feb 2026, 9:00 PM (IST)</span>
+                                            )}
+                                        </div>
+                                        <div className="mt-1 flex items-center gap-2 text-xs text-muted-foreground">
+                                            <Users className="h-3.5 w-3.5" />
+                                            <span>{ticket.seats} seats available</span>
+                                        </div>
+                                    </div>
+
+                                    {/* Features */}
+                                    <ul className="mb-8 space-y-3">
+                                        {ticket.features.map((feature, i) => (
+                                            <li key={i} className="flex items-start gap-3">
+                                                <span className="text-base flex-shrink-0">{feature.icon}</span>
+                                                <span className="text-sm text-muted-foreground">{feature.text}</span>
+                                            </li>
+                                        ))}
+                                    </ul>
+
+                                    {/* CTA */}
+                                    {isUnlocked ? (
+                                        <a
+                                            href={ticket.ctaLink}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            className={`w-full flex items-center justify-center gap-2 rounded-xl px-6 py-3 text-sm font-semibold transition-all duration-200 ${ticket.featured
+                                                ? "bg-gradient-to-r from-amber-500 to-primary text-white hover:opacity-90 hover:scale-[1.02]"
+                                                : "bg-primary text-primary-foreground hover:bg-primary/90 hover:scale-[1.02]"
+                                                }`}
+                                        >
+                                            {ticket.cta}
+                                            <ExternalLink className="h-4 w-4" />
+                                        </a>
+                                    ) : (
+                                        <div className={`w-full flex flex-col items-center justify-center gap-2 rounded-xl px-6 py-3 text-sm font-semibold ${theme === "dark"
+                                            ? "bg-white/10 text-white/60"
+                                            : "bg-gray-100 text-gray-500"
+                                            }`}>
+                                            <div className="flex items-center gap-2">
+                                                <Lock className="h-4 w-4" />
+                                                <span>Unlocks in</span>
+                                            </div>
+                                            <UnlockCountdown unlockTime={ticket.unlockTime!} />
+                                        </div>
+                                    )}
                                 </div>
-
-                                {/* Price */}
-                                <div className="mb-6">
-                                    <div className="text-3xl font-bold text-foreground">{ticket.price}</div>
-                                    <div className="text-xs text-primary font-medium mt-1">{ticket.priceNote}</div>
-                                    <div className="mt-3 flex items-center gap-2 text-xs text-muted-foreground">
-                                        <Clock className="h-3.5 w-3.5" />
-                                        <span>Available till: {ticket.deadline}</span>
-                                    </div>
-                                    <div className="mt-1 flex items-center gap-2 text-xs text-muted-foreground">
-                                        <Users className="h-3.5 w-3.5" />
-                                        <span>{ticket.seats} seats available</span>
-                                    </div>
-                                </div>
-
-                                {/* Features */}
-                                <ul className="mb-8 space-y-3">
-                                    {ticket.features.map((feature, i) => (
-                                        <li key={i} className="flex items-start gap-3">
-                                            <span className="text-base flex-shrink-0">{feature.icon}</span>
-                                            <span className="text-sm text-muted-foreground">{feature.text}</span>
-                                        </li>
-                                    ))}
-                                </ul>
-
-                                {/* CTA */}
-                                <a
-                                    href={ticket.ctaLink}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className={`w-full flex items-center justify-center gap-2 rounded-xl px-6 py-3 text-sm font-semibold transition-all duration-200 ${ticket.featured
-                                        ? "bg-gradient-to-r from-amber-500 to-primary text-white hover:opacity-90 hover:scale-[1.02]"
-                                        : "bg-primary text-primary-foreground hover:bg-primary/90 hover:scale-[1.02]"
-                                        }`}
-                                >
-                                    {ticket.cta}
-                                    <ExternalLink className="h-4 w-4" />
-                                </a>
-                            </div>
-                        </motion.div>
-                    ))}
+                            </motion.div>
+                        );
+                    })}
                 </div>
 
                 {/* Bottom Note */}
