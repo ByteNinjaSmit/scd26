@@ -133,9 +133,9 @@ export default function RootLayout({
       </head>
       <body className="font-ember antialiased">
         <TooltipProvider>
-          <Analytics />
           <ThemeProvider>
             {children}
+            <Analytics />
             <Toaster />
             <SonnerToaster />
           </ThemeProvider>
