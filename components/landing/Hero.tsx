@@ -50,7 +50,7 @@ const Hero = () => {
                 </div>
             </motion.div>
 
-            <div className="section-container relative z-10 flex min-h-screen flex-col justify-center px-4 sm:px-6 pt-16 pb-20 sm:pt-20 sm:pb-24 lg:pt-24 lg:pb-32">
+            <div className="section-container relative z-10 flex min-h-screen flex-col justify-center px-4 sm:px-6 pt-16 pb-12 sm:pt-20 sm:pb-16 lg:pt-24 lg:pb-20">
                 <div className="grid gap-12 lg:grid-cols-2 lg:gap-8 items-center">
                     {/* Left Content */}
                     <div className="text-center lg:text-left">
