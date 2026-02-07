@@ -50,7 +50,7 @@ const Hero = () => {
                 </div>
             </motion.div>
 
-            <div className="section-container relative z-10 flex min-h-screen flex-col justify-center py-24 lg:py-32">
+            <div className="section-container relative z-10 flex min-h-screen flex-col justify-center px-4 sm:px-6 py-20 sm:py-24 lg:py-32">
                 <div className="grid gap-12 lg:grid-cols-2 lg:gap-8 items-center">
                     {/* Left Content */}
                     <div className="text-center lg:text-left">
@@ -179,8 +179,8 @@ const Hero = () => {
                                             animate={{ y: [0, -8, 0] }}
                                             transition={{ duration: 3 + index, repeat: Infinity, ease: "easeInOut" }}
                                             className={`flex items-center gap-3 rounded-2xl border backdrop-blur-md px-5 py-3 shadow-lg ${theme === "dark"
-                                                    ? "border-white/10 bg-white/5"
-                                                    : "border-aws-navy/10 bg-white/80"
+                                                ? "border-white/10 bg-white/5"
+                                                : "border-aws-navy/10 bg-white/80"
                                                 }`}
                                         >
                                             <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-primary/20">
