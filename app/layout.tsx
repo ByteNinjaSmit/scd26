@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Analytics } from "@vercel/analytics/next"
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as SonnerToaster } from "@/components/ui/sonner";
@@ -132,6 +133,7 @@ export default function RootLayout({
       </head>
       <body className="font-ember antialiased">
         <TooltipProvider>
+          <Analytics />
           <ThemeProvider>
             {children}
             <Toaster />
