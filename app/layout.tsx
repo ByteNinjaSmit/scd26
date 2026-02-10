@@ -38,7 +38,7 @@ export const metadata: Metadata = {
   },
   openGraph: {
     title: "AWS Student Community Day 2026 | Sanjivani College of Engineering",
-    description: "Join us on March 15, 2026 for a day of cloud learning, networking, and innovation. Workshops, expert talks, and hands-on labs for all skill levels.",
+    description: "Join us on March 28, 2026 for a day of cloud learning, networking, and innovation. Workshops, expert talks, and hands-on labs for all skill levels.",
     url: "https://awscommunityday.sanjivani.edu",
     siteName: "AWS Student Community Day 2026",
 
@@ -48,7 +48,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "AWS Student Community Day 2026 | Sanjivani College of Engineering",
-    description: "Join us on March 15, 2026 for a day of cloud learning, networking, and innovation.",
+    description: "Join us on March 28, 2026 for a day of cloud learning, networking, and innovation.",
     site: "@awscloudclub",
     creator: "@awscloudclub",
 
@@ -86,8 +86,8 @@ export default function RootLayout({
               "@type": "Event",
               name: "AWS Student Community Day 2026",
               description: "A day of cloud learning, networking, and innovation at Sanjivani College of Engineering",
-              startDate: "2026-03-15T08:00:00+05:30",
-              endDate: "2026-03-15T18:00:00+05:30",
+              startDate: "2026-03-28T08:00:00+05:30",
+              endDate: "2026-03-28T18:00:00+05:30",
               eventStatus: "https://schema.org/EventScheduled",
               eventAttendanceMode: "https://schema.org/OfflineEventAttendanceMode",
               location: {
