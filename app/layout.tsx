@@ -32,14 +32,14 @@ export const metadata: Metadata = {
     address: false,
     telephone: false,
   },
-  metadataBase: new URL("https://awscommunityday.sanjivani.edu"),
+  metadataBase: new URL("scdsanjivani.awscc.tech"),
   alternates: {
     canonical: "/",
   },
   openGraph: {
     title: "AWS Student Community Day 2026 | Sanjivani College of Engineering",
     description: "Join us on March 28, 2026 for a day of cloud learning, networking, and innovation. Workshops, expert talks, and hands-on labs for all skill levels.",
-    url: "https://awscommunityday.sanjivani.edu",
+    url: "scdsanjivani.awscc.tech",
     siteName: "AWS Student Community Day 2026",
 
     locale: "en_IN",
@@ -102,11 +102,11 @@ export default function RootLayout({
                   addressCountry: "IN",
                 },
               },
-              image: "https://awscommunityday.sanjivani.edu/og-image.png",
+              image: "https://scdsanjivani.awscc.tech/og-image.png",
               organizer: {
                 "@type": "Organization",
                 name: "AWS Cloud Club Sanjivani",
-                url: "https://awscloudclub.dev",
+                url: "scdsanjivani.awscc.tech",
               },
               offers: {
                 "@type": "Offer",
