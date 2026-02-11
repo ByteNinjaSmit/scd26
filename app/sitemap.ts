@@ -1,7 +1,7 @@
 import { MetadataRoute } from 'next'
 
 export default function sitemap(): MetadataRoute.Sitemap {
-    const baseUrl = 'https://awscommunityday.sanjivani.edu'
+    const baseUrl = 'https://scdsanjivani.awscc.tech'
 
     return [
         {

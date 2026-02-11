@@ -8,7 +8,7 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   title: "AWS Student Community Day 2026 | Sanjivani College of Engineering",
-  description: "Join us on March 15, 2026 at Sanjivani College of Engineering, Kopargaon for AWS Student Community Day - A day of cloud learning, networking, and innovation. Workshops, expert talks, and hands-on labs for all skill levels.",
+  description: "Join us on March 28, 2026 at Sanjivani College of Engineering, Kopargaon for AWS Student Community Day - A day of cloud learning, networking, and innovation. Workshops, expert talks, and hands-on labs for all skill levels.",
   keywords: [
     "AWS",
     "Amazon Web Services",
@@ -32,7 +32,7 @@ export const metadata: Metadata = {
     address: false,
     telephone: false,
   },
-  metadataBase: new URL("scdsanjivani.awscc.tech"),
+  // metadataBase: new URL("scdsanjivani.awscc.tech"),
   alternates: {
     canonical: "/",
   },

@@ -235,7 +235,8 @@ const Tickets = () => {
                                         </div>
                                         <div className="mt-1 flex items-center gap-2 text-xs text-muted-foreground">
                                             <Users className="h-3.5 w-3.5" />
-                                            <span>{ticket.seats} seats available</span>
+                                            {/* <span>{ticket.seats} seats available</span> */}
+                                            <span>Only few seats are left</span>
                                         </div>
                                     </div>
 
