@@ -91,10 +91,10 @@ const Community = () => {
                                 </motion.li>
                             ))}
                         </ul>
-                        <button className="btn-primary">
+                        {/* <button className="btn-primary">
                             Get Notified
                             <ArrowRight className="h-4 w-4" />
-                        </button>
+                        </button> */}
                     </motion.div>
 
                     {/* Right - Social Links */}
