@@ -18,7 +18,7 @@ const ticketsData = [
         unlockTime: null, // Always available
         deadline: "14th March 2026, 6:00 PM",
         cta: "Support the Event",
-        ctaLink: "https://konfhub.com/aws-student-community-day-sanjivani-2026",
+        ctaLink: "https://konfhub.com/checkout/aws-student-community-day-sanjivani-2026?ticketId=73989",
         icon: Crown,
         featured: true,
         seats: 100,
@@ -41,7 +41,7 @@ const ticketsData = [
         unlockTime: TICKET_UNLOCK_TIME,
         deadline: "21st February 2026, 11:00 PM",
         cta: "Get Early Bird",
-        ctaLink: "https://konfhub.com/aws-student-community-day-sanjivani-2026",
+        ctaLink: "https://konfhub.com/checkout/aws-student-community-day-sanjivani-2026?ticketId=73990",
         icon: Ticket,
         featured: false,
         seats: 200,
@@ -63,7 +63,7 @@ const ticketsData = [
         unlockTime: TICKET_UNLOCK_TIME,
         deadline: "14th March 2026, 6:00 PM",
         cta: "Get Ticket",
-        ctaLink: "https://konfhub.com/aws-student-community-day-sanjivani-2026",
+        ctaLink: "https://konfhub.com/checkout/aws-student-community-day-sanjivani-2026?ticketId=73991",
         icon: Ticket,
         featured: false,
         seats: 300,
@@ -110,6 +110,8 @@ const UnlockCountdown = ({ unlockTime }: { unlockTime: number }) => {
         </div>
     );
 };
+
+
 
 const Tickets = () => {
     const ref = useRef(null);
@@ -179,10 +181,10 @@ const Tickets = () => {
                         return (
                             <motion.div
                                 key={ticket.id}
-                                initial={{ opacity: 0, y: 30 }}
-                                animate={isInView ? { opacity: 1, y: 0 } : {}}
+                                initial={{ opacity: 0 }}
+                                animate={isInView ? { opacity: 1 } : {}}
                                 transition={{ duration: 0.5, delay: 0.1 * index }}
-                                className={`relative overflow-hidden rounded-2xl border ${ticket.featured
+                                className={`relative rounded-2xl border ${ticket.featured
                                     ? "border-primary/50 bg-gradient-to-b from-primary/10 via-card to-card shadow-golden"
                                     : theme === "dark"
                                         ? "border-white/10 bg-white/5"
@@ -190,7 +192,7 @@ const Tickets = () => {
                                     } transition-all duration-300 hover:shadow-card-hover hover:-translate-y-1`}
                             >
                                 {ticket.featured && (
-                                    <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-amber-400 via-primary to-amber-500" />
+                                    <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-amber-400 via-primary to-amber-500 rounded-t-2xl overflow-hidden" />
                                 )}
 
                                 <div className="p-6 sm:p-8">
