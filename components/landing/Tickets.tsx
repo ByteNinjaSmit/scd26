@@ -39,7 +39,7 @@ const ticketsData = [
         price: "₹149",
         priceNote: "Limited time offer",
         unlockTime: TICKET_UNLOCK_TIME,
-        deadline: "21st February 2026, 11:00 PM",
+        deadline: "8th March 2026, 11:00 PM",
         cta: "Get Early Bird",
         ctaLink: "https://konfhub.com/aws-student-community-day-sanjivani-2026",
         icon: Ticket,
@@ -289,7 +289,7 @@ const Tickets = () => {
                     transition={{ duration: 0.6, delay: 0.5 }}
                     className="mt-8 text-center text-sm text-muted-foreground"
                 >
-                    All tickets include breakfast, high-tea, lunch, and official swag. Prices are inclusive of taxes.
+                    All tickets include breakfast, high-tea, lunch, and official swag.
                 </motion.p>
                 <motion.p
                     initial={{ opacity: 0 }}
