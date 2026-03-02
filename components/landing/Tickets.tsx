@@ -169,8 +169,8 @@ const Tickets = () => {
                     <div className="flex items-center justify-center gap-2 text-sm font-medium">
                         <Users className="h-4 w-4 text-primary" />
                         <span className="text-foreground">Group Discount:</span>
-                        <span className="text-primary font-bold">10% OFF</span>
-                        <span className="text-muted-foreground">for bookings of 10-20 tickets!</span>
+                        <span className="text-primary font-bold">10-30% OFF</span>
+                        <span className="text-muted-foreground">for bookings of 5-15 tickets!</span>
                     </div>
                 </motion.div>
 
