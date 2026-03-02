@@ -47,10 +47,10 @@ const Footer = () => {
                             Stay Connected. Grow Together.
                         </p>
                         <a
-                            href="mailto:scdsanjivani@awscc.tech"
+                            href="mailto:awscloudclubscoe@gmail.com"
                             className="text-sm text-primary hover:underline"
                         >
-                            scdsanjivani@awscc.tech
+                            awscloudclubscoe@gmail.com
                         </a>
                     </motion.div>
 
