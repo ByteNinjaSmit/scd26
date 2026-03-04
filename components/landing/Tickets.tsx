@@ -13,23 +13,24 @@ const ticketsData = [
         id: "golden",
         name: "Golden Ticket",
         subtitle: "Elite Access",
-        price: "₹499 – ₹4,999",
+        price: "Min ₹499 - Max ₹4,999",
         priceNote: "Pay what you wish",
         unlockTime: null, // Always available
-        deadline: "14th March 2026, 6:00 PM",
-        cta: "Support the Event",
+        deadline: "14th Mar 2026, 06:00 PM (GMT+05:30)",
+        cta: "Donate",
         ctaLink: "https://konfhub.com/checkout/aws-student-community-day-sanjivani-2026?ticketId=73989",
         icon: Crown,
         featured: true,
+        soldOut: false,
         seats: 100,
         features: [
-            { icon: "✨", text: "Exclusive Golden Badge" },
-            { icon: "💺", text: "Front Row Elite Seating" },
-            { icon: "🤝", text: "Inner Circle Networking with AWS Heroes" },
-            { icon: "📣", text: "Social Media Spotlight & Shoutout" },
-            { icon: "🚪", text: "Priority Fast-Track Entry" },
-            { icon: "🎁", text: "Premium Swag & Workshop Access" },
-            { icon: "📸", text: "Photo Ops with Speakers" },
+            { icon: "✨", text: "Exclusive Golden Badge: Flash a premium golden badge for instant recognition as a top-tier supporter." },
+            { icon: "💺", text: "Front Row Elite Seating: Claim VIP front-and-center seats for uninterrupted views of keynotes and technical deep dives." },
+            { icon: "🤝", text: "Inner Circle Networking: Network exclusively with AWS Heroes, speakers, and industry legends in dedicated sessions." },
+            { icon: "📣", text: "Social Media Spotlight: Get a featured shoutout on official social media channels." },
+            { icon: "🚪", text: "Priority Entry: Skip the lines with fast-track access to beat the crowds and settle in early." },
+            { icon: "🎁", text: "Premium Swag Upgrade: Receive upgraded merchandise, exclusive keepsakes, and priority workshop access." },
+            { icon: "📸", text: "Photo Ops: Access custom photo opportunities with community icons and stage action." },
         ],
     },
     {
@@ -39,19 +40,20 @@ const ticketsData = [
         price: "₹149",
         priceNote: "Limited time offer",
         unlockTime: TICKET_UNLOCK_TIME,
-        deadline: "8th March 2026, 11:00 PM",
+        deadline: "8th Mar 2026, 12:20 PM (GMT+05:30)",
         cta: "Get Early Bird",
         ctaLink: "https://konfhub.com/checkout/aws-student-community-day-sanjivani-2026?ticketId=73990",
         icon: Ticket,
         featured: false,
+        soldOut: true,
         seats: 200,
         features: [
-            { icon: "💰", text: "Maximum Savings - Lowest Price" },
-            { icon: "📑", text: "Full Conference Access" },
-            { icon: "💡", text: "Expert-Led Breakout Sessions" },
-            { icon: "☕", text: "Breakfast & High-Tea" },
-            { icon: "🍽️", text: "Networking Lunch" },
-            { icon: "🎒", text: "Exclusive Goodie Bag" },
+            { icon: "💰", text: "Maximum Savings: Secure your spot at the lowest price for a full day of learning and inspiration." },
+            { icon: "📑", text: "Full Conference Access: Enjoy entry to all main conference tracks, keynote sessions, and interactive discussions." },
+            { icon: "💡", text: "Focused Breakouts: Learn directly from industry experts through deep-dive sessions tailored to your interests." },
+            { icon: "☕", text: "Breakfast & High-Tea: Fuel your day with morning refreshments and relaxing networking breaks." },
+            { icon: "🍽️", text: "Lunch & Conversations: Enjoy a delicious lunch while connecting with leaders, peers, and community members." },
+            { icon: "🎒", text: "Exclusive Goodie Bag: Walk away with event merchandise, partner gifts, and resources crafted for attendees." },
         ],
     },
     {
@@ -61,20 +63,45 @@ const ticketsData = [
         price: "₹249",
         priceNote: "Standard pricing",
         unlockTime: TICKET_UNLOCK_TIME,
-        deadline: "14th March 2026, 6:00 PM",
-        cta: "Get Ticket",
+        deadline: "14th Mar 2026, 06:00 PM (GMT+05:30)",
+        cta: "Register",
         ctaLink: "https://konfhub.com/checkout/aws-student-community-day-sanjivani-2026?ticketId=73991",
         icon: Ticket,
         featured: false,
+        soldOut: false,
         seats: 300,
         features: [
-            { icon: "🌐", text: "Full Event Access" },
-            { icon: "🛠️", text: "Hands-On Workshop Experience" },
-            { icon: "🚀", text: "Industry Insights & Deep Dives" },
-            { icon: "🥯", text: "Morning Refreshments & High-Tea" },
-            { icon: "🍲", text: "Networking Lunch" },
-            { icon: "📦", text: "Official Swag Bag" },
-            { icon: "📈", text: "Career Growth Opportunities" },
+            { icon: "🌐", text: "Full Event Access: Unlock a full day of connection and learning alongside top minds in the industry." },
+            { icon: "🛠️", text: "Hands-On Experience: Participate in expert-led sessions designed to help you apply new tools and techniques in real time." },
+            { icon: "🚀", text: "Industry Insights: Learn directly from trailblazers through deep-dive sessions tailored to your expertise." },
+            { icon: "🥯", text: "Morning Refreshments: Start strong and stay energized with provided breakfast and high-tea." },
+            { icon: "🍲", text: "Networking Lunch: Savor a meal while exchanging ideas with speakers and fellow cloud enthusiasts." },
+            { icon: "📦", text: "Official Swag Bag: Take home premium event merchandise and partner gifts to keep the inspiration going." },
+            { icon: "📈", text: "Career Growth: Connect with early adopters, Industry professionals and AWS experts to shape your future in the cloud." },
+        ],
+    },
+    {
+        id: "late-bird",
+        name: "Late Bird Ticket",
+        subtitle: "Final Call Access",
+        price: "₹399",
+        priceNote: "Last Chance to Join",
+        unlockTime: TICKET_UNLOCK_TIME,
+        deadline: "28th Mar 2026, 06:00 PM (GMT+05:30)",
+        cta: "Get Ticket",
+        ctaLink: "https://konfhub.com/checkout/aws-student-community-day-sanjivani-2026?ticketId=81190",
+        icon: Ticket,
+        featured: false,
+        soldOut: false,
+        seats: 300,
+        features: [
+            { icon: "⚡", text: "Last Chance to Join: Don't miss out on the premier cloud event of the season. Secure your spot before doors close!" },
+            { icon: "🌐", text: "Full Event Access: Experience the complete journey, from keynote inspirations to the final closing ceremony." },
+            { icon: "🛠️", text: "Hands-On & Focused Breakouts: Gain unrestricted access to all expert-led sessions and technical deep-dives." },
+            { icon: "🚀", text: "Industry Insights & Growth: Learn directly from trailblazers and connect with AWS experts to accelerate your career." },
+            { icon: "☕", text: "Full Day Catering: Stay fueled from start to finish with breakfast, morning refreshments, high-tea, and a networking lunch." },
+            { icon: "🎒", text: "Ultimate Swag Collection: Receive the complete event kit, including merchandise, partner gifts, and official resources." },
+            { icon: "🤝", text: "Elite Networking: Join the inner circle of industry professionals and early adopters for high-value connections." },
         ],
     },
 ];
@@ -174,7 +201,7 @@ const Tickets = () => {
                     </div>
                 </motion.div>
 
-                <div className="grid gap-6 lg:grid-cols-3">
+                <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-4">
                     {ticketsData.map((ticket, index) => {
                         const isUnlocked = isTicketUnlocked(ticket.unlockTime);
 
@@ -189,71 +216,99 @@ const Tickets = () => {
                                     : theme === "dark"
                                         ? "border-white/10 bg-white/5"
                                         : "border-gray-200 bg-white shadow-card"
-                                    } transition-all duration-300 hover:shadow-card-hover hover:-translate-y-1`}
+                                    } transition-all duration-300 hover:shadow-card-hover hover:-translate-y-1 ${ticket.soldOut ? "opacity-90 grayscale-[0.5]" : ""}`}
                             >
                                 {ticket.featured && (
                                     <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-amber-400 via-primary to-amber-500 rounded-t-2xl overflow-hidden" />
                                 )}
 
-                                <div className="p-6 sm:p-8">
+                                <div className="p-5 sm:p-6 flex flex-col h-full">
                                     {/* Header */}
-                                    <div className="mb-6">
-                                        <div className="mb-4 flex items-center justify-between">
-                                            <div className={`inline-flex rounded-xl p-3 ${ticket.featured
+                                    <div className="mb-4">
+                                        <div className="mb-3 flex items-center justify-between">
+                                            <div className={`inline-flex rounded-xl p-2.5 ${ticket.featured
                                                 ? "bg-gradient-to-br from-amber-500 to-primary"
                                                 : theme === "dark" ? "bg-white/10" : "bg-gray-100"
                                                 }`}>
-                                                <ticket.icon className={`h-6 w-6 ${ticket.featured ? "text-white" : "text-muted-foreground"
+                                                <ticket.icon className={`h-5 w-5 ${ticket.featured ? "text-white" : "text-muted-foreground"
                                                     }`} />
                                             </div>
                                             {ticket.featured && (
-                                                <span className="inline-flex items-center gap-1.5 rounded-full bg-primary/20 px-3 py-1 text-xs font-semibold text-primary">
+                                                <span className="inline-flex items-center gap-1.5 rounded-full bg-primary/20 px-2.5 py-1 text-[10px] sm:text-xs font-semibold text-primary">
                                                     <Sparkles className="h-3 w-3" />
                                                     Premium
                                                 </span>
                                             )}
-                                            {!isUnlocked && (
-                                                <span className="inline-flex items-center gap-1.5 rounded-full bg-amber-500/20 px-3 py-1 text-xs font-semibold text-amber-600 dark:text-amber-400">
+                                            {!isUnlocked && !ticket.soldOut && (
+                                                <span className="inline-flex items-center gap-1.5 rounded-full bg-amber-500/20 px-2.5 py-1 text-[10px] sm:text-xs font-semibold text-amber-600 dark:text-amber-400">
                                                     <Lock className="h-3 w-3" />
                                                     Coming Soon
                                                 </span>
                                             )}
+                                            {ticket.soldOut && (
+                                                <span className="inline-flex items-center gap-1.5 rounded-full bg-red-500/20 px-2.5 py-1 text-[10px] sm:text-xs font-semibold text-red-600 dark:text-red-400">
+                                                    Sold Out
+                                                </span>
+                                            )}
                                         </div>
-                                        <h3 className="text-xl font-bold text-foreground">{ticket.name}</h3>
-                                        <p className="text-sm text-muted-foreground">{ticket.subtitle}</p>
+                                        <h3 className="text-lg sm:text-xl font-bold text-foreground leading-tight">{ticket.name}</h3>
+                                        <p className="text-xs sm:text-sm text-muted-foreground mt-0.5">{ticket.subtitle}</p>
                                     </div>
 
                                     {/* Price */}
-                                    <div className="mb-6">
-                                        <div className="text-3xl font-bold text-foreground">{ticket.price}</div>
-                                        <div className="text-xs text-primary font-medium mt-1">{ticket.priceNote}</div>
-                                        <div className="mt-3 flex items-center gap-2 text-xs text-muted-foreground">
-                                            <Clock className="h-3.5 w-3.5" />
-                                            {isUnlocked ? (
-                                                <span>Available till: {ticket.deadline}</span>
-                                            ) : (
-                                                <span>Starts On: 7th Feb 2026, 9:00 PM (IST)</span>
-                                            )}
-                                        </div>
-                                        <div className="mt-1 flex items-center gap-2 text-xs text-muted-foreground">
-                                            <Users className="h-3.5 w-3.5" />
-                                            {/* <span>{ticket.seats} seats available</span> */}
-                                            <span>Only few seats are left</span>
+                                    <div className="mb-5">
+                                        <div className={`font-bold text-foreground leading-none ${ticket.price.length > 15 ? "text-[22px]" : "text-2xl sm:text-3xl"}`}>{ticket.price}</div>
+                                        <div className="text-[11px] sm:text-xs text-primary font-medium mt-1.5 mb-3">{ticket.priceNote}</div>
+                                        <div className="space-y-1.5">
+                                            <div className="flex items-start gap-2 text-[11px] sm:text-xs text-muted-foreground">
+                                                <Clock className="h-3.5 w-3.5 flex-shrink-0 mt-0.5" />
+                                                {isUnlocked ? (
+                                                    <span className="leading-tight">Till: {ticket.deadline}</span>
+                                                ) : (
+                                                    <span className="leading-tight">Starts: 7th Feb 2026, 9:00 PM</span>
+                                                )}
+                                            </div>
+                                            <div className="flex items-start gap-2 text-[11px] sm:text-xs text-muted-foreground">
+                                                <Users className="h-3.5 w-3.5 flex-shrink-0 mt-0.5" />
+                                                {ticket.soldOut ? (
+                                                    <span className="text-red-500 font-medium leading-tight">Sold out</span>
+                                                ) : (
+                                                    <span className="leading-tight">Only few seats left</span>
+                                                )}
+                                            </div>
                                         </div>
                                     </div>
 
                                     {/* Features */}
-                                    <ul className="mb-8 space-y-3">
+                                    <ul className="mb-6 space-y-2.5 flex-grow">
                                         {ticket.features.map((feature, i) => (
-                                            <li key={i} className="flex items-start gap-3">
-                                                <span className="text-base flex-shrink-0">{feature.icon}</span>
-                                                <span className="text-sm text-muted-foreground">{feature.text}</span>
+                                            <li key={i} className="flex items-start gap-2.5">
+                                                <span className="text-[13px] sm:text-sm flex-shrink-0 mt-0.5 leading-none">{feature.icon}</span>
+                                                <span className="text-[11px] sm:text-[13px] text-muted-foreground leading-snug">
+                                                    {/* Make the label (before colon) bold if it exists */}
+                                                    {feature.text.includes(':')
+                                                        ? <>
+                                                            <strong className="text-foreground/80 font-semibold">{feature.text.split(':')[0]}:</strong>
+                                                            {feature.text.substring(feature.text.indexOf(':') + 1)}
+                                                        </>
+                                                        : feature.text}
+                                                </span>
                                             </li>
                                         ))}
                                     </ul>
 
                                     {/* CTA */}
-                                    {isUnlocked ? (
+                                    {ticket.soldOut ? (
+                                        <button
+                                            disabled
+                                            className={`w-full flex items-center justify-center gap-2 rounded-xl px-6 py-3 text-sm font-semibold opacity-50 cursor-not-allowed ${theme === "dark"
+                                                ? "bg-white/10 text-white/60"
+                                                : "bg-gray-100 text-gray-500"
+                                                }`}
+                                        >
+                                            Sold Out
+                                        </button>
+                                    ) : isUnlocked ? (
                                         <a
                                             href={ticket.ctaLink}
                                             target="_blank"
