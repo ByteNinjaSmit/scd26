@@ -22,14 +22,16 @@ const sponsors = {
             height: 60,
         },
     ],
+    communityPartner: [
+        {
+            name: "AWS User Group Pune",
+            logo: "/User_Group_Pune.png",
+            width: 180,
+            height: 60,
+        },
+    ],
 };
 
-const communityPartners = [
-    "AWS Cloud Club UdeA",
-    "AWS Cloud Club EAN",
-    "AWS Cloud Club Pune",
-    "AWS User Group Maharashtra",
-];
 
 const Supporters = () => {
     const ref = useRef(null);
@@ -142,35 +144,47 @@ const Supporters = () => {
                     </div>
                 </motion.div>
 
-                {/* Community Partners */}
-                {/* <motion.div
+                {/* Community Partner Section */}
+                <motion.div
                     initial={{ opacity: 0, y: 30 }}
                     animate={isInView ? { opacity: 1, y: 0 } : {}}
                     transition={{ duration: 0.6, delay: 0.3 }}
                     className="mb-16"
                 >
                     <div className="mb-8 flex items-center justify-center gap-4">
-                        <div className="h-px flex-1 bg-gradient-to-r from-transparent to-border/30" />
+                        <div className="h-px flex-1 bg-gradient-to-r from-transparent via-border to-border/50" />
                         <h3 className="text-sm font-semibold uppercase tracking-[0.15em] text-muted-foreground">
-                            Community Partners
+                            Community Partner
                         </h3>
-                        <div className="h-px flex-1 bg-gradient-to-l from-transparent to-border/30" />
+                        <div className="h-px flex-1 bg-gradient-to-l from-transparent via-border to-border/50" />
                     </div>
 
-                    <div className="flex flex-wrap justify-center gap-3">
-                        {communityPartners.map((partner, index) => (
+                    <div className="flex flex-wrap items-center justify-center gap-12">
+                        {sponsors.communityPartner.map((sponsor, index) => (
                             <motion.div
-                                key={partner}
-                                initial={{ opacity: 0, y: 20 }}
-                                animate={isInView ? { opacity: 1, y: 0 } : {}}
-                                transition={{ duration: 0.4, delay: 0.4 + index * 0.05 }}
-                                className="rounded-full border border-border/50 bg-background/50 backdrop-blur-sm px-5 py-2.5 text-sm font-medium text-foreground transition-all duration-300 hover:border-primary/40 hover:bg-primary/5 hover:text-primary"
+                                key={sponsor.name}
+                                initial={{ opacity: 0, scale: 0.9 }}
+                                animate={isInView ? { opacity: 1, scale: 1 } : {}}
+                                transition={{ duration: 0.5, delay: 0.4 + index * 0.1 }}
+                                className="group relative"
                             >
-                                {partner}
+                                <div className="relative flex items-center justify-center p-5 transition-all duration-500 group-hover:scale-105">
+                                    <div className="absolute inset-0 rounded-xl bg-primary/5 opacity-0 blur-lg transition-opacity duration-500 group-hover:opacity-100" />
+                                    <Image
+                                        src={sponsor.logo}
+                                        alt={sponsor.name}
+                                        width={sponsor.width}
+                                        height={sponsor.height}
+                                        className="relative object-contain transition-all duration-300 group-hover:drop-shadow-lg"
+                                    />
+                                </div>
+                                <p className="mt-2 text-center text-sm font-medium text-muted-foreground opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                                    {sponsor.name}
+                                </p>
                             </motion.div>
                         ))}
                     </div>
-                </motion.div> */}
+                </motion.div>
 
                 {/* Become a Sponsor CTA */}
                 {/* <motion.div
