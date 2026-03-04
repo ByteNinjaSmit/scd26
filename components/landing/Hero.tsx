@@ -129,6 +129,23 @@ const Hero = () => {
                 <div className="grid gap-12 lg:grid-cols-2 lg:gap-8 items-center">
                     {/* Left Content */}
                     <div className="text-center lg:text-left">
+                        {/* SCD Logo */}
+                        <motion.div
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.4 }}
+                            className="mb-8 flex justify-center lg:justify-start w-full"
+                        >
+                            <Image
+                                src="/SCD_Logo.png"
+                                alt="SCD Logo"
+                                width={600}
+                                height={200}
+                                className="h-28 sm:h-40 lg:h-48 w-auto object-contain"
+                                priority
+                            />
+                        </motion.div>
+
                         {/* Date Badge */}
                         <motion.div
                             initial={{ opacity: 0, y: 20 }}
