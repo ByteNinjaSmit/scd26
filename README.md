@@ -1,6 +1,6 @@
 # AWS Student Community Day 2026
 
-![AWS Student Community Day 2026](public\SCD_Logo.png)
+![AWS Student Community Day 2026](.\public\SCD_Logo.png)
 
 A high-performance, responsive landing page for the **AWS Student Community Day 2026** event happening at Sanjivani College of Engineering on March 28, 2026. This application serves as the primary gateway for attendees to view the event agenda, discover speakers, learn about tracks, and book tickets.
 
