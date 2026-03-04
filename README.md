@@ -1,36 +1,88 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# AWS Student Community Day 2026
 
-## Getting Started
+![AWS Student Community Day 2026](public\SCD_Logo.png)
 
-First, run the development server:
+A high-performance, responsive landing page for the **AWS Student Community Day 2026** event happening at Sanjivani College of Engineering on March 28, 2026. This application serves as the primary gateway for attendees to view the event agenda, discover speakers, learn about tracks, and book tickets.
+
+Organized by **AWS Cloud Club Sanjivani**.
+
+## ✨ Key Features
+
+- **Modern & Premium UI:** Crafted using modern web aesthetics, offering an engaging experience tailored for developers and students.
+- **Responsive Design:** Completely fluid and responsive layout, ensuring an optimal viewing experience on mobile devices, tablets, and desktops.
+- **Dynamic Animations:** Implemented scroll and interaction-based micro-animations using Framer Motion to keep the user engaged.
+- **Light & Dark Mode:** Seamless theme toggling supported by `next-themes`.
+- **SEO & Social Optimization:** Pre-configured JSON-LD structured data for events, meta tags, OpenGraph, and Twitter cards to improve search visibility and social sharing.
+- **Performance Optimized:** Uses Next.js App Router and optimized fonts/images for blazing-fast load times.
+
+## 🛠️ Tech Stack
+
+- **Framework:** [Next.js (App Router) v15+](https://nextjs.org/)
+- **Library:** [React 19](https://react.dev)
+- **Styling:** [Tailwind CSS v4](https://tailwindcss.com/)
+- **UI Components:** [Radix UI](https://www.radix-ui.com/) primitives
+- **Animations:** [Framer Motion](https://www.framer.com/motion/)
+- **Icons:** [Lucide React](https://lucide.dev/)
+- **Analytics:** Vercel Analytics
+- **Language:** TypeScript
+
+## 🚀 Getting Started
+
+Follow these steps to set up the project locally.
+
+### Prerequisites
+
+You need Node.js (Version 20+) installed on your machine.
+
+### Installation
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/ByteNinjaSmit/scd26.git
+   cd scd26
+   ```
+
+2. Install dependencies:
+   ```bash
+   npm install
+   # or
+   yarn install
+   # or
+   pnpm install
+   ```
+
+3. Start the development server:
+   ```bash
+   npm run dev
+   ```
+
+4. Open your browser and navigate to [http://localhost:3000](http://localhost:3000) to see the application running.
+
+## 📦 Building for Production
+
+To create an optimized production build, run:
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm run build
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Then, to start the production server:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+npm run start
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 📍 Event Details
 
-## Learn More
+- **Date:** March 28, 2026 (08:00 AM - 06:00 PM IST)
+- **Venue:** Sanjivani College of Engineering
+- **Address:** Station Road, Opposite Sanjivani Factory, Kopargaon, Maharashtra 423603, India
+## 🤝 Contributors
 
-To learn more about Next.js, take a look at the following resources:
+<a href="https://github.com/ByteNinjaSmit">
+  <img src="https://github.com/ByteNinjaSmit.png" width="50" height="50" style="border-radius: 50%;" />
+</a>
+<a href="https://github.com/AtharvaNarkhede1">
+  <img src="https://github.com/AtharvaNarkhede1.png" width="50" height="50" style="border-radius: 50%;" />
+</a>
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
