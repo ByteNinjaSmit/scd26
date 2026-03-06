@@ -68,7 +68,7 @@ const ticketsData = [
         ctaLink: "https://konfhub.com/checkout/aws-student-community-day-sanjivani-2026?ticketId=73991",
         icon: Ticket,
         featured: false,
-        soldOut: false,
+        soldOut: true,
         seats: 300,
         features: [
             { icon: "🌐", text: "Full Event Access: Unlock a full day of connection and learning alongside top minds in the industry." },
