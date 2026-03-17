@@ -2,7 +2,7 @@
 
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
-import { MapPin, ExternalLink, Navigation, Train, Plane, Building2 } from "lucide-react";
+import { MapPin, ExternalLink, Navigation, Train, Plane, Building2, Bus } from "lucide-react";
 
 const nearbyLocations = [
     {
@@ -18,6 +18,20 @@ const nearbyLocations = [
         distance: "~1 km",
         color: "text-blue-500",
         bgColor: "bg-blue-500/10",
+    },
+    {
+        icon: Bus,
+        name: "Kopargaon Bus Stand",
+        distance: "~2 km",
+        color: "text-rose-500",
+        bgColor: "bg-rose-500/10",
+    },
+    {
+        icon: Train,
+        name: "Sainagar Shirdi Railway Station",
+        distance: "~15 km",
+        color: "text-purple-500",
+        bgColor: "bg-purple-500/10",
     },
     {
         icon: Plane,
