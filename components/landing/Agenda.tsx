@@ -45,7 +45,7 @@ const tracks = [
         sessions: [
             { time: "14:15 – 14:50", speaker: "Ramandeep Chandna", title: "From Student to AWS Golden Jacket – Building Your Cloud Future" },
             { time: "14:50 – 15:25", speaker: "Abhishek Maurya", title: '"But It Works on My Machine!": A Student\'s Guide to Docker, CI/CD, and Cloud Deployments' },
-            { time: "15:25 – 16:00", speaker: "Soham Deshmukh (tentative)", title: "" },
+            { time: "15:25 – 16:00", speaker: "Soham Deshmukh", title: "Beyond the Console: Leading the Next Generation of Cloud Builders" },
         ],
     },
     {
