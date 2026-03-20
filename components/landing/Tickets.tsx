@@ -160,7 +160,7 @@ const Tickets = () => {
     };
 
     return (
-        <section ref={ref} id="tickets" className="section-padding bg-background relative overflow-hidden">
+        <section ref={ref} id="tickets" className="section-padding relative overflow-hidden">
             {/* Background decorations */}
             <div className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full blur-[200px] ${theme === "dark" ? "bg-primary/5" : "bg-primary/3"
                 }`} />

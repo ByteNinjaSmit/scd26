@@ -25,7 +25,7 @@ const sponsors = {
     communityPartner: [
         {
             name: "AWS User Group Pune",
-            logo: "/User_Group_Pune.png",
+            logo: "/User_Group_Logo.png",
             width: 180,
             height: 60,
         },
@@ -38,7 +38,7 @@ const Supporters = () => {
     const isInView = useInView(ref, { once: true, margin: "-100px" });
 
     return (
-        <section ref={ref} className="section-padding bg-gradient-to-b from-background via-secondary/20 to-background overflow-hidden">
+        <section ref={ref} className="section-padding overflow-hidden">
             <div className="section-container">
                 {/* Header */}
                 <motion.div

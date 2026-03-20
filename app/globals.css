@@ -5,8 +5,6 @@
 /* Tailwind v4 Theme Configuration */
 @theme {
   /* Font Families */
-  --font-ember: "Amazon Ember", system-ui, sans-serif;
-  --font-sans: "Amazon Ember", system-ui, sans-serif;
 
   /* AWS Brand Colors - Base values */
   --color-aws-orange: #ff9900;
@@ -114,23 +112,23 @@
 
 /* Dark mode overrides - using class-based selector */
 .dark {
-  --color-background: #161e2d;
+  --color-background: #050505;
   --color-foreground: #f3f4f6;
-  --color-card: #1e2738;
+  --color-card: #0a0a0a;
   --color-card-foreground: #f3f4f6;
-  --color-popover: #1e2738;
+  --color-popover: #0a0a0a;
   --color-popover-foreground: #f3f4f6;
-  --color-secondary: #232f3e;
+  --color-secondary: #121212;
   --color-secondary-foreground: #f3f4f6;
-  --color-muted: #232f3e;
+  --color-muted: #121212;
   --color-muted-foreground: #9ca3af;
-  --color-border: #374151;
-  --color-input: #374151;
-  --color-sidebar-background: #0f1419;
+  --color-border: #1f1f1f;
+  --color-input: #1f1f1f;
+  --color-sidebar-background: #050505;
   --color-sidebar-foreground: #f3f4f6;
-  --color-sidebar-accent: #232f3e;
+  --color-sidebar-accent: #121212;
   --color-sidebar-accent-foreground: #f3f4f6;
-  --color-sidebar-border: #374151;
+  --color-sidebar-border: #1f1f1f;
 }
 
 /* Light mode - white and dark blue theme */
@@ -164,8 +162,9 @@
   html,
   body {
     background-color: var(--color-background);
+    background-image: radial-gradient(circle at top left, #1a2235 0%, #080a10 40%, #050505 100%);
+    background-attachment: fixed;
     color: var(--color-foreground);
-    font-family: var(--font-ember);
     /* Hide scrollbar */
     -ms-overflow-style: none;
     /* IE and Edge */
@@ -189,7 +188,7 @@
   h4,
   h5,
   h6 {
-    font-weight: 600;
+    font-weight: 400;
     letter-spacing: -0.025em;
   }
 }

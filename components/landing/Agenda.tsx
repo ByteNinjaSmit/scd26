@@ -20,17 +20,96 @@ import {
     Cloud,
 } from "lucide-react";
 
+/* ─────────── TYPES ─────────── */
+
+interface Speaker {
+    name: string;
+    designation: string;
+    company: string;
+    gradient: string;
+    image?: string;
+}
+
+interface MainStageItem {
+    time: string;
+    title: string;
+    description?: string;
+    tag?: string;
+    tagColor?: string;
+    speakers?: Speaker[];
+}
+
 /* ─────────── DATA ─────────── */
 
-const morningSchedule = [
-    { time: "7:00 – 9:00", title: "Registration & Breakfast", subtitle: "Networking", icon: Coffee, accent: "#f59e0b" },
-    { time: "9:00 – 9:30", title: "Guest Arrival | Saraswati Pooja | Felicitation", subtitle: "SCD Kickstart", icon: Sparkles, accent: "#a855f7" },
-    { time: "9:30 – 10:30", title: "Welcome Note", subtitle: "College Administration Address", icon: GraduationCap, accent: "#3b82f6" },
-    { time: "10:30 – 11:10", title: "Vishal Alhat", subtitle: "Keynote Address", icon: Mic2, accent: "#ff9900" },
-    { time: "11:10 – 11:50", title: "Panel Discussion", subtitle: "Industry-Academia Connect", icon: MessageSquare, accent: "#10b981" },
-    { time: "11:50 – 12:25", title: "Bhoomi Raut", subtitle: "Kiro : SDD", icon: Presentation, accent: "#f43f5e" },
-    { time: "12:25 – 13:00", title: "Sponsor Reserved", subtitle: "", icon: Users, accent: "#64748b" },
-    { time: "13:00 – 14:15", title: "Lunch & Networking", subtitle: "", icon: Utensils, accent: "#22c55e" },
+const mainStageSchedule: MainStageItem[] = [
+    {
+        time: "7:00 AM",
+        title: "Registration & Breakfast",
+    },
+    {
+        time: "9:00 AM",
+        title: "Guest Arrival | Saraswati Pooja | Felicitation",
+        tag: "Ceremony",
+        tagColor: "bg-purple-600",
+    },
+    {
+        time: "9:30 AM",
+        title: "Welcome Note",
+        description: "Opening address by the college administration welcoming all attendees and setting the tone for the day.",
+        tag: "Welcome",
+        tagColor: "bg-blue-600",
+    },
+    {
+        time: "10:30 AM",
+        title: "Keynote Address",
+        description: "The opening keynote setting the vision for cloud innovation and the future of AWS for students and professionals.",
+        tag: "Keynote",
+        tagColor: "bg-[#ff9900]",
+        speakers: [
+            {
+                name: "Vishal Alhat",
+                designation: "Developer Advocate",
+                company: "AWS",
+                gradient: "from-[#ff9900] to-[#e68800]",
+                image: "", // vishal-alhat.jpg missing from provided uploads
+            },
+        ],
+    },
+    {
+        time: "11:10 AM",
+        title: "Industry-Academia Connect",
+        description: "A moderated panel discussion exploring how industry and academia can collaborate to build the next generation of cloud professionals.",
+        tag: "Panel Discussion",
+        tagColor: "bg-emerald-600",
+    },
+    {
+        time: "11:50 AM",
+        title: "Kiro : Spec Driven Development",
+        description: "Explore spec-driven development with Kiro and how it transforms the way modern applications are built and deployed.",
+        tag: "Tech Talk",
+        tagColor: "bg-rose-600",
+        speakers: [
+            {
+                name: "Bhoomi Raut",
+                designation: "AWS Community Builder",
+                company: "Persistent Systems",
+                gradient: "from-violet-500 to-purple-600",
+                image: "", // bhoomi-raut.jpg missing from provided uploads
+            },
+        ],
+    },
+    {
+        time: "12:25 PM",
+        title: "Sponsor Session",
+        tag: "Sponsor",
+        tagColor: "bg-slate-600",
+    },
+    {
+        time: "1:00 PM",
+        title: "Lunch & Networking",
+        tag: "Break",
+        tagColor: "bg-green-600",
+    },
 ];
 
 const tracks = [
@@ -43,9 +122,33 @@ const tracks = [
         cardAccentBg: "bg-orange-50/80 dark:bg-orange-950/20",
         accent: "#ff9900",
         sessions: [
-            { time: "14:15 – 14:50", speaker: "Ramandeep Chandna", title: "From Student to AWS Golden Jacket – Building Your Cloud Future" },
-            { time: "14:50 – 15:25", speaker: "Abhishek Maurya", title: '"But It Works on My Machine!": A Student\'s Guide to Docker, CI/CD, and Cloud Deployments' },
-            { time: "15:25 – 16:00", speaker: "Soham Deshmukh", title: "Beyond the Console: Leading the Next Generation of Cloud Builders" },
+            {
+                time: "2:15 PM",
+                speaker: "Ramandeep Chandna",
+                designation: "Systems Engineering Manager - AWS",
+                company: "EPAM Systems",
+                title: "From Student to AWS Golden Jacket – Building Your Cloud Future",
+                gradient: "from-[#ff9900] to-amber-600",
+                image: "/speakers/IMG-20260131-WA0099~2 - Ramandeep Chandna.jpg",
+            },
+            {
+                time: "2:50 PM",
+                speaker: "Abhishek Maurya",
+                designation: "Senior Cloud Engineer",
+                company: "Orange Business India",
+                title: '"But It Works on My Machine!": A Student\'s Guide to Docker, CI/CD, and Cloud Deployments',
+                gradient: "from-fuchsia-500 to-purple-600",
+                image: "/speakers/IMG_7376 - Abhishek.JPG",
+            },
+            {
+                time: "3:25 PM",
+                speaker: "Soham Deshmukh",
+                designation: "Captain",
+                company: "AWS Cloud Club - SCOE",
+                title: "Beyond the Console: Leading the Next Generation of Cloud Builders",
+                gradient: "from-teal-500 to-emerald-600",
+                image: "",
+            },
         ],
     },
     {
@@ -57,9 +160,33 @@ const tracks = [
         cardAccentBg: "bg-blue-50/80 dark:bg-blue-950/20",
         accent: "#0073bb",
         sessions: [
-            { time: "14:15 – 14:50", speaker: "Rahul Shivalkar", title: "Building an Event-Driven Three-Tier Application on AWS" },
-            { time: "14:50 – 15:25", speaker: "Sankalp Paranjpe", title: "Introduction to AWS MCP Servers" },
-            { time: "15:25 – 16:00", speaker: "Himanshu Sangshetti", title: "Building Stateful Systems with Lambda Durable Functions, EventBridge, and Step Functions" },
+            {
+                time: "2:15 PM",
+                speaker: "Rahul Shivalkar",
+                designation: "Lead DevOps Engineer",
+                company: "EPAM",
+                title: "Building an Event-Driven Three-Tier Application on AWS",
+                gradient: "from-blue-500 to-cyan-600",
+                image: "/speakers/IMG_1684 - Rahul Shivalkar.jpg",
+            },
+            {
+                time: "2:50 PM",
+                speaker: "Sankalp Paranjpe",
+                designation: "Cloud Security Consultant",
+                company: "Big4 Consulting",
+                title: "Introduction to AWS MCP Servers",
+                gradient: "from-cyan-500 to-blue-600",
+                image: "",
+            },
+            {
+                time: "3:25 PM",
+                speaker: "Himanshu Sangshetti",
+                designation: "Solutions Associate",
+                company: "ZS",
+                title: "Building Stateful Systems with Lambda Durable Functions, EventBridge, and Step Functions",
+                gradient: "from-rose-500 to-pink-600",
+                image: "/speakers/1730829822070 - Himanshu Sangshetti.jpeg",
+            },
         ],
     },
     {
@@ -71,17 +198,47 @@ const tracks = [
         cardAccentBg: "bg-emerald-50/80 dark:bg-emerald-950/20",
         accent: "#10b981",
         sessions: [
-            { time: "14:15 – 14:50", speaker: "Tribhuvan Mishra", title: "Building Production-Ready GenAI Applications on AWS" },
-            { time: "14:50 – 15:25", speaker: "Varsha Verma", title: "AI-Powered Developer: Coding 10x Faster with Amazon Q" },
-            { time: "15:25 – 16:00", speaker: "Ganesh Lad", title: "Application or Website Hosting on AWS Using Load Balancing and Auto Scaling with High Availability" },
+            {
+                time: "2:15 PM",
+                speaker: "Tribhuvan Mishra",
+                designation: "Cloud Infra Specialist",
+                company: "Wipro Technologies",
+                title: "Building Production-Ready GenAI Applications on AWS",
+                gradient: "from-emerald-500 to-teal-600",
+                image: "/speakers/IMG_1774 - Tribhuban Mishra.png",
+            },
+            {
+                time: "2:50 PM",
+                speaker: "To Be Revealed",
+                designation: "Mystery Speaker",
+                company: "",
+                title: "Exciting Session Details Coming Soon...",
+                gradient: "from-indigo-500 to-blue-600",
+                image: "",
+            },
+            {
+                time: "3:25 PM",
+                speaker: "Ganesh Lad",
+                designation: "COE",
+                company: "Cloudera Inc.",
+                title: "Application or Website Hosting on AWS Using Load Balancing and Auto Scaling with High Availability",
+                gradient: "from-amber-500 to-orange-600",
+                image: "/speakers/IMG_8583 - Ganesh Taware.jpeg",
+            },
         ],
     },
 ];
 
 const closingSchedule = [
-    { time: "16:00 – 16:30", title: "Hi-Tea", subtitle: "Soul String Performance", icon: Music, accent: "#ec4899" },
-    { time: "16:30 – 17:00", title: "Closing Note", subtitle: "Goodies Distribution, Stage Action", icon: Gift, accent: "#ff9900" },
+    { time: "4:00 PM", title: "Hi-Tea & Soul String Performance", icon: Music, accent: "#ec4899" },
+    { time: "4:30 PM", title: "Closing Note & Goodies Distribution", icon: Gift, accent: "#ff9900" },
 ];
+
+/* ─────────── HELPERS ─────────── */
+
+function getInitials(name: string) {
+    return name.split(" ").map((n) => n[0]).join("").toUpperCase().slice(0, 2);
+}
 
 /* ─────────── COMPONENT ─────────── */
 
@@ -94,17 +251,23 @@ const Agenda = () => {
         <section
             ref={ref}
             id="agenda"
-            className="section-padding relative overflow-hidden bg-gradient-to-b from-secondary/40 via-background to-secondary/40"
+            className="section-padding relative overflow-hidden"
         >
-            {/* Decorative grid pattern */}
-            <div className="absolute inset-0 pointer-events-none opacity-[0.03] dark:opacity-[0.05]"
+            {/* Background decorations */}
+            <div className="absolute inset-0 pointer-events-none">
+                <div className="absolute top-20 left-10 w-80 h-80 bg-primary/5 rounded-full blur-[100px]" />
+                <div className="absolute bottom-20 right-10 w-96 h-96 bg-blue-500/5 rounded-full blur-[100px]" />
+                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary/3 rounded-full blur-[150px]" />
+            </div>
+
+            {/* Subtle dot pattern */}
+            <div
+                className="absolute inset-0 pointer-events-none opacity-[0.02] dark:opacity-[0.04]"
                 style={{
                     backgroundImage: `radial-gradient(circle, currentColor 1px, transparent 1px)`,
-                    backgroundSize: '32px 32px',
+                    backgroundSize: "28px 28px",
                 }}
             />
-            {/* Ambient glow */}
-            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-primary/8 rounded-full blur-[120px] pointer-events-none" />
 
             <div className="section-container relative z-10">
 
@@ -113,121 +276,93 @@ const Agenda = () => {
                     initial={{ opacity: 0, y: 24 }}
                     animate={isInView ? { opacity: 1, y: 0 } : {}}
                     transition={{ duration: 0.6 }}
-                    className="mx-auto mb-16 max-w-2xl text-center"
+                    className="mx-auto mb-10 text-center"
                 >
-                    <motion.div
-                        initial={{ opacity: 0, scale: 0.9 }}
-                        animate={isInView ? { opacity: 1, scale: 1 } : {}}
-                        transition={{ duration: 0.5 }}
-                        className="mb-5 inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/10 px-5 py-2 text-sm font-semibold uppercase tracking-widest text-primary"
-                    >
-                        <Calendar className="h-4 w-4" />
-                        March 28, 2026
-                    </motion.div>
-                    <h2 className="mb-4 text-3xl font-bold tracking-tight text-foreground sm:text-4xl lg:text-5xl">
-                        Agenda of the Day
+                    <h2 className="mb-8 text-5xl font-bold tracking-tight text-foreground sm:text-6xl lg:text-7xl uppercase">
+                        Agenda
                     </h2>
-                    <p className="text-muted-foreground text-lg leading-relaxed">
-                        A packed day of learning, workshops, and networking opportunities.
-                    </p>
+
+                    {/* Tab buttons - Main Stage only since no workshop data */}
+                    <div className="flex justify-center gap-3">
+                        <button className="px-6 py-2.5 rounded-lg bg-foreground text-background text-sm font-semibold uppercase tracking-wider transition-all">
+                            Main Stage
+                        </button>
+                    </div>
                 </motion.div>
 
-                {/* ── MORNING TIMELINE ── */}
-                <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={isInView ? { opacity: 1, y: 0 } : {}}
-                    transition={{ duration: 0.5, delay: 0.1 }}
-                    className="mb-16"
-                >
-                    {/* Section label */}
-                    <div className="flex items-center gap-3 mb-8">
-                        <span className="text-xs font-bold uppercase tracking-widest text-primary">Morning</span>
-                        <div className="flex-1 h-px bg-gradient-to-r from-primary/30 to-transparent" />
-                    </div>
+                {/* ── STAGE CARDS ── */}
+                <div className="space-y-4 mb-16 max-w-5xl mx-auto">
+                    {mainStageSchedule.map((item, index) => (
+                        <motion.div
+                            key={item.time + item.title}
+                            initial={{ opacity: 0, y: 16 }}
+                            animate={isInView ? { opacity: 1, y: 0 } : {}}
+                            transition={{ duration: 0.4, delay: 0.1 + index * 0.05 }}
+                            className="group relative bg-[#0a0a0a] border border-white/10 overflow-hidden
+                                hover:border-primary/40 hover:bg-[#111111] transition-all duration-500 rounded-md
+                                hover:shadow-[0_0_30px_-10px_rgba(255,153,0,0.15)]"
+                        >
+                            <div className="flex relative z-10 transform transition-transform duration-500 group-hover:translate-x-1">
+                                {/* LEFT: Tag + Time */}
+                                <div className="flex-shrink-0 w-[140px] sm:w-[180px] p-6 flex flex-col justify-start border-r border-white/10 group-hover:border-primary/20 transition-colors duration-500">
+                                    {item.tag && (
+                                        <span className={`inline-flex self-start items-center text-[10px] sm:text-[11px] font-bold text-white px-3 py-1 rounded-[4px] mb-3 shadow-md ${item.tagColor}`}>
+                                            {item.tag}
+                                        </span>
+                                    )}
+                                    <span className="text-xl sm:text-2xl font-black text-white tracking-wide group-hover:text-primary transition-colors duration-300">
+                                        {item.time}
+                                    </span>
+                                </div>
 
-                    <div className="relative">
-                        {/* Central timeline line (desktop) */}
-                        <div className="absolute left-6 sm:left-1/2 sm:-translate-x-px top-0 bottom-0 w-0.5 bg-gradient-to-b from-primary/50 via-border to-border" />
+                                {/* RIGHT: Content */}
+                                <div className="flex-1 p-6 flex flex-col justify-center">
+                                    {/* Title */}
+                                    <h4 className="text-xl sm:text-2xl font-bold text-white leading-snug mb-2 font-montserrat">
+                                        {item.title}
+                                    </h4>
 
-                        <div className="space-y-4 sm:space-y-6">
-                            {morningSchedule.map((item, index) => {
-                                const isLeft = index % 2 === 0;
-                                return (
-                                    <motion.div
-                                        key={item.time}
-                                        initial={{ opacity: 0, y: 20 }}
-                                        animate={isInView ? { opacity: 1, y: 0 } : {}}
-                                        transition={{ duration: 0.4, delay: 0.15 + index * 0.06 }}
-                                        className={`relative flex items-start gap-4 sm:gap-0 ${isLeft ? "sm:flex-row" : "sm:flex-row-reverse"}`}
-                                    >
-                                        {/* Card */}
-                                        <div className={`flex-1 sm:w-[calc(50%-28px)] ${isLeft ? "sm:pr-10" : "sm:pl-10"}`}>
-                                            <div
-                                                className="group relative rounded-2xl border border-border/50 bg-card p-4 sm:p-5
-                                                    shadow-sm hover:shadow-lg dark:shadow-none dark:hover:shadow-lg dark:hover:shadow-black/20
-                                                    transition-all duration-300 hover:-translate-y-0.5"
-                                            >
-                                                {/* Accent top stripe */}
-                                                <div
-                                                    className="absolute top-0 left-4 right-4 h-0.5 rounded-full opacity-60 group-hover:opacity-100 transition-opacity"
-                                                    style={{ backgroundColor: item.accent }}
-                                                />
+                                    {/* Description */}
+                                    {item.description && (
+                                        <p className="text-white/60 text-sm leading-relaxed max-w-3xl">
+                                            {item.description}
+                                        </p>
+                                    )}
 
-                                                <div className="flex items-start gap-3 pt-1">
-                                                    {/* Icon */}
-                                                    <div
-                                                        className="flex-shrink-0 p-2.5 rounded-xl text-white shadow-md"
-                                                        style={{ backgroundColor: item.accent }}
-                                                    >
-                                                        <item.icon className="h-4 w-4" />
-                                                    </div>
-                                                    <div className="flex-1 min-w-0">
-                                                        <div className="flex flex-wrap items-center gap-2 mb-1">
-                                                            <span
-                                                                className="inline-flex items-center gap-1 text-[11px] font-bold px-2.5 py-0.5 rounded-full text-white"
-                                                                style={{ backgroundColor: item.accent }}
-                                                            >
-                                                                <Clock className="h-2.5 w-2.5" />
-                                                                {item.time}
+                                    {/* Speakers */}
+                                    {item.speakers && item.speakers.length > 0 && (
+                                        <div className="mt-5 flex flex-wrap gap-x-8 gap-y-4">
+                                            {item.speakers.map((speaker) => (
+                                                <div key={speaker.name} className="flex items-center gap-3">
+                                                    <div className={`w-10 h-10 rounded-full bg-gradient-to-br ${speaker.gradient} flex items-center justify-center flex-shrink-0 overflow-hidden ring-1 ring-white/10`}>
+                                                        {speaker.image ? (
+                                                            <div
+                                                                className="w-full h-full bg-cover bg-center"
+                                                                style={{ backgroundImage: `url('${speaker.image}')` }}
+                                                            />
+                                                        ) : (
+                                                            <span className="text-white text-xs font-black">
+                                                                {getInitials(speaker.name)}
                                                             </span>
-                                                        </div>
-                                                        <h4 className="font-semibold text-foreground text-sm sm:text-[15px] leading-snug">
-                                                            {item.title}
-                                                        </h4>
-                                                        {item.subtitle && (
-                                                            <p className="text-muted-foreground text-xs sm:text-sm mt-0.5">
-                                                                {item.subtitle}
-                                                            </p>
                                                         )}
                                                     </div>
+                                                    <div className="min-w-0 flex flex-col justify-center">
+                                                        <p className="text-sm font-bold text-white leading-tight">
+                                                            {speaker.name}
+                                                        </p>
+                                                        <p className="text-[12px] text-primary leading-snug">
+                                                            {speaker.designation}{speaker.company ? `, ${speaker.company}` : ""}
+                                                        </p>
+                                                    </div>
                                                 </div>
-                                            </div>
+                                            ))}
                                         </div>
-
-                                        {/* Center dot (desktop) */}
-                                        <div className="hidden sm:flex absolute left-1/2 -translate-x-1/2 top-5 z-10 items-center justify-center">
-                                            <div
-                                                className="w-3.5 h-3.5 rounded-full border-[3px] border-card shadow-sm"
-                                                style={{ backgroundColor: item.accent }}
-                                            />
-                                        </div>
-
-                                        {/* Mobile dot */}
-                                        <div className="sm:hidden absolute left-6 -translate-x-1/2 top-6 z-10">
-                                            <div
-                                                className="w-3 h-3 rounded-full border-2 border-card"
-                                                style={{ backgroundColor: item.accent }}
-                                            />
-                                        </div>
-
-                                        {/* Spacer for opposite side (desktop) */}
-                                        <div className="hidden sm:block sm:w-[calc(50%-28px)]" />
-                                    </motion.div>
-                                );
-                            })}
-                        </div>
-                    </div>
-                </motion.div>
+                                    )}
+                                </div>
+                            </div>
+                        </motion.div>
+                    ))}
+                </div>
 
                 {/* ── AFTERNOON TRACKS ── */}
                 <motion.div
@@ -240,12 +375,12 @@ const Agenda = () => {
                     <div className="flex items-center gap-3 mb-8">
                         <span className="text-xs font-bold uppercase tracking-widest text-accent">Afternoon Tracks</span>
                         <span className="text-[10px] font-medium text-muted-foreground bg-secondary border border-border px-2.5 py-1 rounded-full">
-                            14:15 – 16:00
+                            2:15 – 4:00 PM
                         </span>
                         <div className="flex-1 h-px bg-gradient-to-r from-accent/30 to-transparent" />
                     </div>
 
-                    {/* Tab switcher (all screens) */}
+                    {/* Tab switcher */}
                     <div className="flex gap-2 mb-6 overflow-x-auto pb-2 scrollbar-none lg:justify-center">
                         {tracks.map((track, idx) => (
                             <button
@@ -268,7 +403,7 @@ const Agenda = () => {
                     </div>
 
                     {/* Active track content */}
-                    <div className="relative">
+                    <div className="relative max-w-5xl mx-auto">
                         {tracks.map((track, trackIdx) => (
                             <motion.div
                                 key={track.name}
@@ -282,15 +417,13 @@ const Agenda = () => {
                                 className={`w-full ${activeTrack === trackIdx ? "" : "pointer-events-none top-0 left-0"}`}
                             >
                                 {activeTrack === trackIdx && (
-                                    <div>
-                                        {/* Track header card */}
+                                    <div className="space-y-3">
+                                        {/* Track header */}
                                         <div
-                                            className={`rounded-2xl bg-gradient-to-r ${track.gradient} p-5 sm:p-6 mb-5 relative overflow-hidden`}
+                                            className={`rounded-xl bg-gradient-to-r ${track.gradient} p-5 sm:p-6 relative overflow-hidden`}
                                         >
-                                            {/* Decorative circles */}
                                             <div className="absolute -right-8 -top-8 w-32 h-32 rounded-full bg-white/10" />
                                             <div className="absolute -right-4 -bottom-10 w-24 h-24 rounded-full bg-white/5" />
-
                                             <div className="relative flex items-center gap-4">
                                                 <div className="p-3 rounded-xl bg-white/20 backdrop-blur-sm">
                                                     <track.icon className="h-6 w-6 text-white" />
@@ -302,46 +435,68 @@ const Agenda = () => {
                                             </div>
                                         </div>
 
-                                        {/* Sessions grid */}
-                                        <div className="grid gap-4 sm:grid-cols-3">
-                                            {track.sessions.map((session, sIdx) => (
-                                                <motion.div
-                                                    key={sIdx}
-                                                    initial={{ opacity: 0, y: 12 }}
-                                                    animate={{ opacity: 1, y: 0 }}
-                                                    transition={{ duration: 0.3, delay: sIdx * 0.08 }}
-                                                    className={`group relative rounded-2xl border ${track.accentBorder} ${track.cardAccentBg} p-5
-                                                        hover:shadow-lg dark:hover:shadow-lg dark:hover:shadow-black/20 hover:-translate-y-0.5
-                                                        transition-all duration-300`}
-                                                >
-                                                    {/* Session number badge */}
-                                                    <div
-                                                        className="absolute -top-2.5 -right-2.5 w-7 h-7 rounded-full flex items-center justify-center text-[11px] font-bold text-white shadow-md"
-                                                        style={{ backgroundColor: track.accent }}
-                                                    >
-                                                        {sIdx + 1}
+                                        {/* Sessions as cards matching main stage style */}
+                                        {track.sessions.map((session, sIdx) => (
+                                            <motion.div
+                                                key={sIdx}
+                                                initial={{ opacity: 0, y: 12 }}
+                                                animate={{ opacity: 1, y: 0 }}
+                                                transition={{ duration: 0.3, delay: sIdx * 0.08 }}
+                                                className="group relative bg-[#0a0a0a] border border-white/10 overflow-hidden
+                                                    hover:bg-[#111111] transition-all duration-500 rounded-md"
+                                                style={{ '&:hover': { borderColor: track.accent } } as any}
+                                            >
+                                                <div className="flex relative z-10 transform transition-transform duration-500 group-hover:translate-x-1">
+                                                    {/* LEFT: Time */}
+                                                    <div className="flex-shrink-0 w-[140px] sm:w-[180px] p-6 flex flex-col justify-start border-r border-white/10 transition-colors duration-500 group-hover:border-white/20">
+                                                        <span
+                                                            className="inline-flex self-start items-center text-[10px] sm:text-[11px] font-bold text-white px-3 py-1 rounded-[4px] mb-3 shadow-md"
+                                                            style={{ backgroundColor: track.accent }}
+                                                        >
+                                                            Session {sIdx + 1}
+                                                        </span>
+                                                        <span 
+                                                            className="text-xl sm:text-2xl font-black text-white tracking-wide transition-colors duration-300"
+                                                        >
+                                                            {session.time}
+                                                        </span>
                                                     </div>
 
-                                                    <span
-                                                        className="inline-flex items-center gap-1 text-[11px] font-bold text-white px-2.5 py-1 rounded-lg mb-3"
-                                                        style={{ backgroundColor: track.accent }}
-                                                    >
-                                                        <Clock className="h-3 w-3" />
-                                                        {session.time}
-                                                    </span>
-
-                                                    <h5 className="font-bold text-foreground text-base mb-1.5">
-                                                        {session.speaker}
-                                                    </h5>
-
-                                                    {session.title && (
-                                                        <p className="text-muted-foreground text-sm leading-relaxed">
+                                                    {/* RIGHT: Content */}
+                                                    <div className="flex-1 p-6 flex flex-col justify-center">
+                                                        <h5 className="text-xl sm:text-2xl font-bold text-white leading-snug mb-2 font-montserrat">
                                                             {session.title}
-                                                        </p>
-                                                    )}
-                                                </motion.div>
-                                            ))}
-                                        </div>
+                                                        </h5>
+
+                                                        {/* Speaker */}
+                                                        <div className="mt-5 flex items-center gap-3">
+                                                            <div className={`w-10 h-10 rounded-full bg-gradient-to-br ${session.gradient} flex items-center justify-center flex-shrink-0 overflow-hidden ring-1 ring-white/10`}>
+                                                                {session.image ? (
+                                                                    <div
+                                                                        className="w-full h-full bg-cover bg-center"
+                                                                        style={{ backgroundImage: `url('${session.image}')` }}
+                                                                    />
+                                                                ) : (
+                                                                    <span className="text-white text-xs font-black">
+                                                                        {getInitials(session.speaker)}
+                                                                    </span>
+                                                                )}
+                                                            </div>
+                                                            <div className="min-w-0 flex flex-col justify-center">
+                                                                <p className="text-sm font-bold text-white leading-tight">
+                                                                    {session.speaker}
+                                                                </p>
+                                                                {(session.designation || session.company) && (
+                                                                    <p className="text-[12px] text-primary leading-snug">
+                                                                        {session.designation}{session.company ? `, ${session.company}` : ""}
+                                                                    </p>
+                                                                )}
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </motion.div>
+                                        ))}
                                     </div>
                                 )}
                             </motion.div>
@@ -354,50 +509,43 @@ const Agenda = () => {
                     initial={{ opacity: 0, y: 20 }}
                     animate={isInView ? { opacity: 1, y: 0 } : {}}
                     transition={{ duration: 0.5, delay: 0.4 }}
-                    className="mb-10"
+                    className="mb-10 max-w-5xl mx-auto"
                 >
-                    {/* Section label */}
                     <div className="flex items-center gap-3 mb-8">
                         <span className="text-xs font-bold uppercase tracking-widest text-pink-500 dark:text-pink-400">Closing</span>
                         <div className="flex-1 h-px bg-gradient-to-r from-pink-500/30 to-transparent" />
                     </div>
 
-                    <div className="grid sm:grid-cols-2 gap-4">
+                    <div className="space-y-3">
                         {closingSchedule.map((item, index) => (
                             <motion.div
                                 key={item.time}
                                 initial={{ opacity: 0, y: 15 }}
                                 animate={isInView ? { opacity: 1, y: 0 } : {}}
                                 transition={{ duration: 0.4, delay: 0.45 + index * 0.08 }}
-                                className="group relative overflow-hidden rounded-2xl border border-border/50 bg-card p-5 sm:p-6
-                                    shadow-sm hover:shadow-lg dark:shadow-none dark:hover:shadow-lg dark:hover:shadow-black/20
-                                    hover:-translate-y-0.5 transition-all duration-300"
+                                className="group relative bg-[#0a0a0a] border border-white/10 overflow-hidden
+                                    hover:bg-[#111111] transition-all duration-500 rounded-md"
+                                style={{ '&:hover': { borderColor: item.accent } } as any}
                             >
-                                {/* Colored left accent bar */}
-                                <div
-                                    className="absolute left-0 top-3 bottom-3 w-1 rounded-full"
-                                    style={{ backgroundColor: item.accent }}
-                                />
-
-                                <div className="flex items-start gap-4 pl-3">
-                                    <div
-                                        className="flex-shrink-0 p-3 rounded-xl text-white shadow-md group-hover:scale-110 transition-transform duration-300"
-                                        style={{ backgroundColor: item.accent }}
-                                    >
-                                        <item.icon className="h-5 w-5" />
-                                    </div>
-                                    <div className="flex-1">
-                                        <span
-                                            className="inline-flex items-center gap-1 text-[11px] font-bold text-white px-2.5 py-0.5 rounded-full mb-2"
-                                            style={{ backgroundColor: item.accent }}
-                                        >
-                                            <Clock className="h-2.5 w-2.5" />
+                                <div className="flex relative z-10 transform transition-transform duration-500 group-hover:translate-x-1">
+                                    {/* LEFT: Time */}
+                                    <div className="flex-shrink-0 w-[140px] sm:w-[180px] p-6 flex items-center justify-start border-r border-white/10 transition-colors duration-500 group-hover:border-white/20">
+                                        <span className="text-xl sm:text-2xl font-black text-white tracking-wide transition-colors duration-300">
                                             {item.time}
                                         </span>
-                                        <h4 className="font-bold text-foreground text-lg">{item.title}</h4>
-                                        {item.subtitle && (
-                                            <p className="text-muted-foreground text-sm mt-0.5">{item.subtitle}</p>
-                                        )}
+                                    </div>
+
+                                    {/* RIGHT: Content */}
+                                    <div className="flex-1 p-6 flex items-center gap-4">
+                                        <div
+                                            className="flex-shrink-0 p-3 rounded-lg text-white shadow-md"
+                                            style={{ backgroundColor: item.accent }}
+                                        >
+                                            <item.icon className="h-6 w-6" />
+                                        </div>
+                                        <h4 className="text-xl sm:text-2xl font-bold text-white leading-snug font-montserrat">
+                                            {item.title}
+                                        </h4>
                                     </div>
                                 </div>
                             </motion.div>

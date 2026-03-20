@@ -9,7 +9,7 @@ const Tracks = () => {
     const isInView = useInView(ref, { once: true, margin: "-100px" });
 
     return (
-        <section ref={ref} id="tracks" className="section-padding bg-secondary/30">
+        <section ref={ref} id="tracks" className="section-padding">
             <div className="section-container">
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}

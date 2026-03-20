@@ -2,7 +2,7 @@
 
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
-import { Presentation, Code2, Network, TrendingUp } from "lucide-react";
+import { Presentation, Bot, Network, TrendingUp } from "lucide-react";
 
 const reasons = [
     {
@@ -11,9 +11,9 @@ const reasons = [
         description: "Learn from AWS professionals and industry leaders sharing real-world insights and best practices.",
     },
     {
-        icon: Code2,
-        title: "Hands-on Workshops",
-        description: "Apply cloud concepts through guided demonstrations and practical, interactive learning experiences.",
+        icon: Bot,
+        title: "Agentic AI & GenAI",
+        description: "Dive deep into the latest advancements in artificial intelligence, building autonomous agents, and scaling real-world GenAI applications.",
     },
     {
         icon: Network,
@@ -32,7 +32,7 @@ const WhyAttend = () => {
     const isInView = useInView(ref, { once: true, margin: "-100px" });
 
     return (
-        <section ref={ref} className="section-padding bg-secondary/50">
+        <section ref={ref} className="section-padding">
             <div className="section-container">
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}

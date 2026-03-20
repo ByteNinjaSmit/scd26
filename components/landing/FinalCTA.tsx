@@ -16,7 +16,7 @@ const FinalCTA = () => {
     ];
 
     return (
-        <section ref={ref} className="section-padding bg-aws-navy relative overflow-hidden">
+        <section ref={ref} className="section-padding relative overflow-hidden">
             {/* Background Effects */}
             <div className="absolute inset-0 hero-grid opacity-20" />
             <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-primary/20 blur-[150px] rounded-full" />

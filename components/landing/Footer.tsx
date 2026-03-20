@@ -25,8 +25,7 @@ const Footer = () => {
     const { theme } = useTheme();
 
     return (
-        <footer className={`border-t border-border py-12 ${theme === "dark" ? "bg-aws-navy-deep" : "bg-gray-50"
-            }`}>
+        <footer className={`border-t border-border py-12 bg-background/50 backdrop-blur-md`}>
             <div className="section-container">
                 <div className="grid gap-8 md:grid-cols-3 lg:grid-cols-4">
                     {/* Brand Section */}

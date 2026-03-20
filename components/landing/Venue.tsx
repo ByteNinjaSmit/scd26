@@ -47,7 +47,7 @@ const Venue = () => {
     const isInView = useInView(ref, { once: true, margin: "-100px" });
 
     return (
-        <section ref={ref} id="venue" className="section-padding bg-background relative overflow-hidden">
+        <section ref={ref} id="venue" className="section-padding relative overflow-hidden">
             {/* Background decorations */}
             <div className="absolute inset-0 pointer-events-none">
                 <div className="absolute top-20 left-10 w-72 h-72 bg-primary/5 rounded-full blur-3xl" />

@@ -22,8 +22,8 @@ export default function Home() {
         <Tickets />
         <WhyAttend />
         <Tracks />
-        <Speakers />
         <Agenda />
+        <Speakers />
         <Supporters />
         <Organizers />
         <Venue />

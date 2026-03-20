@@ -1,10 +1,16 @@
 import type { Metadata } from "next";
 import { Analytics } from "@vercel/analytics/next"
+import { Montserrat } from "next/font/google";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as SonnerToaster } from "@/components/ui/sonner";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import "./globals.css";
+
+const montserrat = Montserrat({
+  subsets: ["latin"],
+  variable: "--font-montserrat",
+});
 
 export const metadata: Metadata = {
   title: "AWS Student Community Day 2026 | Sanjivani College of Engineering",
@@ -120,7 +126,7 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className="font-ember antialiased">
+      <body className={`${montserrat.className} antialiased`}>
         <TooltipProvider>
           <ThemeProvider>
             {children}

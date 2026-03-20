@@ -1,221 +1,200 @@
 "use client";
 
-import { motion, useInView } from "framer-motion";
-import { useRef } from "react";
-import { Users, Mic, Calendar, Lightbulb, ArrowRight, ExternalLink } from "lucide-react";
-import { useTheme } from "@/components/ThemeProvider";
+import { useState, useEffect } from "react";
+import { motion } from "framer-motion";
 
 const stats = [
-    { icon: Users, value: "500+", label: "Attendees Expected", color: "from-blue-500 to-cyan-500" },
-    { icon: Mic, value: "10+", label: "Industry Speakers", color: "from-violet-500 to-purple-500" },
-    // { icon: Calendar, value: "1", label: "Day of Learning", color: "from-orange-500 to-amber-500" },
-    // { icon: Lightbulb, value: "8+", label: "Workshop Sessions", color: "from-emerald-500 to-teal-500" },
+    { value: 500, suffix: "+", label: "devs attending in-person" },
+    { value: 12, suffix: "+", label: "legendary tech speakers" },
+    { value: 15, suffix: "+", label: "deep-dive sessions on tech" },
 ];
 
-const socialLinks = [
-    { name: "LinkedIn", url: "https://www.linkedin.com/company/sanjivani-aws-cloud-club/" },
-    { name: "Instagram", url: "https://www.instagram.com/awscloudclubscoe/" },
-    { name: "YouTube", url: "https://youtube.com/@awscloudclubscoe?si=2l-njsZ-1yQ0ARGz" },
-    { name: "X (Twitter)", url: "https://x.com/awscloudclub_" },
-    { name: "Facebook", url: "https://www.facebook.com/profile.php?id=61558989331553" },
-    { name: "WhatsApp", url: "https://www.whatsapp.com/channel/0029VaWLCzx1dAw6VIcsib0v" },
-    { name: "Meetup", url: "https://www.meetup.com/aws-cloud-club-sanjivani-college-of-engineering" },
-    { name: "GitHub", url: "https://github.com/aws-cloud-club-scoe" },
+const focusAreas = [
+    {
+        title: "AGENTIC AI: THE NEXT WAVE",
+        gradient: "bg-gradient-to-r from-violet-400 to-indigo-600",
+        items: [
+            "Learn how to build active, autonomous agentic systems",
+            "Develop multi-agent orchestration for coding, workflows, and business ops",
+            "Explore real-world case studies around multimodal AI (text, code, image, video, speech) in production",
+            "And more."
+        ]
+    },
+    {
+        title: "INTEGRATING &\nSCALING AI USE CASES",
+        gradient: "bg-gradient-to-r from-amber-400 to-orange-600",
+        items: [
+            "Explore how to build apps with AI-first frameworks",
+            "Learn sectoral integrations across fintech, health, commerce, manufacturing, agritech",
+            "Solve for Edge AI and IoT: Intelligence at the device and network edge",
+            "Hone developer productivity with AI-driven testing and more.",
+            "And more."
+        ]
+    },
+    {
+        title: "POWERING AI WITH\nINFRA, CLOUD & DATA",
+        gradient: "bg-gradient-to-r from-pink-400 to-red-600",
+        items: [
+            "Experience the latest in AI-optimised cloud systems, chips, accelerators, and edge infra",
+            "Explore multi-cloud, hybrid, and sovereign cloud for enterprises, build data pipelines, governance, and real-time decision systems, and build for cybersecurity threats, resilience, AI-driven defenses.",
+            "And more."
+        ]
+    },
+    {
+        title: "GCC AND FRONTIER\nTECH OPPORTUNITIES",
+        gradient: "bg-gradient-to-r from-lime-400 to-green-600",
+        items: [
+            "Discover current trends in upskilling, hiring, and preparing the workforce for the AI+multi-tech future at India's top tech enterprises and GCCs",
+            "Explore major breakthroughs in cloud, data, security and AI brought about by these organisations and take your career to the next level."
+        ]
+    }
 ];
 
-const About = () => {
-    const ref = useRef(null);
-    const isInView = useInView(ref, { once: true, margin: "-100px" });
-    const { theme } = useTheme();
+// Reusable component to animate numbers from 0 to target
+const AnimatedCounter = ({ target, suffix }: { target: number, suffix: string }) => {
+    const [count, setCount] = useState(0);
+
+    useEffect(() => {
+        let startTimestamp: number | null = null;
+        const duration = 2000; // Animation duration in milliseconds
+
+        const step = (timestamp: number) => {
+            if (!startTimestamp) startTimestamp = timestamp;
+            const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+            
+            // Ease out quad function
+            const easeOutProgress = progress * (2 - progress);
+            
+            setCount(Math.floor(easeOutProgress * target));
+
+            if (progress < 1) {
+                window.requestAnimationFrame(step);
+            }
+        };
+
+        window.requestAnimationFrame(step);
+    }, [target]);
 
     return (
-        <section ref={ref} id="about" className="section-padding bg-background relative overflow-hidden">
-            {/* Background decorations */}
-            <div className={`absolute top-0 right-0 w-[500px] h-[500px] rounded-full blur-[150px] ${theme === "dark" ? "bg-primary/5" : "bg-primary/3"
-                }`} />
-            <div className={`absolute bottom-0 left-0 w-[400px] h-[400px] rounded-full blur-[120px] ${theme === "dark" ? "bg-blue-500/5" : "bg-blue-500/3"
-                }`} />
+        <span>
+            {count}{suffix}
+        </span>
+    );
+};
 
-            <div className="section-container relative z-10">
-                {/* Header */}
+const About = () => {
+    return (
+        <section id="about" className="relative w-full overflow-hidden py-20 lg:py-32">
+
+            {/* Wavy lines decoration - abstract implementation using SVG */}
+            <div className="absolute top-10 left-0 w-[400px] h-[400px] -translate-x-1/3 opacity-[0.15] z-0 pointer-events-none">
+                <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" className="stroke-white stroke-[0.3] fill-none w-full h-full">
+                    {[...Array(15)].map((_, i) => (
+                        <path key={i} d={`M10,${40 + i * 4} Q60,${10 - i * 2} 100,${50 + i * 3} T190,${50 + i * 2}`} />
+                    ))}
+                </svg>
+            </div>
+
+            <div className="absolute top-1/4 right-0 w-[500px] h-[500px] translate-x-1/3 opacity-[0.15] z-0 pointer-events-none">
+                <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" className="stroke-red-500 stroke-[0.3] fill-none w-full h-full">
+                    {[...Array(20)].map((_, i) => (
+                        <path key={i} d={`M10,${20 + i * 5} Q80,${-10 + i * 8} 120,${60 + i * 2} T190,${80 + i * 4}`} />
+                    ))}
+                </svg>
+            </div>
+
+            <div className="section-container relative z-10 mx-auto px-4 max-w-5xl">
+
+                {/* Intro Text */}
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
-                    animate={isInView ? { opacity: 1, y: 0 } : {}}
-                    transition={{ duration: 0.6 }}
-                    className="text-center mb-12 lg:mb-16"
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    className="mx-auto text-center space-y-8 mb-16 px-4 md:px-10"
                 >
-                    <span className="mb-4 inline-block text-sm font-semibold uppercase tracking-widest text-primary">
-                        About the Event
-                    </span>
-                    <h2 className="mb-4 text-3xl font-bold tracking-tight text-foreground sm:text-4xl lg:text-5xl">
-                        Building the Next Generation of{" "}
-                        <span className="text-gradient-orange">Cloud Leaders</span>
-                    </h2>
-                    <p className="mx-auto max-w-3xl text-muted-foreground text-base sm:text-lg">
-                        For the Students, By the Students — A landmark event designed to revolutionize how learners engage with cloud technology.
-                    </p>
+                    <p className="text-xl md:text-2xl font-medium leading-relaxed text-white">
+AWS Student Community Day Sanjivani 2026 is the region's largest student-led cloud event, organized by the AWS Cloud Club at Sanjivani College of Engineering.
+Building on the momentum of the global AWS community, this landmark event bridges the gap between classroom theory and industry-ready skills through expert-led sessions and live demonstrations.                    </p>
+                    <p className="text-lg md:text-xl font-medium leading-relaxed text-white/90">
+This one-day conference is crafted for students and early career professionals who want to explore the latest in cloud computing, connect with peers and industry experts, and gain practical exposure to AWS.                    </p>
                 </motion.div>
 
-                {/* Main Content Grid */}
-                <div className="grid gap-8 lg:grid-cols-2 lg:gap-12 items-start">
-                    {/* Left - Description Cards */}
-                    <motion.div
-                        initial={{ opacity: 0, x: -30 }}
-                        animate={isInView ? { opacity: 1, x: 0 } : {}}
-                        transition={{ duration: 0.6, delay: 0.1 }}
-                        className="space-y-6"
-                    >
-                        {/* Main Description Card */}
-                        <div className={`relative overflow-hidden rounded-2xl border p-6 sm:p-8 ${theme === "dark"
-                            ? "border-white/10 bg-white/5 backdrop-blur-sm"
-                            : "border-gray-200 bg-white shadow-lg"
-                            }`}>
-                            <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-primary/10 to-transparent rounded-bl-full" />
-                            <div className="relative space-y-4 text-muted-foreground">
-                                <p className="text-base leading-relaxed">
-                                    <strong className="text-foreground">AWS Student Community Day Sanjivani 2026</strong> is the region&apos;s largest student-led
-                                    cloud event, organized by the AWS Cloud Club at Sanjivani College of Engineering.
-                                </p>
-                                <p className="text-base leading-relaxed">
-                                    Building on the momentum of the global AWS community, this landmark event bridges the gap
-                                    between classroom theory and industry-ready skills through expert-led sessions and live demonstrations.
-                                </p>
-                                <p className="text-base leading-relaxed">
-                                    This one-day conference is crafted for students and early career professionals
-                                    who want to explore the latest in cloud computing, connect with peers and
-                                    industry experts, and gain practical exposure to AWS.
-                                </p>
-                            </div>
-                        </div>
-
-                        {/* Highlights Card */}
-                        <div className={`relative overflow-hidden rounded-2xl border p-6 ${theme === "dark"
-                            ? "border-white/10 bg-gradient-to-br from-primary/10 via-transparent to-blue-500/10"
-                            : "border-primary/20 bg-gradient-to-br from-primary/5 via-white to-blue-50"
-                            }`}>
-                            <h3 className="text-lg font-semibold text-foreground mb-4">What to Expect</h3>
-                            <ul className="space-y-3">
-                                {[
-                                    "Expert talks from AWS Heroes and industry leaders",
-                                    "Hands-on workshops with real-world cloud scenarios",
-                                    "Networking with 500+ cloud enthusiasts",
-                                    "Career guidance and live demonstrations",
-                                ].map((item, index) => (
-                                    <motion.li
-                                        key={index}
-                                        initial={{ opacity: 0, x: -10 }}
-                                        animate={isInView ? { opacity: 1, x: 0 } : {}}
-                                        transition={{ duration: 0.4, delay: 0.3 + index * 0.1 }}
-                                        className="flex items-start gap-3"
-                                    >
-                                        <span className="flex-shrink-0 w-5 h-5 rounded-full bg-primary/20 flex items-center justify-center mt-0.5">
-                                            <span className="w-2 h-2 rounded-full bg-primary" />
-                                        </span>
-                                        <span className="text-sm text-muted-foreground">{item}</span>
-                                    </motion.li>
-                                ))}
-                            </ul>
-                        </div>
-
-                        {/* CTA Section */}
-                        <motion.div
-                            initial={{ opacity: 0, y: 20 }}
-                            animate={isInView ? { opacity: 1, y: 0 } : {}}
-                            transition={{ duration: 0.6, delay: 0.5 }}
-                            className="flex flex-wrap gap-4"
-                        >
-                            <a href="#tickets" className="btn-primary group text-base inline-flex">
-                                Get Your Ticket
-                                <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-                            </a>
-                            <a
-                                href="https://konfhub.com/aws-student-community-day-sanjivani-2026"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className={`btn-secondary text-base inline-flex items-center gap-2 ${theme === "dark"
-                                    ? "text-white/80 border-white/20 hover:border-white/40"
-                                    : "text-aws-navy border-aws-navy/30 hover:border-aws-navy/50"
-                                    }`}
+                {/* Stats Grid */}
+                <motion.div
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    className="group"
+                >
+                    <div className="grid grid-cols-1 md:grid-cols-3 mx-auto w-full md:w-11/12 border border-white/20 mb-24 bg-[#2A110B]/60 backdrop-blur-sm hover:border-white/30 transition-colors shadow-2xl">
+                        {stats.map((stat, index) => (
+                            <div
+                                key={index}
+                                className={`p-8 md:p-12 flex flex-col justify-center items-start border-white/10 ${index !== 0 ? 'md:border-l' : ''} ${index !== stats.length - 1 ? 'border-b md:border-b-0' : ''}`}
                             >
-                                View on KonfHub
-                                <ExternalLink className="h-4 w-4" />
-                            </a>
-                        </motion.div>
-                    </motion.div>
-
-                    {/* Right - Stats Grid */}
-                    <motion.div
-                        initial={{ opacity: 0, x: 30 }}
-                        animate={isInView ? { opacity: 1, x: 0 } : {}}
-                        transition={{ duration: 0.6, delay: 0.2 }}
-                        className="space-y-6"
-                    >
-                        {/* Stats Grid */}
-                        <div className="grid grid-cols-2 gap-4">
-                            {stats.map((stat, index) => (
-                                <motion.div
-                                    key={stat.label}
-                                    initial={{ opacity: 0, y: 20 }}
-                                    animate={isInView ? { opacity: 1, y: 0 } : {}}
-                                    transition={{ duration: 0.4, delay: 0.3 + index * 0.1 }}
-                                    className={`group relative overflow-hidden rounded-2xl border p-5 transition-all duration-300 hover:-translate-y-1 ${theme === "dark"
-                                        ? "border-white/10 bg-white/5 hover:bg-white/10"
-                                        : "border-gray-200 bg-white hover:shadow-lg"
-                                        }`}
-                                >
-                                    <div className={`absolute top-0 right-0 w-20 h-20 translate-x-6 -translate-y-6 rounded-full bg-gradient-to-br ${stat.color} opacity-20 transition-transform group-hover:scale-150`} />
-                                    <div className={`inline-flex rounded-xl p-2.5 bg-gradient-to-br ${stat.color} mb-3`}>
-                                        <stat.icon className="h-5 w-5 text-white" />
-                                    </div>
-                                    <div className="text-2xl sm:text-3xl font-bold text-foreground">
-                                        {stat.value}
-                                    </div>
-                                    <div className="mt-1 text-xs sm:text-sm text-muted-foreground">
-                                        {stat.label}
-                                    </div>
-                                </motion.div>
-                            ))}
-                        </div>
-
-                        {/* Organizer Card */}
-                        <motion.div
-                            initial={{ opacity: 0, y: 20 }}
-                            animate={isInView ? { opacity: 1, y: 0 } : {}}
-                            transition={{ duration: 0.4, delay: 0.6 }}
-                            className={`relative overflow-hidden rounded-2xl border p-6 ${theme === "dark"
-                                ? "border-white/10 bg-white/5"
-                                : "border-gray-200 bg-white"
-                                }`}
-                        >
-                            <h3 className="text-lg font-semibold text-foreground mb-2">Organized By</h3>
-                            <p className="text-sm text-muted-foreground mb-4">
-                                AWS Cloud Club at Sanjivani College of Engineering
-                            </p>
-                            <p className="text-xs text-muted-foreground italic mb-4">
-                                &quot;Stay Connected, Grow Together&quot;
-                            </p>
-
-                            {/* Social Links */}
-                            <div className="flex flex-wrap gap-2">
-                                {socialLinks.map((link) => (
-                                    <a
-                                        key={link.name}
-                                        href={link.url}
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        className={`inline-flex items-center gap-2 rounded-lg px-3 py-2 text-xs font-medium transition-all duration-200 ${theme === "dark"
-                                            ? "bg-white/10 text-white/80 hover:bg-white/20"
-                                            : "bg-gray-100 text-gray-700 hover:bg-gray-200"
-                                            }`}
-                                    >
-                                        <ExternalLink className="h-3 w-3" />
-                                        {link.name}
-                                    </a>
-                                ))}
+                                <h3 className="text-5xl md:text-7xl font-black text-white mb-4 tracking-tight">
+                                    <AnimatedCounter target={stat.value} suffix={stat.suffix} />
+                                </h3>
+                                <p className="text-base md:text-lg text-white/80 max-w-[150px] leading-snug">{stat.label}</p>
                             </div>
-                        </motion.div>
-                    </motion.div>
+                        ))}
+                    </div>
+                </motion.div>
+
+                {/* Key Areas Title */}
+                <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    className="text-center mb-16"
+                >
+                    <h2 className="text-4xl md:text-6xl font-black text-white uppercase tracking-tighter">
+                        KEY AREAS IN FOCUS
+                    </h2>
+                </motion.div>
+
+                {/* 4 Cards Grid */}
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-12 lg:gap-x-12 lg:gap-y-16 mx-auto mt-16 max-w-5xl">
+                    {focusAreas.map((area, index) => {
+                        // Create scrambled effect: Evens look slightly pulled up and left, Odds pulled down and right
+                        const isEven = index % 2 === 0;
+                        const staggerClass = isEven ? "md:-mt-8 md:-ml-4" : "md:mt-8 md:ml-4";
+                        
+                        // Alternate the rotation direction of the titles
+                        const rotationClass = isEven ? "-rotate-2" : "rotate-2";
+
+                        return (
+                            <motion.div
+                                key={index}
+                                initial={{ opacity: 0, y: 30 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true }}
+                                transition={{ delay: index * 0.1 }}
+                                className={`bg-[#3D323A]/30 backdrop-blur-md rounded-xl p-6 lg:p-8 flex flex-col border border-white/10 hover:border-white/30 hover:bg-[#3D323A]/60 transition-all duration-300 shadow-xl group ${staggerClass}`}
+                            >
+                                {/* Gradient Pill Title - Permanently tilted, scales on hover */}
+                                <div className="flex justify-center mb-6 relative -top-12">
+                                    <div className={`px-5 py-3 md:px-6 w-11/12 ${area.gradient} rounded-sm shadow-xl transform ${rotationClass} transition-transform duration-300 ease-out group-hover:scale-105 group-hover:shadow-2xl`}>
+                                        <h3 className="text-white font-black text-lg md:text-xl xl:text-2xl uppercase tracking-wider text-center whitespace-pre-line leading-tight drop-shadow-md">
+                                            {area.title}
+                                        </h3>
+                                    </div>
+                                </div>
+
+                                {/* Bullet Points (Negative margin to pull list up since title is shifted up) */}
+                                <ul className="space-y-5 -mt-6">
+                                    {area.items.map((item, itemIndex) => (
+                                        <li key={itemIndex} className="flex items-start text-white/90">
+                                            <span className="mr-4 mt-2 h-1 w-1 rounded-full bg-white flex-shrink-0" />
+                                            <span className="text-sm md:text-[15px] font-medium leading-relaxed">{item}</span>
+                                        </li>
+                                    ))}
+                                </ul>
+                            </motion.div>
+                        );
+                    })}
                 </div>
+
             </div>
         </section>
     );
