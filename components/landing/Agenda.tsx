@@ -230,7 +230,7 @@ const tracks = [
 ];
 
 const closingSchedule = [
-    { time: "4:00 PM", title: "Hi-Tea & Soul String Performance", icon: Music, accent: "#ec4899" },
+    { time: "4:00 PM", title: "Hi-Tea & Music Performance", icon: Music, accent: "#ec4899" },
     { time: "4:30 PM", title: "Closing Note & Goodies Distribution", icon: Gift, accent: "#ff9900" },
 ];
 
