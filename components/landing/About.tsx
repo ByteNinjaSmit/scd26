@@ -4,48 +4,46 @@ import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 
 const stats = [
-    { value: 500, suffix: "+", label: "devs attending in-person" },
-    { value: 12, suffix: "+", label: "legendary tech speakers" },
-    { value: 15, suffix: "+", label: "deep-dive sessions on tech" },
+    { value: 600, suffix: "+", label: "devs attending in-person" },
+    { value: 10, suffix: "+", label: "legendary tech speakers" },
+    { value: 12, suffix: "+", label: "deep-dive sessions on tech" },
 ];
 
 const focusAreas = [
     {
-        title: "AGENTIC AI: THE NEXT WAVE",
+        title: "EXPERT-LED\nSESSIONS",
         gradient: "bg-gradient-to-r from-violet-400 to-indigo-600",
         items: [
-            "Learn how to build active, autonomous agentic systems",
-            "Develop multi-agent orchestration for coding, workflows, and business ops",
-            "Explore real-world case studies around multimodal AI (text, code, image, video, speech) in production",
-            "And more."
+            "Learn from AWS professionals and industry leaders sharing real-world insights and best practices.",
+            "Explore architectural patterns and live demonstrations for scalable cloud solutions.",
+            "Get exclusive tips on optimizing performance and security for large-scale deployments."
         ]
     },
     {
-        title: "INTEGRATING &\nSCALING AI USE CASES",
+        title: "AGENTIC AI &\nGENAI",
         gradient: "bg-gradient-to-r from-amber-400 to-orange-600",
         items: [
-            "Explore how to build apps with AI-first frameworks",
-            "Learn sectoral integrations across fintech, health, commerce, manufacturing, agritech",
-            "Solve for Edge AI and IoT: Intelligence at the device and network edge",
-            "Hone developer productivity with AI-driven testing and more.",
-            "And more."
+            "Dive deep into the latest advancements in AI, building autonomous agents, and scaling GenAI applications.",
+            "Integrate Foundation Models with Amazon Bedrock and troubleshoot production scaling challenges.",
+            "Master Prompt Engineering and Retrieval-Augmented Generation (RAG) for smarter AI responses."
         ]
     },
     {
-        title: "POWERING AI WITH\nINFRA, CLOUD & DATA",
+        title: "NETWORKING\nOPPORTUNITIES",
         gradient: "bg-gradient-to-r from-pink-400 to-red-600",
         items: [
-            "Experience the latest in AI-optimised cloud systems, chips, accelerators, and edge infra",
-            "Explore multi-cloud, hybrid, and sovereign cloud for enterprises, build data pipelines, governance, and real-time decision systems, and build for cybersecurity threats, resilience, AI-driven defenses.",
-            "And more."
+            "Connect with peers, speakers, and cloud professionals through breakout discussions and group coding.",
+            "Build meaningful relationships and professional connections that last beyond the event day.",
+            "Interact with AWS Community Builders and Heroes about global community leadership and growth."
         ]
     },
     {
-        title: "GCC AND FRONTIER\nTECH OPPORTUNITIES",
+        title: "CAREER\nGROWTH",
         gradient: "bg-gradient-to-r from-lime-400 to-green-600",
         items: [
-            "Discover current trends in upskilling, hiring, and preparing the workforce for the AI+multi-tech future at India's top tech enterprises and GCCs",
-            "Explore major breakthroughs in cloud, data, security and AI brought about by these organisations and take your career to the next level."
+            "Gain exposure to real-world cloud use cases, career pathways, and industry-demanded skillsets.",
+            "Learn how certifications and hands-on projects can accelerate your technical career trajectory.",
+            "Discover internship and job opportunities in the cloud ecosystem directly from hiring experts."
         ]
     }
 ];
@@ -149,7 +147,7 @@ This one-day conference is crafted for students and early career professionals w
                     className="text-center mb-16"
                 >
                     <h2 className="text-4xl md:text-6xl font-black text-white uppercase tracking-tighter">
-                        KEY AREAS IN FOCUS
+                        WHAT YOU'LL EXPERIENCE
                     </h2>
                 </motion.div>
 
