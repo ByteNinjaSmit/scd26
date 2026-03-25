@@ -16,8 +16,8 @@ interface Member {
 
 const organizers: Member[] = [
     { name: "Prof. Atul Mokal", designation: "Organizer", gradient: "from-blue-600 to-indigo-600", image: "/organiser/1536246949775-atul mokal.jpg" },
-    { name: "Soham Deshmukh", designation: "Organizer", gradient: "from-primary to-orange-600" },
-    { name: "Bhoomi Raut", designation: "Organizer", gradient: "from-purple-600 to-violet-600" },
+    { name: "Soham Deshmukh", designation: "Organizer", gradient: "from-primary to-orange-600", image: "/organiser/soham-deshmukh.jpeg" },
+    { name: "Bhoomi Raut", designation: "Organizer", gradient: "from-purple-600 to-violet-600", image: "/organiser/bhoomi-raut.png"},
 ];
 
 const operationsLeads: Member[] = [
@@ -38,7 +38,7 @@ const coreCommitteeData = [
     { name: "Chanchal Shinde", image: "/organiser/IMG-20260313-WA0024 - Chanchal Shinde.jpg" },
     { name: "Chetana Rajput", image: "/organiser/IMG_20260317_230922 - Chetana Rajput.jpg" },
     { name: "Gagan Gaware", image: "/organiser/IMG_4465 - Gagan Gaware.png" },
-    { name: "Gayatri Bakale" },
+    { name: "Gayatri Bakale", image: "/organiser/file_00000000dc78720bafb6361ac1b784f0~2 - gayatri Bakle.png" },
     { name: "Harshad Vighe", image: "/organiser/1766232476700 - Harshad Vighe.jpg" },
     { name: "Harshada Salunke", image: "/organiser/photo of harshada.s - Harshada Salunke.jpeg" },
     { name: "Hindavi Shewale", image: "/organiser/Screenshot_20250713-094454_Instagram - Hindavi Shewale.jpg" },
@@ -49,15 +49,16 @@ const coreCommitteeData = [
     { name: "More Nishad", image: "/organiser/IMG_7469 - Nishad More.jpeg" },
     { name: "Pooja Daware", image: "/organiser/IMG-20250807-WA0011 - Pooja Daware.jpg" },
     { name: "Prerna Bhamre", image: "/organiser/IMG-20260204-WA0002 - Prerna Bhamre.jpg" },
-    { name: "Priyanka Pawar", image: "/organiser/IMG-20260318-WA0006(1) - Priyanka Tribhuvan.jpg" },
+    { name: "Priyanka Tribhuvan", image: "/organiser/IMG-20260318-WA0006(1) - Priyanka Tribhuvan.jpg" },
+    { name: "Priyanka Pawar", image: "/organiser/51370-removebg-preview - Priyanka Pawar.png" },
     { name: "Ritesh Gursal", image: "/organiser/IMG_20260314_201209 - Ritesh Gursal.jpg" },
     { name: "Rushikesh Arsule", image: "/organiser/IMG_20260323_204855 - Rushikesh Arsule.jpg" },
     { name: "Sahil Bansod", image: "/organiser/file_000000005b2071fa9a8a271a952379ab - Sahil Bansod.png" },
     { name: "Saikrishn Shelar", image: "/organiser/IMG_20260317_170018 - Saikrishn Shelar.jpg" },
     { name: "Saish Aher", image: "/organiser/IMG_20260323_233037 - Saish Aher.png" },
     { name: "Sakshi Sandip Navale", image: "/organiser/DSC_3228 - Sakshi Navale.JPG" },
-    { name: "Samradni Dahiphale" },
-    { name: "Samruddhi Bhosale" },
+    { name: "Samradni Dahiphale", image: "/organiser/samradhni dahiphale.jpeg" },
+    { name: "Samruddhi Bhosale", image: "/organiser/samruddhi bhosale.jpeg" },
     { name: "Samruddhi Ghorpade", image: "/organiser/IMG_20260317_160326 - Samruddhi Ghorpade.jpg" },
     { name: "Sanskruti Shinde", image: "/organiser/IMG_20240202_170719~2 - Sanskruti Shinde.jpg" },
     { name: "Vaishnavi Muthe", image: "/organiser/IMG_20260208_211756 - Vaishnavi Muthe.jpg" },
@@ -92,10 +93,14 @@ const MemberCard = ({ member, index, isSmall = false }: { member: Member, index:
         >
             <div className="relative mb-4">
                 {/* Glow Effect */}
-                <div className={`absolute -inset-2 bg-gradient-to-br ${member.gradient} opacity-0 blur-lg rounded-full group-hover:opacity-20 transition-opacity duration-500`} />
+                <div className={`absolute -inset-2 bg-gradient-to-br ${member.gradient} opacity-0 blur-lg rounded-full group-hover:opacity-40 transition-opacity duration-500`} />
                 
                 {/* Avatar Circle */}
-                <div className={`${isSmall ? 'w-16 h-16 sm:w-20 sm:h-20' : 'w-24 h-24 sm:w-28 sm:h-28'} rounded-full p-[1px] bg-gradient-to-b from-white/20 to-transparent relative z-10 overflow-hidden bg-card`}>
+                <motion.div 
+                    whileHover={{ scale: 1.1, rotate: 2 }}
+                    transition={{ type: "spring", stiffness: 400, damping: 10 }}
+                    className={`${isSmall ? 'w-16 h-16 sm:w-20 sm:h-20' : 'w-24 h-24 sm:w-28 sm:h-28'} rounded-full p-[1px] bg-gradient-to-b from-white/20 to-transparent relative z-10 overflow-hidden bg-card cursor-pointer`}
+                >
                     <div className="w-full h-full rounded-full overflow-hidden bg-zinc-900 border border-white/5 flex items-center justify-center">
                         {member.image ? (
                             <Image 
@@ -103,7 +108,7 @@ const MemberCard = ({ member, index, isSmall = false }: { member: Member, index:
                                 alt={member.name} 
                                 width={120} 
                                 height={120} 
-                                className="w-full h-full object-cover"
+                                className="w-full h-full object-cover transition-all duration-500"
                             />
                         ) : (
                             <div className={`w-full h-full bg-gradient-to-br ${member.gradient} flex items-center justify-center opacity-80 group-hover:opacity-100 transition-opacity`}>
@@ -113,7 +118,7 @@ const MemberCard = ({ member, index, isSmall = false }: { member: Member, index:
                             </div>
                         )}
                     </div>
-                </div>
+                </motion.div>
             </div>
             
             <div className="text-center">
