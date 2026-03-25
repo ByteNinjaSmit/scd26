@@ -22,7 +22,7 @@ const speakers = [
         designation: "Captain",
         company: "AWS Cloud Club - SCOE",
         topic: "Beyond the Console: Leading the Next Generation of Cloud Builders",
-        image: "/speakers/soham-deshmukh.jpeg",
+        image: "/organiser/soham-deshmukh.jpeg",
         featured: false,
         gradient: "from-teal-500 to-emerald-600",
         tag: "Speaker",
@@ -30,7 +30,7 @@ const speakers = [
     {
         name: "Bhoomi Raut",
         designation: "AWS Community Builder",
-        company: "Persistent Systems",
+        company: "Former AWS Cloud Club Captain'2024",
         topic: "Kiro : Spec Driven Development",
         image: "/speakers/bhoomi-raut.png",
         featured: false,
