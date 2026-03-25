@@ -6,7 +6,7 @@ A high-performance, responsive landing page for the **AWS Student Community Day 
 
 Organized by **AWS Cloud Club Sanjivani**.
 
-## ✨ Key Features
+## ✨ Key Features 
 
 - **Modern & Premium UI:** Crafted using modern web aesthetics, offering an engaging experience tailored for developers and students.
 - **Responsive Design:** Completely fluid and responsive layout, ensuring an optimal viewing experience on mobile devices, tablets, and desktops.
