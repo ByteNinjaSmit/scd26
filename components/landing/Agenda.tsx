@@ -62,9 +62,9 @@ const mainStageSchedule: MainStageItem[] = [
         tagColor: "bg-blue-600",
     },
     {
-        time: "10:20 AM",
+        time: "10:15 AM",
         title: "Keynote Address",
-        description: "The opening keynote setting the vision for cloud innovation and the future of AWS for students and professionals.",
+        description: "From Student to Builder: Your Journey to Cloud Innovation Starts Now",
         tag: "Keynote",
         tagColor: "bg-[#ff9900]",
         speakers: [
@@ -73,21 +73,21 @@ const mainStageSchedule: MainStageItem[] = [
                 designation: "Developer Advocate",
                 company: "AWS",
                 gradient: "from-[#ff9900] to-[#e68800]",
-                image: "/speakers/vishal-alhat.jpg", // vishal-alhat.jpg missing
+                image: "/speakers/vishal-alhat.jpg",
             },
         ],
     },
     {
-        time: "11:00 AM",
-        title: "Industry-Academia Connect",
-        description: "A moderated panel discussion exploring how industry and academia can collaborate to build the next generation of cloud professionals.",
+        time: "10:55 AM",
+        title: "Panel Discussion",
+        description: "Industry-Academia Connect - A moderated panel discussion exploring how industry and academia can collaborate.",
         tag: "Panel Discussion",
         tagColor: "bg-emerald-600",
     },
     {
-        time: "11:40 AM",
-        title: "Kiro : SDD",
-        description: "Explore spec-driven development with Kiro and how it transforms the way modern applications are built and deployed.",
+        time: "11:35 AM",
+        title: "Beyond Prompts: Build AI-Powered Apps with Kiro",
+        description: "Explore the next generation of AI applications and how to build them using Kiro.",
         tag: "Tech Talk",
         tagColor: "bg-rose-600",
         speakers: [
@@ -96,12 +96,12 @@ const mainStageSchedule: MainStageItem[] = [
                 designation: "AWS Community Builder",
                 company: "Persistent Systems",
                 gradient: "from-violet-500 to-purple-600",
-                image: "/speakers/bhoomi-raut.png", // bhoomi-raut.jpg missing
+                image: "/speakers/bhoomi-raut.png",
             },
         ],
     },
     {
-        time: "12:15 PM",
+        time: "12:10 PM",
         title: "Building an Event-Driven Three-Tier Application on AWS",
         description: "Deep dive into building scalable, decoupled applications using AWS event-driven services.",
         tag: "Tech Talk",
@@ -117,7 +117,7 @@ const mainStageSchedule: MainStageItem[] = [
         ],
     },
     {
-        time: "12:50 PM",
+        time: "12:45 PM",
         title: "Beyond the Console: Leading the Next Generation of Cloud Builders",
         description: "A session focused on student leadership and community building in the cloud ecosystem.",
         tag: "Community",
@@ -133,7 +133,7 @@ const mainStageSchedule: MainStageItem[] = [
         ],
     },
     {
-        time: "1:15 PM",
+        time: "1:10 PM",
         title: "Lunch & Networking",
         tag: "Break",
         tagColor: "bg-green-600",
@@ -161,35 +161,6 @@ const tracks = [
             },
             {
                 time: "2:50 PM",
-                speaker: "Sankalp Paranjpe",
-                designation: "Cloud Security Consultant",
-                company: "Big4 Consulting",
-                title: "Introduction to AWS MCP Servers",
-                gradient: "from-cyan-500 to-blue-600",
-                image: "/speakers/sankalp_paranjpe.JPG",
-            },
-            {
-                time: "3:25 PM",
-                speaker: "Himanshu Sangshetti",
-                designation: "Solutions Associate",
-                company: "ZS",
-                title: "Building Stateful Systems with Lambda Durable Functions, EventBridge, and Step Functions",
-                gradient: "from-rose-500 to-pink-600",
-                image: "/speakers/1730829822070 - Himanshu Sangshetti.jpeg",
-            },
-        ],
-    },
-    {
-        name: "Track 2",
-        venue: "Seminar Hall",
-        icon: Cloud,
-        gradient: "from-[#0073bb] to-[#2e8dd6]",
-        accentBorder: "border-blue-200 dark:border-blue-800/50",
-        cardAccentBg: "bg-blue-50/80 dark:bg-blue-950/20",
-        accent: "#0073bb",
-        sessions: [
-            {
-                time: "2:15 PM",
                 speaker: "Tribhuvan Mishra",
                 designation: "Cloud Infra Specialist",
                 company: "Wipro Technologies",
@@ -198,13 +169,42 @@ const tracks = [
                 image: "/speakers/IMG_1774 - Tribhuban Mishra.png",
             },
             {
-                time: "2:50 PM",
+                time: "3:25 PM",
                 speaker: "Abhishek Maurya",
                 designation: "Senior Cloud Engineer",
                 company: "Orange Business India",
                 title: '"But It Works on My Machine!": A Student\'s Guide to Docker, CI/CD, and Cloud Deployments',
                 gradient: "from-fuchsia-500 to-purple-600",
                 image: "/speakers/IMG_7376 - Abhishek.JPG",
+            },
+        ],
+    },
+    {
+        name: "Track 2",
+        venue: "Seminar Hall (101), SU",
+        icon: Cloud,
+        gradient: "from-[#0073bb] to-[#2e8dd6]",
+        accentBorder: "border-blue-200 dark:border-blue-800/50",
+        cardAccentBg: "bg-blue-50/80 dark:bg-blue-950/20",
+        accent: "#0073bb",
+        sessions: [
+            {
+                time: "2:15 PM",
+                speaker: "Sankalp Paranjpe",
+                designation: "Cloud Security Consultant",
+                company: "Big4 Consulting",
+                title: "Introduction to AWS MCP Servers",
+                gradient: "from-cyan-500 to-blue-600",
+                image: "/speakers/sankalp_paranjpe.JPG",
+            },
+            {
+                time: "2:50 PM",
+                speaker: "Himanshu Sangshetti",
+                designation: "Solutions Associate",
+                company: "ZS",
+                title: "Building Stateful Systems with Lambda Durable Functions, EventBridge, and Step Functions",
+                gradient: "from-rose-500 to-pink-600",
+                image: "/speakers/1730829822070 - Himanshu Sangshetti.jpeg",
             },
             {
                 time: "3:25 PM",
@@ -220,7 +220,7 @@ const tracks = [
 ];
 
 const closingSchedule = [
-    { time: "4:00 PM", title: "Hi-Tea & Music Performance", icon: Music, accent: "#ec4899" },
+    { time: "4:00 PM", title: "Hi-Tea & Soul String Performance", icon: Music, accent: "#ec4899" },
     { time: "4:30 PM", title: "Closing Note & Goodies Distribution", icon: Gift, accent: "#ff9900" },
 ];
 
