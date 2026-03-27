@@ -18,26 +18,6 @@ import Image from "next/image";
 
 const speakers = [
     {
-        name: "Soham Deshmukh",
-        designation: "Captain",
-        company: "AWS Cloud Club - SCOE",
-        topic: "Beyond the Console: Leading the Next Generation of Cloud Builders",
-        image: "/organiser/soham-deshmukh.jpeg",
-        featured: false,
-        gradient: "from-teal-500 to-emerald-600",
-        tag: "Speaker",
-    },
-    {
-        name: "Bhoomi Raut",
-        designation: "AWS Community Builder",
-        company: "Former AWS Cloud Club Captain'2024",
-        topic: "Kiro : Spec Driven Development",
-        image: "/speakers/bhoomi-raut.png",
-        featured: false,
-        gradient: "from-violet-500 to-purple-600",
-        tag: "Community Builder",
-    },
-    {
         name: "Vishal Alhat",
         designation: "Developer Advocate",
         company: "AWS",
@@ -46,6 +26,16 @@ const speakers = [
         featured: true,
         gradient: "from-[#ff9900] to-[#e68800]",
         tag: "Keynote Speaker",
+    },
+    {
+        name: "Tribhuvan Mishra",
+        designation: "Cloud Infra Specialist",
+        company: "Wipro Technologies",
+        topic: "Building Production-Ready GenAI Applications on AWS",
+        image: "/speakers/IMG_1774 - Tribhuban Mishra.png",
+        featured: false,
+        gradient: "from-emerald-500 to-teal-600",
+        tag: "Cloud Specialist",
     },
     {
         name: "Ramandeep Chandna",
@@ -68,14 +58,24 @@ const speakers = [
         tag: "DevOps Lead",
     },
     {
-        name: "Tribhuvan Mishra",
-        designation: "Cloud Infra Specialist",
-        company: "Wipro Technologies",
-        topic: "Building Production-Ready GenAI Applications on AWS",
-        image: "/speakers/IMG_1774 - Tribhuban Mishra.png",
+        name: "Abhishek Maurya",
+        designation: "Senior Cloud Engineer",
+        company: "Orange Business India",
+        topic: "But It Works on My Machine!: A Student's Guide to Docker, CI/CD, and Cloud Deployments",
+        image: "/speakers/IMG_7376 - Abhishek.JPG",
         featured: false,
-        gradient: "from-emerald-500 to-teal-600",
-        tag: "Cloud Specialist",
+        gradient: "from-fuchsia-500 to-purple-600",
+        tag: "Cloud Engineer",
+    },
+    {
+        name: "Sankalp Paranjpe",
+        designation: "Cloud Security Consultant",
+        company: "Big4 Consulting",
+        topic: "Introduction to AWS MCP Servers",
+        image: "/speakers/sankalp_paranjpe.JPG",
+        featured: false,
+        gradient: "from-cyan-500 to-blue-600",
+        tag: "Security Consultant",
     },
     {
         name: "Himanshu Sangshetti",
@@ -88,16 +88,26 @@ const speakers = [
         tag: "Solutions Expert",
     },
     {
-        name: "Abhishek Maurya",
-        designation: "Senior Cloud Engineer",
-        company: "Orange Business India",
-        topic: "But It Works on My Machine!: A Student's Guide to Docker, CI/CD, and Cloud Deployments",
-        image: "/speakers/IMG_7376 - Abhishek.JPG",
+        name: "Bhoomi Raut",
+        designation: "AWS Community Builder",
+        company: "Founding AWS Cloud Club Captain'2024",
+        topic: "Kiro : Spec Driven Development",
+        image: "/speakers/bhoomi-raut.png",
         featured: false,
-        gradient: "from-fuchsia-500 to-purple-600",
-        tag: "Cloud Engineer",
+        gradient: "from-violet-500 to-purple-600",
+        tag: "Community Builder",
     },
     {
+        name: "Soham Deshmukh",
+        designation: "Captain",
+        company: "AWS Cloud Club - SCOE",
+        topic: "Beyond the Console: Leading the Next Generation of Cloud Builders",
+        image: "/organiser/soham-deshmukh.jpeg",
+        featured: false,
+        gradient: "from-teal-500 to-emerald-600",
+        tag: "Speaker",
+    },
+     {
         name: "Ganesh Rajesh Lad",
         designation: "COE",
         company: "Cloudera Inc.",
@@ -107,28 +117,17 @@ const speakers = [
         gradient: "from-amber-500 to-orange-600",
         tag: "Workshop Lead",
     },
-    
-    {
-        name: "Sankalp Paranjpe",
-        designation: "Cloud Security Consultant",
-        company: "Big4 Consulting",
-        topic: "Introduction to AWS MCP Servers",
-        image: "/speakers/sankalp_paranjpe.JPG",
-        featured: false,
-        gradient: "from-cyan-500 to-blue-600",
-        tag: "Security Consultant",
-    },
 ];
 
 /* ─────────── HELPERS ─────────── */
 
 function getInitials(name: string) {
     return name
-        .split(" ")
-        .map((n) => n[0])
-        .join("")
-        .toUpperCase()
-        .slice(0, 2);
+    .split(" ")
+    .map((n) => n[0])
+    .join("")
+    .toUpperCase()
+    .slice(0, 2);
 }
 
 /* ─────────── SPEAKER PROFILE ─────────── */

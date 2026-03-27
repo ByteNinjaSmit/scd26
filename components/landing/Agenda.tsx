@@ -73,7 +73,7 @@ const mainStageSchedule: MainStageItem[] = [
                 designation: "Developer Advocate",
                 company: "AWS",
                 gradient: "from-[#ff9900] to-[#e68800]",
-                image: "", // vishal-alhat.jpg missing
+                image: "/speakers/vishal-alhat.jpg", // vishal-alhat.jpg missing
             },
         ],
     },
@@ -96,7 +96,7 @@ const mainStageSchedule: MainStageItem[] = [
                 designation: "AWS Community Builder",
                 company: "Persistent Systems",
                 gradient: "from-violet-500 to-purple-600",
-                image: "", // bhoomi-raut.jpg missing
+                image: "/speakers/bhoomi-raut.png", // bhoomi-raut.jpg missing
             },
         ],
     },
@@ -128,7 +128,7 @@ const mainStageSchedule: MainStageItem[] = [
                 designation: "Captain",
                 company: "AWS Cloud Club - SCOE",
                 gradient: "from-teal-500 to-emerald-600",
-                image: "", 
+                image: "/speakers/soham-deshmukh.jpeg",
             },
         ],
     },
@@ -166,7 +166,7 @@ const tracks = [
                 company: "Big4 Consulting",
                 title: "Introduction to AWS MCP Servers",
                 gradient: "from-cyan-500 to-blue-600",
-                image: "",
+                image: "/speakers/sankalp_paranjpe.JPG",
             },
             {
                 time: "3:25 PM",
@@ -181,7 +181,7 @@ const tracks = [
     },
     {
         name: "Track 2",
-        venue: "TEDx / Seminar Hall",
+        venue: "Seminar Hall",
         icon: Cloud,
         gradient: "from-[#0073bb] to-[#2e8dd6]",
         accentBorder: "border-blue-200 dark:border-blue-800/50",
@@ -213,7 +213,7 @@ const tracks = [
                 company: "Cloudera Inc.",
                 title: "Application or website hosting on aws using loadbalancing and auto scaling with High availability",
                 gradient: "from-amber-500 to-orange-600",
-                image: "/speakers/IMG_8583 - Ganesh Taware.jpeg",
+                image: "/speakers/ganeshh-lad.jpeg",
             },
         ],
     },
@@ -445,7 +445,7 @@ const Agenda = () => {
                                                         >
                                                             Session {sIdx + 1}
                                                         </span>
-                                                        <span 
+                                                        <span
                                                             className="text-xl sm:text-2xl font-black text-white tracking-wide transition-colors duration-300"
                                                         >
                                                             {session.time}
