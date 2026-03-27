@@ -94,7 +94,7 @@ const mainStageSchedule: MainStageItem[] = [
             {
                 name: "Bhoomi Raut",
                 designation: "AWS Community Builder",
-                company: "Persistent Systems",
+                company: "Founding AWS Club Captain, Ahilyanagar",
                 gradient: "from-violet-500 to-purple-600",
                 image: "/speakers/bhoomi-raut.png",
             },
@@ -192,7 +192,7 @@ const tracks = [
                 time: "2:15 PM",
                 speaker: "Sankalp Paranjpe",
                 designation: "Cloud Security Consultant",
-                company: "Big4 Consulting",
+                company: "AWS Community Builder",
                 title: "Introduction to AWS MCP Servers",
                 gradient: "from-cyan-500 to-blue-600",
                 image: "/speakers/sankalp_paranjpe.JPG",
