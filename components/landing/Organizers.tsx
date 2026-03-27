@@ -16,8 +16,8 @@ interface Member {
 
 const organizers: Member[] = [
     { name: "Prof. Atul Mokal", designation: "Organizer", gradient: "from-blue-600 to-indigo-600", image: "/organiser/1536246949775-atul mokal.jpg" },
-    { name: "Soham Deshmukh", designation: "Organizer", gradient: "from-primary to-orange-600", image: "/organiser/soham-deshmukh.jpeg" },
     { name: "Bhoomi Raut", designation: "Organizer", gradient: "from-purple-600 to-violet-600", image: "/organiser/bhoomi-raut.png"},
+    { name: "Soham Deshmukh", designation: "Organizer", gradient: "from-primary to-orange-600", image: "/organiser/soham-deshmukh.jpeg" },
 ];
 
 const operationsLeads: Member[] = [
