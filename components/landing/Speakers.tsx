@@ -112,7 +112,7 @@ const speakers = [
         designation: "COE",
         company: "Cloudera Inc.",
         topic: "Application or website hosting on aws using loadbalancing and auto scaling with High availability",
-        image: "/speakers/ganesh-lad.png",
+        image: "/speakers/ganeshh-lad.jpeg",
         featured: false,
         gradient: "from-amber-500 to-orange-600",
         tag: "Workshop Lead",
