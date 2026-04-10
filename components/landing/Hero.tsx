@@ -1,95 +1,9 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ArrowRight, Calendar, MapPin, Users, Ticket } from "lucide-react";
+import { ArrowRight, Users, Trophy, Image as ImageIcon, Bell, Mic } from "lucide-react";
 import { useTheme } from "@/components/ThemeProvider";
-import { useState, useEffect } from "react";
 import LightRays from "@/components/ui/LightRays";
-
-// Countdown Timer Component
-const CountdownTimer = () => {
-    const { theme } = useTheme();
-    const targetDate = new Date("2026-03-28T07:00:00+05:30").getTime();
-
-    const [timeLeft, setTimeLeft] = useState({
-        days: 0,
-        hours: 0,
-        minutes: 0,
-        seconds: 0,
-    });
-
-    useEffect(() => {
-        const calculateTimeLeft = () => {
-            const now = new Date().getTime();
-            const difference = targetDate - now;
-
-            if (difference > 0) {
-                setTimeLeft({
-                    days: Math.floor(difference / (1000 * 60 * 60 * 24)),
-                    hours: Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)),
-                    minutes: Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60)),
-                    seconds: Math.floor((difference % (1000 * 60)) / 1000),
-                });
-            }
-        };
-
-        calculateTimeLeft();
-        const timer = setInterval(calculateTimeLeft, 1000);
-        return () => clearInterval(timer);
-    }, [targetDate]);
-
-    const timeUnits = [
-        { label: "Days", value: timeLeft.days },
-        { label: "Hours", value: timeLeft.hours },
-        { label: "Minutes", value: timeLeft.minutes },
-        { label: "Seconds", value: timeLeft.seconds },
-    ];
-
-    return (
-        <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.5 }}
-            className="mt-8 flex flex-col items-center"
-        >
-            <div className={`text-xs font-semibold uppercase tracking-widest mb-3 ${theme === "dark" ? "text-white/50" : "text-aws-navy/50"
-                }`}>
-                Event Starts In
-            </div>
-            <div className="flex flex-wrap justify-center gap-3">
-                {timeUnits.map((unit, index) => (
-                    <motion.div
-                        key={unit.label}
-                        initial={{ opacity: 0, scale: 0.8 }}
-                        animate={{ opacity: 1, scale: 1 }}
-                        transition={{ duration: 0.4, delay: 0.6 + index * 0.1 }}
-                        className={`relative overflow-hidden rounded-2xl border backdrop-blur-md px-4 py-3 min-w-[70px] sm:min-w-[80px] text-center ${theme === "dark"
-                            ? "border-white/10 bg-white/5"
-                            : "border-aws-navy/10 bg-aws-navy/5"
-                            }`}
-                    >
-                        {/* Animated gradient border effect */}
-                        <div className="absolute inset-0 bg-gradient-to-br from-primary/20 via-transparent to-primary/10 opacity-50" />
-                        <motion.div
-                            key={unit.value}
-                            initial={{ y: -10, opacity: 0 }}
-                            animate={{ y: 0, opacity: 1 }}
-                            transition={{ duration: 0.3 }}
-                            className={`relative text-2xl sm:text-3xl font-bold ${theme === "dark" ? "text-white" : "text-aws-navy"
-                                }`}
-                        >
-                            {String(unit.value).padStart(2, "0")}
-                        </motion.div>
-                        <div className={`relative text-[10px] sm:text-xs uppercase tracking-wider mt-1 ${theme === "dark" ? "text-white/60" : "text-aws-navy/60"
-                            }`}>
-                            {unit.label}
-                        </div>
-                    </motion.div>
-                ))}
-            </div>
-        </motion.div>
-    );
-};
 
 const Hero = () => {
     const { theme } = useTheme();
@@ -97,7 +11,7 @@ const Hero = () => {
     return (
         <section className="relative min-h-screen overflow-hidden transition-colors duration-300">
 
-            {/* LightRays Background */}
+            {/* LightRays Background - UNCHANGED as per user request */}
             <div className="absolute inset-0 z-0 pointer-events-none opacity-100 mix-blend-screen">
                 <LightRays
                     raysOrigin="top-center"
@@ -120,12 +34,25 @@ const Hero = () => {
                 {/* Main Content */}
                 <div className="w-full max-w-4xl mx-auto flex flex-col items-center">
 
+                    {/* Mission Accomplished Badge */}
+                    <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.5 }}
+                        className="mb-4 px-5 py-2.5 rounded-full border border-primary/30 bg-primary/10 backdrop-blur-md flex items-center gap-3 shadow-golden"
+                    >
+                        <Trophy className="w-5 h-5 text-primary animate-pulse" />
+                        <span className="text-sm sm:text-base font-black tracking-[0.05em] uppercase text-primary">
+                            MISSION ACCOMPLISHED • MARCH 28, 2026 • SANJIVANI COLLEGE OF ENGINEERING
+                        </span>
+                    </motion.div>
+
                     {/* Main Title */}
                     <motion.div
                         initial={{ opacity: 0, y: 30 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.6, delay: 0.1 }}
-                        className="mb-8 flex flex-col items-center w-full"
+                        className="mb-4 flex flex-col items-center w-full"
                     >
                         <h1 className={`text-5xl sm:text-[4rem] lg:text-[6rem] xl:text-[7.25rem] font-black tracking-tighter uppercase leading-none mb-2 sm:mb-4 text-center ${theme === "dark" ? "text-white" : "text-aws-navy"}`}>
                             AWS STUDENT
@@ -134,68 +61,77 @@ const Hero = () => {
                             COMMUNITY DAY
                         </h2>
 
-                        <div className="mt-6 sm:mt-8 w-full max-w-3xl">
-                            <p className={`text-base sm:text-lg lg:text-2xl font-normal tracking-wide uppercase text-center ${theme === "dark" ? "text-white/90" : "text-aws-navy/90"}`}>
-                                MARCH 28, 2026 • SANJIVANI COLLEGE OF ENGINEERING
+                        <div className="mt-6 sm:mt-2 w-full max-w-4xl">
+                            <p className={`text-lg sm:text-xl lg:text-3xl font-medium tracking-wide uppercase text-center ${theme === "dark" ? "text-white/90" : "text-aws-navy/90"}`}>
+                                WAS A <span className="text-primary font-black drop-shadow-sm">PATH-BREAKING SUCCESS</span>
                             </p>
                         </div>
                     </motion.div>
 
-                    {/* Description */}
-                    {/* <motion.p
+                    {/* Description - Brief Recap */}
+                    <motion.p
                         initial={{ opacity: 0, y: 30 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.6, delay: 0.2 }}
-                        className={`mb-8 max-w-2xl text-base sm:text-lg md:text-xl leading-relaxed ${theme === "dark" ? "text-white/80" : "text-aws-navy/80"
+                        className={`mb-3 max-w-2xl text-base sm:text-lg md:text-xl leading-relaxed ${theme === "dark" ? "text-white/70" : "text-aws-navy/70"
                             }`}
                     >
-                        Join us for a full day of learning, networking, and innovation!
-                        Discover the latest AWS technologies through hands-on workshops,
-                        inspiring talks, and connect with fellow cloud enthusiasts.
-                    </motion.p> */}
+                        A huge thank you to the 500+ attendees, visionary speakers, and our 
+                        dedicated organizers for making SCD Sanjivani 2026 the region's 
+                        premier cloud celebration.
+                    </motion.p>
 
-                    {/* CTAs */}
+                    {/* CTAs - Updated for post-event */}
                     <motion.div
                         initial={{ opacity: 0, y: 30 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.6, delay: 0.3 }}
-                        className="flex flex-wrap items-center justify-center gap-4"
+                        className="flex flex-wrap items-center justify-center gap-6"
                     >
-                        <a href="https://konfhub.com/aws-student-community-day-sanjivani-2026" target="_blank" rel="noopener noreferrer" className="btn-primary group text-base px-8 py-3">
-                            <Ticket className="h-5 w-5 mr-2" />
-                            Register Now
-                            <ArrowRight className="h-5 w-5 ml-2 transition-transform group-hover:translate-x-1" />
+                        <a href="/glimpse" className="btn-primary group text-base px-10 py-4 bg-primary hover:scale-105 transition-transform">
+                            <ImageIcon className="h-5 w-5 mr-3 fill-white" />
+                            Gallery
+                            <ArrowRight className="h-5 w-5 ml-3 transition-transform group-hover:translate-x-1" />
                         </a>
-                        <a href="#about" className={`btn-secondary text-base px-8 py-3 ${theme === "dark"
+                        <a href="#community" className={`btn-secondary text-base px-10 py-4 rounded-xl border-2 ${theme === "dark"
                             ? "text-white/90 border-white/20 hover:border-white/40 bg-white/5 backdrop-blur-sm"
                             : "text-aws-navy border-aws-navy/30 hover:border-aws-navy/50 bg-aws-navy/5 backdrop-blur-sm"
-                            }`}>
-                            Learn More
+                            } transition-all hover:scale-105`}>
+                            <Bell className="h-5 w-5 mr-3" />
+                            Stay Connected
                         </a>
                     </motion.div>
 
-                    {/* Countdown Timer */}
-                    <CountdownTimer />
-
-                    {/* Event Info */}
+                    {/* Event Stats - Horizontal Line */}
                     <motion.div
-                        initial={{ opacity: 0, y: 30 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.6, delay: 0.7 }}
-                        className={`mt-10 flex flex-wrap items-center justify-center gap-6 sm:gap-8 text-sm sm:text-base font-medium ${theme === "dark" ? "text-white/80" : "text-aws-navy/80"
-                            }`}
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ duration: 1, delay: 0.6 }}
+                        className={`mt-16 flex flex-row items-center justify-center gap-8 sm:gap-20 border-t ${theme === "dark" ? "border-white/10" : "border-aws-navy/10"} pt-12 w-full max-w-5xl overflow-x-auto sm:overflow-x-visible pb-4 sm:pb-0`}
                     >
-                        <div className="flex items-center gap-2 bg-background/50 backdrop-blur-md px-4 py-2 rounded-full border border-border">
-                            <Calendar className="h-5 w-5 text-primary" />
-                            <span>7:00 AM - 6:00 PM</span>
+                        <div className="flex flex-col items-center group">
+                            <div className="p-3 rounded-2xl bg-primary/10 mb-4 transition-transform group-hover:scale-110">
+                                <Users className="w-6 h-6 text-primary" />
+                            </div>
+                            <span className={`text-4xl font-black ${theme === "dark" ? "text-white" : "text-aws-navy"}`}>500+</span>
+                            <span className={`text-[11px] font-bold uppercase tracking-[0.2em] mt-2 ${theme === "dark" ? "text-white/40" : "text-aws-navy/40"}`}>Attendees</span>
                         </div>
-                        <div className="flex items-center gap-2 bg-background/50 backdrop-blur-md px-4 py-2 rounded-full border border-border">
-                            <MapPin className="h-5 w-5 text-primary" />
-                            <span>Kopargaon, Maharashtra</span>
+                        
+                        <div className="flex flex-col items-center group">
+                            <div className="p-3 rounded-2xl bg-primary/10 mb-4 transition-transform group-hover:scale-110">
+                                <Mic className="w-6 h-6 text-primary" />
+                            </div>
+                            <span className={`text-4xl font-black ${theme === "dark" ? "text-white" : "text-aws-navy"}`}>10</span>
+                            <span className={`text-[11px] font-bold uppercase tracking-[0.2em] mt-2 ${theme === "dark" ? "text-white/40" : "text-aws-navy/40"}`}>Speakers</span>
                         </div>
-                        <div className="flex items-center gap-2 bg-background/50 backdrop-blur-md px-4 py-2 rounded-full border border-border">
-                            <Users className="h-5 w-5 text-primary" />
-                            <span>500+ Attendees</span>
+
+                        <div className="flex flex-col items-center group">
+                            <div className="flex items-center justify-center w-12 h-12 mb-4 relative">
+                                <div className="absolute inset-0 rounded-full border-2 border-primary/20" />
+                                <div className="absolute inset-0 rounded-full border-t-2 border-primary animate-spin" />
+                            </div>
+                            <span className={`text-4xl font-black ${theme === "dark" ? "text-white" : "text-aws-navy"}`}>SCD '27</span>
+                            <span className={`text-[11px] font-bold uppercase tracking-[0.2em] mt-2 ${theme === "dark" ? "text-white/40" : "text-aws-navy/40"}`}>Coming Soon</span>
                         </div>
                     </motion.div>
                 </div>

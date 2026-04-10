@@ -7,12 +7,13 @@ import { useTheme } from "@/components/ThemeProvider";
 import Image from "next/image";
 
 const navLinks = [
-    { name: "About", href: "#about" },
-    { name: "Tracks", href: "#tracks" },
-    { name: "Speakers", href: "#speakers" },
-    { name: "Agenda", href: "#agenda" },
-    { name: "Tickets", href: "#tickets" },
-    { name: "Venue", href: "#venue" },
+    { name: "About", href: "/#about" },
+    { name: "SCD'26 glimpse", href: "/glimpse" },
+    { name: "Tracks", href: "/#tracks" },
+    { name: "Speakers", href: "/#speakers" },
+    { name: "Agenda", href: "/#agenda" },
+    { name: "Tickets", href: "/#tickets" },
+    { name: "Venue", href: "/#venue" },
 ];
 
 const Navbar = () => {
@@ -60,21 +61,28 @@ const Navbar = () => {
                         {/* Desktop Nav */}
                         <div className="hidden items-center gap-6 md:flex">
 
-                            {navLinks.map((link) => (
-                                <a
-                                    key={link.name}
-                                    href={link.href}
-                                    className="text-sm font-medium transition-colors hover:text-primary text-white/70"
-                                >
-                                    {link.name}
-                                </a>
-                            ))}
-                            <a
+                            {navLinks.map((link) => {
+                                const isGlimpse = link.name.includes("glimpse");
+                                return (
+                                    <a
+                                        key={link.name}
+                                        href={link.href}
+                                        className={`text-sm font-medium transition-colors ${
+                                            isGlimpse 
+                                            ? "text-primary hover:text-white/40" 
+                                            : "text-white/70 hover:text-primary"
+                                        }`}
+                                    >
+                                        {link.name}
+                                    </a>
+                                );
+                            })}
+                            {/* <a
                                 href="#tickets"
                                 className="rounded-lg bg-primary px-4 py-2 text-sm font-semibold text-primary-foreground transition-all hover:bg-primary/90"
                             >
                                 Get Tickets
-                            </a>
+                            </a> */}
                         </div>
 
                         <button
@@ -101,23 +109,30 @@ const Navbar = () => {
                         <div className="section-container">
                             <div className="flex flex-col gap-4 py-8">
 
-                                {navLinks.map((link) => (
-                                    <a
-                                        key={link.name}
-                                        href={link.href}
-                                        onClick={() => setIsMobileMenuOpen(false)}
-                                        className="text-lg font-medium text-white/80 transition-colors hover:text-primary"
-                                    >
-                                        {link.name}
-                                    </a>
-                                ))}
-                                <a
+                                {navLinks.map((link) => {
+                                    const isGlimpse = link.name.includes("glimpse");
+                                    return (
+                                        <a
+                                            key={link.name}
+                                            href={link.href}
+                                            onClick={() => setIsMobileMenuOpen(false)}
+                                            className={`text-lg font-medium transition-colors ${
+                                                isGlimpse 
+                                                ? "text-primary hover:text-white/40" 
+                                                : "text-white/80 hover:text-primary"
+                                            }`}
+                                        >
+                                            {link.name}
+                                        </a>
+                                    );
+                                })}
+                                {/* <a
                                     href="#tickets"
                                     onClick={() => setIsMobileMenuOpen(false)}
                                     className="mt-4 w-full rounded-lg bg-primary py-3 text-center text-sm font-semibold text-primary-foreground"
                                 >
                                     Get Tickets
-                                </a>
+                                </a> */}
                             </div>
                         </div>
                     </motion.div>

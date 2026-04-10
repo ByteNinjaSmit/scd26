@@ -4,9 +4,9 @@ import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 
 const stats = [
-    { value: 600, suffix: "+", label: "devs attending in-person" },
+    { value: 500, suffix: "+", label: "devs attending in-person" },
     { value: 10, suffix: "+", label: "legendary tech speakers" },
-    { value: 12, suffix: "+", label: "deep-dive sessions on tech" },
+    { value: 10, suffix: "+", label: "deep-dive sessions on tech" },
 ];
 
 const focusAreas = [

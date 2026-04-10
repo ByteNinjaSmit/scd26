@@ -59,7 +59,7 @@ const Community = () => {
     const isInView = useInView(ref, { once: true, margin: "-100px" });
 
     return (
-        <section ref={ref} className="section-padding text-white">
+        <section ref={ref} id="community" className="section-padding text-white">
             <div className="section-container">
                 <div className="grid gap-12 lg:grid-cols-2 lg:gap-16">
                     {/* Left - Stay Updated */}
