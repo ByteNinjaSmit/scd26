@@ -21,7 +21,7 @@ const ticketsData = [
         ctaLink: "https://konfhub.com/checkout/aws-student-community-day-sanjivani-2026?ticketId=73989",
         icon: Crown,
         featured: true,
-        soldOut: false,
+        soldOut: true,
         seats: 100,
         features: [
             { icon: "✨", text: "Exclusive Golden Badge: Flash a premium golden badge for instant recognition as a top-tier supporter." },
@@ -92,7 +92,7 @@ const ticketsData = [
         ctaLink: "https://konfhub.com/checkout/aws-student-community-day-sanjivani-2026?ticketId=81190",
         icon: Ticket,
         featured: false,
-        soldOut: false,
+        soldOut: true,
         seats: 300,
         features: [
             { icon: "⚡", text: "Last Chance to Join: Don't miss out on the premier cloud event of the season. Secure your spot before doors close!" },
