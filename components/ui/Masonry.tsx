@@ -80,9 +80,9 @@ const Masonry: React.FC<MasonryProps> = ({
   blurToFocus = true,
 }) => {
   const columns = useMedia(
-    ['(min-width:1500px)', '(min-width:1000px)', '(min-width:600px)', '(min-width:400px)'],
-    [5, 4, 3, 2],
-    1
+    ['(min-width:1500px)', '(min-width:1000px)', '(min-width:600px)'],
+    [5, 4, 3],
+    2
   );
 
   const [containerRef, { width }] = useMeasure<HTMLDivElement>();
@@ -127,7 +127,8 @@ const Masonry: React.FC<MasonryProps> = ({
   const grid = useMemo<GridItem[]>(() => {
     if (!width) return [];
     const colHeights = new Array(columns).fill(0);
-    const gap = 20; // Slightly larger gap for premium look
+    const isSmallMobile = width < 480;
+    const gap = isSmallMobile ? 8 : (width < 768 ? 12 : 20); 
     const totalGaps = (columns - 1) * gap;
     const columnWidth = (width - totalGaps) / columns;
 
